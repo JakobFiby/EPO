@@ -9,7 +9,9 @@ class LoginFenster : View("Login") {
     val nutzername= model.bind{SimpleStringProperty()}
     val passwort= model.bind{SimpleStringProperty()}
 
+
     override val root = form {
+
         fieldset(title, labelPosition = Orientation.VERTICAL){
             fieldset("Nutzername"){
                 textfield(nutzername).required()

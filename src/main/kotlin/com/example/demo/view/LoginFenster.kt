@@ -8,7 +8,7 @@ import javafx.scene.text.FontWeight
 import tornadofx.*
 import javax.swing.text.Position
 
-class LoginFenster : View("Login") {
+class                                                                                                                                                                                                                                                                                                                                                                                                                               LoginFenster : View("Login") {
     val model = ViewModel()
     val nutzername= model.bind{SimpleStringProperty()}
     val passwort= model.bind{SimpleStringProperty()}

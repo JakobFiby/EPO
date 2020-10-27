@@ -1,5 +1,6 @@
 package com.example.demo.view
 
+import com.example.demo.app.Styles
 import javafx.beans.property.SimpleStringProperty
 import javafx.geometry.Orientation
 import javafx.geometry.Pos
@@ -8,7 +9,7 @@ import javafx.scene.text.FontWeight
 import tornadofx.*
 import javax.swing.text.Position
 
-class                                                                                                                                                                                                                                                                                                                                                                                                                               LoginFenster : View("Login") {
+class LoginFenster : View("Login") {
     val model = ViewModel()
     val nutzername= model.bind{SimpleStringProperty()}
     val passwort= model.bind{SimpleStringProperty()}
@@ -23,11 +24,11 @@ class                                                                           
         vbox(spacing=20){
             vbox(spacing=20) {
             hbox{
-                label("Wir sind "){
-                font= Font.font("Segoe UI", FontWeight.LIGHT, 30.0)
-            }
                 label("EPO"){
                     font= Font.font("Segoe UI", FontWeight.BOLD, 30.0)
+                }
+                label(" - Easy Project Organisation"){
+                    font= Font.font("Segoe UI", FontWeight.NORMAL, 20.0)
                 }
             }
             }
@@ -46,7 +47,8 @@ class                                                                           
                     useMaxHeight = true
                     action {
                         runAsyncWithProgress {
-
+                            //App(UeberblickFenster::class).run { App(UeberblickFenster::class) }
+                            //keinen Plan wie ich das neue Fenster aufmache
                         }
                 }
             }

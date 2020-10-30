@@ -1,5 +1,6 @@
 package com.example.demo.view
 
+import com.example.demo.app.Styles
 import javafx.beans.property.SimpleStringProperty
 import javafx.geometry.Orientation
 import javafx.geometry.Pos

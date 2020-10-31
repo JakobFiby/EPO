@@ -1,18 +1,21 @@
 package com.example.demo.view
 
 import javafx.beans.property.SimpleStringProperty
-import javafx.geometry.Orientation
+import javafx.collections.FXCollections
+import javafx.collections.ObservableList
 import javafx.geometry.Pos
+import javafx.scene.control.ComboBox
 import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
 import tornadofx.*
-import java.awt.event.ActionListener
-import java.text.SimpleDateFormat
+
 
 class EintragErstellenFenster : View("Liste erstellen") {
     val model = ViewModel()
     val eName= model.bind{SimpleStringProperty()}
     val eBeschreibung= model.bind{SimpleStringProperty()}
+    val items = listOf("low", "medium", "high")
+    val selectedItem = SimpleStringProperty(items.first())
 
     override val root = form {
         hbox {
@@ -36,7 +39,12 @@ class EintragErstellenFenster : View("Liste erstellen") {
                     textfield(eBeschreibung).required()
                 }
                 fieldset("Wichtigkeit") {
-                    //combobox {  }
+                    combobox(selectedItem, items) {
+                        setMaxSize(420.0, 03.0)
+                        cellFormat {
+                            text = it
+                        }
+                    }
                 }
 
                 vbox(0,Pos.TOP_CENTER) {

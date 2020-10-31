@@ -46,10 +46,7 @@ class LoginFenster : View("Login") {
                     isDefaultButton = true
                     useMaxHeight = true
                     action {
-                        runAsyncWithProgress {
-                            //App(UeberblickFenster::class).run { App(UeberblickFenster::class) }
-                            //keinen Plan wie ich das neue Fenster aufmache
-                        }
+                        UeberblickFenster().openWindow()
                 }
             }
         }
@@ -63,6 +60,5 @@ class LoginFenster : View("Login") {
         nutzername.value=""
         passwort.value=""
         model.clearDecorators()
-
     }
 }

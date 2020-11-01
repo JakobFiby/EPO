@@ -53,12 +53,10 @@ class LoginFenster : View("Login") {
                 }
             }
         }
-
         }
         }
         }
 }
-
     override fun onDock() {
         nutzername.value=""
         passwort.value=""

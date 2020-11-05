@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dataSource name="epofgs@sql516.your-server.de">
+<dataSource name="sql516.your-server.de">
   <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.19">
     <root id="1">
-      <ServerVersion>5.7.31</ServerVersion>
+      <ServerVersion>5.7.32</ServerVersion>
       <DefaultEngine>InnoDB</DefaultEngine>
       <DefaultTmpEngine>InnoDB</DefaultTmpEngine>
       <DefaultCasing>exact</DefaultCasing>
@@ -770,154 +770,160 @@
       <ColNames>eintragid</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="240" parent="228" name="farbschemaid">
+    <foreign-key id="240" parent="227" name="eintrag_ibfk_1">
+      <ColNames>listeid</ColNames>
+      <RefTableName>liste</RefTableName>
+      <RefColNames>listeid</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="241" parent="228" name="farbschemaid">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="241" parent="228" name="schemaname">
+    <column id="242" parent="228" name="schemaname">
       <Position>2</Position>
       <DataType>varchar(15)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="242" parent="228" name="PRIMARY">
+    <key id="243" parent="228" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>farbschemaid</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="243" parent="229" name="listeid">
+    <column id="244" parent="229" name="listeid">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="244" parent="229" name="listename">
+    <column id="245" parent="229" name="listename">
       <Position>2</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="245" parent="229" name="listedatum">
+    <column id="246" parent="229" name="listedatum">
       <Position>3</Position>
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="246" parent="229" name="faelligkeitsdatum">
+    <column id="247" parent="229" name="faelligkeitsdatum">
       <Position>4</Position>
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="247" parent="229" name="PRIMARY">
+    <key id="248" parent="229" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>listeid</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="248" parent="230" name="userid">
+    <column id="249" parent="230" name="userid">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="249" parent="230" name="nutzername">
+    <column id="250" parent="230" name="nutzername">
       <Position>2</Position>
       <DataType>varchar(15)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="250" parent="230" name="passwort">
+    <column id="251" parent="230" name="passwort">
       <Position>3</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="251" parent="230" name="mitteilungen">
+    <column id="252" parent="230" name="mitteilungen">
       <Position>4</Position>
       <DataType>tinyint(1)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="252" parent="230" name="abmelden">
+    <column id="253" parent="230" name="abmelden">
       <Position>5</Position>
       <DataType>tinyint(1)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="253" parent="230" name="profilbild">
+    <column id="254" parent="230" name="profilbild">
       <Position>6</Position>
       <DataType>mediumblob|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="254" parent="230" name="vorname">
+    <column id="255" parent="230" name="vorname">
       <Position>7</Position>
       <DataType>varchar(15)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="255" parent="230" name="nachname">
+    <column id="256" parent="230" name="nachname">
       <Position>8</Position>
       <DataType>varchar(15)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="256" parent="230" name="email">
+    <column id="257" parent="230" name="email">
       <Position>9</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="257" parent="230" name="farbschemaid">
+    <column id="258" parent="230" name="farbschemaid">
       <Position>10</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <index id="258" parent="230" name="FS_user_farbschema">
+    <index id="259" parent="230" name="FS_user_farbschema">
       <ColNames>farbschemaid</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="259" parent="230" name="PRIMARY">
+    <key id="260" parent="230" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>userid</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="260" parent="230" name="FS_user_farbschema">
+    <foreign-key id="261" parent="230" name="FS_user_farbschema">
       <ColNames>farbschemaid</ColNames>
       <RefTableName>farbschema</RefTableName>
       <RefColNames>farbschemaid</RefColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>set-null</OnDelete>
     </foreign-key>
-    <column id="261" parent="231" name="userlisteid">
+    <column id="262" parent="231" name="userlisteid">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="262" parent="231" name="berechtigungs">
+    <column id="263" parent="231" name="berechtigungs">
       <Position>2</Position>
       <DataType>tinyint(1)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="263" parent="231" name="listeid">
+    <column id="264" parent="231" name="listeid">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="264" parent="231" name="userid">
+    <column id="265" parent="231" name="userid">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <index id="265" parent="231" name="FS_userliste_liste">
+    <index id="266" parent="231" name="FS_userliste_liste">
       <ColNames>listeid</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="266" parent="231" name="FS_userliste_user">
+    <index id="267" parent="231" name="FS_userliste_user">
       <ColNames>userid</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="267" parent="231" name="PRIMARY">
+    <key id="268" parent="231" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>userlisteid</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="268" parent="231" name="FS_userliste_liste">
+    <foreign-key id="269" parent="231" name="FS_userliste_liste">
       <ColNames>listeid</ColNames>
       <RefTableName>liste</RefTableName>
       <RefColNames>listeid</RefColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>set-null</OnDelete>
     </foreign-key>
-    <foreign-key id="269" parent="231" name="FS_userliste_user">
+    <foreign-key id="270" parent="231" name="FS_userliste_user">
       <ColNames>userid</ColNames>
       <RefTableName>user</RefTableName>
       <RefColNames>userid</RefColNames>

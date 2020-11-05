@@ -16,6 +16,5 @@ class Styles : Stylesheet() {
             fontSize = 20.px
             fontWeight = FontWeight.BOLD
         }
-
     }
 }

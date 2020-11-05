@@ -47,7 +47,6 @@ class LoginFenster : View("Login") {
                     useMaxHeight = true
                     action {
                         UeberblickFenster().openWindow()
-
                 }
             }
         }

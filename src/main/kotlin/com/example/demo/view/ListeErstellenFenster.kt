@@ -8,6 +8,7 @@ import javafx.scene.text.FontWeight
 import tornadofx.*
 import java.awt.event.ActionListener
 import java.text.SimpleDateFormat
+import java.time.LocalDate
 
 class ListeErstellenFenster : View("Liste erstellen") {
     val model = ViewModel()
@@ -34,7 +35,10 @@ class ListeErstellenFenster : View("Liste erstellen") {
                     setMaxSize(212.0, 03.0)
                 }
                 fieldset("Fälligkeitsdatum") {
-                    datepicker().showingProperty()
+                    datepicker()
+                    {
+                        value = LocalDate.now()
+                    }
                     //wie kann ich das required setzen --> wär mega nice
                 }
 

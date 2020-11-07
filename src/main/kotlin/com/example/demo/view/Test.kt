@@ -4,6 +4,7 @@ import java.sql.DriverManager
 import java.sql.Connection
 import java.sql.ResultSet
 import java.sql.SQLException
+import java.sql.*
 
 object Test {
 
@@ -16,6 +17,7 @@ object Test {
 
             val c = DriverManager.getConnection(
                     "jdbc:mysql://sql516.your-server.de:3306/epofgs",
+                    //hab mich auch nochmal über DB-URLS informiert und unsere sollte stimmmen
                     "digbizm_7", "2021##Epo5ck"
             )
             println("OK")

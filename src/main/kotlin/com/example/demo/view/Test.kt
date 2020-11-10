@@ -4,7 +4,6 @@ import java.sql.DriverManager
 import java.sql.Connection
 import java.sql.ResultSet
 import java.sql.SQLException
-import java.sql.*
 
 object Test {
 
@@ -18,7 +17,22 @@ object Test {
             )
             println("OK")
             val s=c.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE)
-            val r=s.executeQuery("SELECT * FROM user")
+            val r=s.executeQuery("SELECT * FROM farbschema")
+
+            /*r.next()
+            r.moveToInsertRow()
+            r.updateString("schemaname", "blautöne")
+            r.insertRow()*/
+
+            while(r.next())
+            {
+                /*if(r.row == 1)
+                {
+                    r.updateString("nutzername", "tscheikob")
+                    r.updateRow()
+                }*/
+                println(r.row.toString() + " " + r.getString("schemaname"))
+            }
         }
         catch(e:SQLException){
             e.printStackTrace()

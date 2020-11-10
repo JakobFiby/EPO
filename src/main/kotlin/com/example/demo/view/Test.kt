@@ -10,14 +10,10 @@ object Test {
 
     @JvmStatic
     fun connection(){
-        Class.forName("com.microsoft.sqlserver")
+        Class.forName("com.mysql.cj.jdbc.Driver")
         try{
-            // @Kathi --> ich hab mir so einen jdbc Driver runtergeladen, aba keinen Plan, war das jz doch nd funkt
-            //i bin wirklich am verzweifeln
-
             val c = DriverManager.getConnection(
                     "jdbc:mysql://sql516.your-server.de:3306/epofgs",
-                    //hab mich auch nochmal über DB-URLS informiert und unsere sollte stimmmen
                     "digbizm_7", "2021##Epo5ck"
             )
             println("OK")

@@ -31,7 +31,8 @@ object Test {
                     r.updateString("nutzername", "tscheikob")
                     r.updateRow()
                 }*/
-                println(r.row.toString() + " " + r.getString("schemaname"))
+                println(r.row.toString() + " ")
+                println(r.getString("schemaname"))
             }
         }
         catch(e:SQLException){

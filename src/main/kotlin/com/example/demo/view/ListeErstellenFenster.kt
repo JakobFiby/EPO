@@ -3,6 +3,7 @@ package com.example.demo.view
 import javafx.beans.property.SimpleStringProperty
 import javafx.geometry.Orientation
 import javafx.geometry.Pos
+import javafx.scene.paint.Color
 import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
 import tornadofx.*
@@ -16,6 +17,13 @@ class ListeErstellenFenster : View("Liste erstellen") {
     //val fdatum = model.{SimpleDateFormat()} wie vereinbare ich diese Variable?
 
     override val root = form {
+        style{
+            padding = box(10.px)
+            fontSize = 15.px
+            backgroundColor=multi(c(colorString="black"))
+            textFill= Color.LIGHTGREY
+        }
+
         hbox {
             paddingTop=10
             paddingBottom=10

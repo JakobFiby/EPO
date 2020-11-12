@@ -16,6 +16,13 @@ import javax.swing.text.Position
 class UeberblickFenster : View ("Easy Project Organisation")
 {
     override val root = form {
+        style{
+            padding = box(10.px)
+            fontSize = 15.px
+            backgroundColor=multi(c(colorString="black"))
+            textFill= javafx.scene.paint.Color.LIGHTGREY
+        }
+
         hbox {
             paddingTop = 10
             paddingBottom = 10

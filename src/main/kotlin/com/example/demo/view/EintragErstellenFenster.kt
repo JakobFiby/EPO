@@ -5,6 +5,7 @@ import javafx.collections.FXCollections
 import javafx.collections.ObservableList
 import javafx.geometry.Pos
 import javafx.scene.control.ComboBox
+import javafx.scene.paint.Color
 import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
 import tornadofx.*
@@ -18,6 +19,13 @@ class EintragErstellenFenster : View("Liste erstellen") {
     val selectedItem = SimpleStringProperty(items.first())
 
     override val root = form {
+        style{
+            padding = box(10.px)
+            fontSize = 15.px
+            backgroundColor = multi(c(colorString="black"))
+            textFill = Color.LIGHTGREY
+        }
+
         hbox {
             paddingTop=10
             paddingBottom=10

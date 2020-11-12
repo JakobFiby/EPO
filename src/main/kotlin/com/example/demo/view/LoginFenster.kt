@@ -25,6 +25,7 @@ class LoginFenster : View("Login") {
             textFill=Color.LIGHTGREY
         }
     hbox{
+        addClass(Styles.heading)
         paddingTop=10
         paddingBottom=10
         paddingRight=20
@@ -38,7 +39,6 @@ class LoginFenster : View("Login") {
             hbox{
                 label("EPO"){
                     font= Font.font("Segoe UI", FontWeight.BOLD, 30.0)
-                    //addClass(Styles.heading)
                 }
                 label(" - Easy Project Organisation"){
                     font= Font.font("Segoe UI", FontWeight.NORMAL, 20.0)
@@ -56,10 +56,7 @@ class LoginFenster : View("Login") {
             vbox(0,Pos.TOP_LEFT){
                 button("Anmelden"){
                     enableWhen(model.valid)
-                    style{
-                        backgroundColor = multi(c(colorString = "lightgrey"))
-                        textFill= Color.BLACK
-                    }
+                    addClass(Styles.allbuttons)
                     isDefaultButton = true
                     useMaxHeight = true
                     action {

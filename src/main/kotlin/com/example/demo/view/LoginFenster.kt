@@ -4,10 +4,13 @@ import com.example.demo.app.Styles
 import javafx.beans.property.SimpleStringProperty
 import javafx.geometry.Orientation
 import javafx.geometry.Pos
+import javafx.scene.layout.*
+import javafx.scene.layout.Border
+import javafx.scene.paint.Color
+import javax.swing.border.*
 import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
 import tornadofx.*
-import javax.swing.text.Position
 
 class LoginFenster : View("Login") {
     val model = ViewModel()
@@ -15,23 +18,33 @@ class LoginFenster : View("Login") {
     val passwort= model.bind{SimpleStringProperty()}
 
     override val root = form {
+        style{
+            padding = box(10.px)
+            fontSize = 15.px
+            backgroundColor=multi(c(colorString="black"))
+            textFill=Color.LIGHTGREY
+        }
     hbox{
         paddingTop=10
         paddingBottom=10
         paddingRight=20
         paddingLeft=20
+        alignment= Pos.CENTER
+        spacing =10.0
 
         vbox(spacing=20){
+
             vbox(spacing=20) {
             hbox{
                 label("EPO"){
                     font= Font.font("Segoe UI", FontWeight.BOLD, 30.0)
+                    //addClass(Styles.heading)
                 }
                 label(" - Easy Project Organisation"){
                     font= Font.font("Segoe UI", FontWeight.NORMAL, 20.0)
                 }
-            }
-            }
+            } //ende hbox Titel
+            } //ende vbox Titel
         fieldset(title, labelPosition = Orientation.VERTICAL) {
             fieldset("Nutzername") {
                 textfield(nutzername).required()
@@ -40,19 +53,34 @@ class LoginFenster : View("Login") {
                 passwordfield(passwort).required()
             }
 
-            vbox(0,Pos.TOP_RIGHT){
+            vbox(0,Pos.TOP_LEFT){
                 button("Anmelden"){
                     enableWhen(model.valid)
+                    style{
+                        backgroundColor = multi(c(colorString = "lightgrey"))
+                        textFill= Color.BLACK
+                    }
                     isDefaultButton = true
                     useMaxHeight = true
                     action {
                         UeberblickFenster().openWindow()
+                    }
                 }
             }
-        }
-        }
-        }
-        }
+            vbox(0,Pos.TOP_RIGHT) {
+                button("Noch nicht registriert?") {
+                    //addClass(Styles.button)
+                    style {
+                        backgroundColor = multi(c(colorString = "black"))
+                    }
+                    action {
+                        RegisterFenster().openWindow()
+                    } //ende action
+                } //ende button noch nicht registriert
+            } //ende vbox noch nicht registriert
+        } //ende fieldset
+        } //ende vbox gesamt
+        } //ende hbox gesamt
 }
     override fun onDock() {
         nutzername.value=""

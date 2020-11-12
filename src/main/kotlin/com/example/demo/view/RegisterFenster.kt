@@ -4,6 +4,7 @@ import com.example.demo.app.Styles
 import javafx.beans.property.SimpleStringProperty
 import javafx.geometry.Orientation
 import javafx.geometry.Pos
+import javafx.scene.paint.Color
 import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
 import tornadofx.*
@@ -17,23 +18,21 @@ class RegisterFenster : View("Registrieren") {
 
 
     override val root = form {
+        style{
+            padding = box(10.px)
+            fontSize = 15.px
+            backgroundColor=multi(c(colorString="black"))
+            textFill=Color.LIGHTGREY
+        }
         hbox{
             paddingTop=10
             paddingBottom=10
             paddingRight=20
             paddingLeft=20
 
+
             vbox(spacing=20){
-                vbox(spacing=20) {
 
-                        label("Account"){
-                            font= Font.font("Segoe UI", FontWeight.BOLD, 30.0)
-                        }
-                        label("erstellen"){
-                            font= Font.font("Segoe UI", FontWeight.NORMAL, 20.0)
-                        }
-
-                }
                 fieldset(title, labelPosition = Orientation.VERTICAL) {
                     fieldset("Vorname") {
                         textfield(vorname).required()
@@ -48,9 +47,13 @@ class RegisterFenster : View("Registrieren") {
                         passwordfield(passwort).required()
                     }
 
-                    vbox(0,Pos.TOP_CENTER){
+                    vbox(0,Pos.TOP_LEFT){
                         button("Registrieren"){
                             enableWhen(model.valid)
+                            style{
+                                backgroundColor = multi(c(colorString = "lightgrey"))
+                                textFill= Color.BLACK
+                            }
                             isDefaultButton = true
                             useMaxHeight = true
                             action {
@@ -58,14 +61,14 @@ class RegisterFenster : View("Registrieren") {
                                     LoginFenster().openWindow()
                                 }
 
-                            }
-                        }
-                    }
-                }
-            }
+                            } //ende action
+                        }//ende button Registrieren
+                    } //ende vbox button
+                } //ende fieldset
+            } //ende vbox
+        } //ende hbox
+    } //ende form
 
-        }
-    }
     override fun onDock() {
         vorname.value=""
         nachname.value=""

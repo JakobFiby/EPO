@@ -17,8 +17,9 @@ object Test {
             )
             println("OK")
             val s=c.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE)
+            val s2=c.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE)
             val r=s.executeQuery("SELECT * FROM farbschema")
-
+            val user=s2.executeQuery("SELECT * FROM user ")
             /*r.next()
             r.moveToInsertRow()
             r.updateString("schemaname", "blautöne")
@@ -31,8 +32,11 @@ object Test {
                     r.updateString("nutzername", "tscheikob")
                     r.updateRow()
                 }*/
-                println(r.row.toString() + " ")
-                println(r.getString("schemaname"))
+                println(r.row.toString() + " " + r.getString("schemaname"))
+
+            }
+            while(user.next()){
+                println(user.row.toString() + " " + user.getString("nutzername"))
             }
         }
         catch(e:SQLException){

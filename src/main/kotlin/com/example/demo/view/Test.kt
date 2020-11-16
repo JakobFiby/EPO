@@ -6,9 +6,11 @@ import java.sql.ResultSet
 import java.sql.SQLException
 
 object Test {
-
     @JvmStatic
-    fun connection(){
+
+    public var variable:String = ""
+
+    fun connection() {
         Class.forName("com.mysql.cj.jdbc.Driver")
         try{
             val c = DriverManager.getConnection(
@@ -17,23 +19,25 @@ object Test {
             )
             println("OK")
             val s=c.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE)
-            val r=s.executeQuery("SELECT * FROM farbschema")
+            val r=s.executeQuery("SELECT * FROM user")
+            r.next()
+            variable = r.getString("nutzername")
 
             /*r.next()
             r.moveToInsertRow()
             r.updateString("schemaname", "blautöne")
             r.insertRow()*/
 
-            while(r.next())
+            /*while(r.next())
             {
-                /*if(r.row == 1)
+                if(r.row == 1)
                 {
                     r.updateString("nutzername", "tscheikob")
                     r.updateRow()
-                }*/
+                }
                 println(r.row.toString() + " ")
                 println(r.getString("schemaname"))
-            }
+            }*/
         }
         catch(e:SQLException){
             e.printStackTrace()

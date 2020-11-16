@@ -10,12 +10,14 @@ import javafx.scene.paint.Color
 import javax.swing.border.*
 import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
+import sun.awt.SunHints
 import tornadofx.*
 
 class LoginFenster : View("Login") {
     val model = ViewModel()
-    val nutzername= model.bind{SimpleStringProperty()}
+    public val nutzername= model.bind{SimpleStringProperty()}
     val passwort= model.bind{SimpleStringProperty()}
+    var nutzerna = ""
 
     override val root = form {
         style{
@@ -60,7 +62,10 @@ class LoginFenster : View("Login") {
                     isDefaultButton = true
                     useMaxHeight = true
                     action {
-                        UeberblickFenster().openWindow()
+                        //UeberblickFenster().openWindow()
+                        nutzerna = nutzername.value
+                        println(nutzerna)
+                        login.test()
                     }
                 }
             }

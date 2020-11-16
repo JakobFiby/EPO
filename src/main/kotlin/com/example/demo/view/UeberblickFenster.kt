@@ -12,9 +12,13 @@ import tornadofx.*
 import java.awt.Color
 import java.util.*
 import javax.swing.text.Position
+import kotlin.collections.ArrayList
 
 class UeberblickFenster : View ("Easy Project Organisation")
 {
+    public var lid = ArrayList<Int>()
+    public var lna = ArrayList<String>()
+
     override val root = form {
         style{
             padding = box(10.px)
@@ -34,7 +38,8 @@ class UeberblickFenster : View ("Easy Project Organisation")
                     label("Listenübersicht!") {
                         font = Font.font("Segoe UI", FontWeight.BOLD, 25.0)
                     }
-                        label("    ")
+
+                    label("    ")
 
                     button("Einstellungen")
                     {
@@ -42,6 +47,10 @@ class UeberblickFenster : View ("Easy Project Organisation")
                         shape = Circle(15.0)
                         setMaxSize(15.0*2, 15.0*2)
                         setMinSize(15.0*2, 15.0*2)
+                        action{
+                            listenÜbersicht.data()
+                            println(lid)
+                        }
                     }
                 }
             }

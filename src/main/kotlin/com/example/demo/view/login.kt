@@ -10,9 +10,10 @@ object login {
         println(nn + " 123")
         println(va)
 
-        if(va.equals(nn))
-        {
+        //if(va.equals(nn))
+        //{
             UeberblickFenster().openWindow()
-        }
+            listenQuery.connection()
+        //}
     }
 }

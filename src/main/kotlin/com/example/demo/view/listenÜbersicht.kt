@@ -9,7 +9,9 @@ object listenÜbersicht
     {
         listenQuery.connection()
         listeid = listenQuery.listenid
-        for(li in listeid)
+        println(listeid)
+
+        /*for(li in listeid)
         {
             println(li)
         }
@@ -21,6 +23,6 @@ object listenÜbersicht
         }
 
         UeberblickFenster().lid = listeid
-        UeberblickFenster().lna = listename
+        UeberblickFenster().lna = listename*/
     }
 }

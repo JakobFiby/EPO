@@ -3,9 +3,9 @@ package com.example.demo.view
 object login {
     @JvmStatic
     fun test(){
-        Test.connection()
-        var va = Test.variable
-        var nn = LoginFenster().nutzerna
+       Test.connection()
+        var va = Test.connection()
+        var nn = LoginFenster().nutzername
         //why null bro
         println(nn + " 123")
         println(va)

@@ -48,7 +48,9 @@ class UeberblickFenster : View ("Easy Project Organisation")
                         setMaxSize(15.0*2, 15.0*2)
                         setMinSize(15.0*2, 15.0*2)
                         action{
-                            listenÜbersicht.data()
+                            //listenÜbersicht.data()
+                            listenQuery.connection()
+                            lid = listenQuery.listenid
                             println(lid)
                             println(lna)
                         }

@@ -17,7 +17,7 @@ class Styles : Stylesheet() {
             fontSize = 20.px
             fontWeight = FontWeight.BOLD
             backgroundColor=multi(c(colorString="black"))
-            textFill=Color.LIGHTGREY
+            textFill=Color.WHITE
         }
     }
     init{

@@ -16,5 +16,6 @@ class MainView : View("Willkommen") {
                 LoginFenster().openWindow()
             }
         }
+
     }
 }

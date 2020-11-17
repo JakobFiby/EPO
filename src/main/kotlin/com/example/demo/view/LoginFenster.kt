@@ -60,7 +60,7 @@ class LoginFenster : View("Login") {
                     isDefaultButton = true
                     useMaxHeight = true
                     action {
-                        UeberblickFenster().openWindow()
+                        login.test(nutzername.value, passwort.value)
                     }
                 }
             }

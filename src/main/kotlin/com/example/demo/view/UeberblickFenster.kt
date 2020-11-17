@@ -18,7 +18,6 @@ class UeberblickFenster : View ("Easy Project Organisation")
 {
     public var lid = ArrayList<Int>()
     public var lna = ArrayList<String>()
-
     override val root = form {
         style{
             padding = box(10.px)

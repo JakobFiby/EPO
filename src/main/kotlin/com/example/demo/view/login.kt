@@ -23,7 +23,7 @@ object login {
                     "jdbc:mysql://sql516.your-server.de:3306/epofgs",
                     "digbizm_7", "2021##Epo5ck"
             )
-            println("OK")
+            //println("OK")
             val sUser = c.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE)
             val sPW = c.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE)
             val sUserId = c.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE)

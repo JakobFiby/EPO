@@ -21,5 +21,6 @@ object listenÜbersicht
         }
 
         UeberblickFenster().lid = listeid
+        UeberblickFenster().lna = listename
     }
 }

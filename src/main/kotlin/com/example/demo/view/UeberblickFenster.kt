@@ -50,6 +50,7 @@ class UeberblickFenster : View ("Easy Project Organisation")
                         action{
                             listenÜbersicht.data()
                             println(lid)
+                            println(lna)
                         }
                     }
                 }

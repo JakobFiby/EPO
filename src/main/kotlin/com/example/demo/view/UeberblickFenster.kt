@@ -47,14 +47,32 @@ class UeberblickFenster : View ("Easy Project Organisation")
                         setMaxSize(15.0*2, 15.0*2)
                         setMinSize(15.0*2, 15.0*2)
                         action{
-                            //listenÜbersicht.data()
-                            listenQuery.connection()
-                            lid = listenQuery.listenid
-                            println(lid)
-                            println(lna)
+
                         }
                     }
                 }
+            }
+        }
+        listenQuery.connection()
+        lid = listenQuery.listenid
+        lna = listenQuery.listenname
+
+        for (la in lna) {
+            label("$la")
+            {
+
+            }
+            label("")
+        }
+
+        button("+")
+        {
+            font = Font.font("Segoe UI", FontWeight.BOLD, 14.0)
+            shape = Circle(15.0)
+            setMaxSize(15.0*2, 15.0*2)
+            setMinSize(15.0*2, 15.0*2)
+            action{
+                ListeErstellenFenster().openWindow()
             }
         }
     }

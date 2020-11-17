@@ -8,6 +8,9 @@ import java.sql.SQLException
 
 object login {
     @JvmStatic
+
+    public var userId:Int = 0
+
     fun test(nutzername: String, passwort: String){
         //println(nutzername)
         //println(passwort)
@@ -23,7 +26,8 @@ object login {
             println("OK")
             val sUser = c.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE)
             val sPW = c.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE)
-            val user=sUser.executeQuery("SELECT nutzername FROM user ")
+            val sUserId = c.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE)
+            val user=sUser.executeQuery("SELECT nutzername, userid FROM user ")
             val pw=sPW.executeQuery("SELECT passwort FROM user ")
             val pwHash = MessageDigest.getInstance("MD5")
             //val b = pwHash.digest(pw.getBytes())
@@ -32,6 +36,8 @@ object login {
             while(user.next()){
                 if(user.getString("nutzername").equals(nutzername)){
                     nnB=true
+                    userId = user.getInt("userid")
+                    //println(userId)
                 }
                 else{
                     //println("Nutzername ist falsch")

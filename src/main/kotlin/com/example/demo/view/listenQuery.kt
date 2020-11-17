@@ -10,7 +10,7 @@ import tornadofx.setValue
 object listenQuery {
     @JvmStatic
 
-    var userid:Int = 2
+    var userid:Int = login.userId
     public var listenid = ArrayList<Int>()
     public var listenname = ArrayList<String>()
     var li:Int = 0

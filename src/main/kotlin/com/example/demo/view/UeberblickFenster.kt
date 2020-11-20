@@ -10,21 +10,27 @@ import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
 import tornadofx.*
 import java.awt.Color
+import java.awt.Image
 import java.util.*
 import javax.swing.text.Position
+import javax.xml.soap.Node
 import kotlin.collections.ArrayList
 
 class UeberblickFenster : View ("Easy Project Organisation")
 {
     public var lid = ArrayList<Int>()
     public var lna = ArrayList<String>()
+
     override val root = form {
         style{
             padding = box(10.px)
             fontSize = 15.px
             backgroundColor=multi(c(colorString="black"))
-            textFill= javafx.scene.paint.Color.LIGHTGREY
+            textFill= javafx.scene.paint.Color.WHITE
         }
+
+        var username = login.username
+        //println(username + "*")
 
         hbox {
             paddingTop = 10
@@ -34,8 +40,9 @@ class UeberblickFenster : View ("Easy Project Organisation")
 
             vbox(spacing = 20) {
                 hbox {
-                    label("Listenübersicht!") {
+                    label("Willkommen $username:") {
                         font = Font.font("Segoe UI", FontWeight.BOLD, 25.0)
+                        textFill= c("#4C2DC6")
                     }
 
                     label("    ")
@@ -46,6 +53,10 @@ class UeberblickFenster : View ("Easy Project Organisation")
                         shape = Circle(15.0)
                         setMaxSize(15.0*2, 15.0*2)
                         setMinSize(15.0*2, 15.0*2)
+                        style{
+                            backgroundColor = multi(c("#F98E01"))
+                            textFill = javafx.scene.paint.Color.BLACK
+                        }
                         action{
 
                         }
@@ -58,9 +69,15 @@ class UeberblickFenster : View ("Easy Project Organisation")
         lna = listenQuery.listenname
 
         for (la in lna) {
-            label("$la")
+            button("* $la")
             {
-
+                style{
+                    backgroundColor = multi(c(colorString = "black"))
+                    textFill= javafx.scene.paint.Color.WHITE
+                }
+                action {
+                    println("ok")
+                }
             }
             label("")
         }
@@ -71,6 +88,10 @@ class UeberblickFenster : View ("Easy Project Organisation")
             shape = Circle(15.0)
             setMaxSize(15.0*2, 15.0*2)
             setMinSize(15.0*2, 15.0*2)
+            style{
+                backgroundColor = multi(c("#05B90A"))
+                textFill = javafx.scene.paint.Color.BLACK
+            }
             action{
                 ListeErstellenFenster().openWindow()
             }

@@ -4,12 +4,14 @@ import java.security.MessageDigest
 import java.sql.DriverManager
 import java.sql.ResultSet
 import java.sql.SQLException
+import javax.print.DocFlavor
 
 
 object login {
     @JvmStatic
 
     public var userId:Int = 0
+    public var username:String = ""
 
     fun test(nutzername: String, passwort: String){
         //println(nutzername)
@@ -37,7 +39,7 @@ object login {
                 if(user.getString("nutzername").equals(nutzername)){
                     nnB=true
                     userId = user.getInt("userid")
-                    //println(userId)
+                    username = user.getString("nutzername")
                 }
                 else{
                     //println("Nutzername ist falsch")

@@ -13,6 +13,7 @@ import javafx.scene.text.FontWeight
 import tornadofx.*
 
 class LoginFenster : View("Login") {
+
     val model = ViewModel()
     val nutzername= model.bind{SimpleStringProperty()}
     val passwort= model.bind{SimpleStringProperty()}
@@ -78,10 +79,11 @@ class LoginFenster : View("Login") {
         } //ende fieldset
         } //ende vbox gesamt
         } //ende hbox gesamt
-}
+    }
+
     override fun onDock() {
-        nutzername.value=""
-        passwort.value=""
+        nutzername.value="jakob"
+        passwort.value="*A4B6157319038724E3560894F7F932C8886EBFCF"
         model.clearDecorators()
     }
 }

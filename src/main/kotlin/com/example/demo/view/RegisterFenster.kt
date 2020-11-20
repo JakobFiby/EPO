@@ -22,7 +22,7 @@ class RegisterFenster : View("Registrieren") {
             padding = box(10.px)
             fontSize = 15.px
             backgroundColor=multi(c(colorString="black"))
-            textFill=Color.LIGHTGREY
+            textFill=c(colorString="#FFFFFF")
         }
         hbox{
             paddingTop=10
@@ -33,18 +33,23 @@ class RegisterFenster : View("Registrieren") {
 
             vbox(spacing=20){
 
-                fieldset(title, labelPosition = Orientation.VERTICAL) {
+                fieldset(title, labelPosition = Orientation.VERTICAL){
+
                     fieldset("Vorname") {
                         textfield(vorname).required()
+                        addClass(Styles.heading)
                     }
                     fieldset("Nachname") {
                         textfield(nachname).required()
+                        addClass(Styles.heading)
                     }
                     fieldset("Email") {
                         textfield(email).required()
+                        addClass(Styles.heading)
                     }
                     fieldset("Passwort") {
                         passwordfield(passwort).required()
+                        addClass(Styles.heading)
                     }
 
                     vbox(0,Pos.TOP_LEFT){

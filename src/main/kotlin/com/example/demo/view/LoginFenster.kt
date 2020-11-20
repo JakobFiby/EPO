@@ -23,7 +23,6 @@ class LoginFenster : View("Login") {
             padding = box(10.px)
             fontSize = 15.px
             backgroundColor=multi(c(colorString="black"))
-            textFill=Color.LIGHTGREY
         }
     hbox{
         addClass(Styles.heading)
@@ -40,9 +39,11 @@ class LoginFenster : View("Login") {
             hbox{
                 label("EPO"){
                     font= Font.font("Segoe UI", FontWeight.BOLD, 30.0)
+                    addClass(Styles.heading)
                 }
                 label(" - Easy Project Organisation"){
                     font= Font.font("Segoe UI", FontWeight.NORMAL, 20.0)
+                    addClass(Styles.heading)
                 }
             } //ende hbox Titel
             } //ende vbox Titel
@@ -52,6 +53,7 @@ class LoginFenster : View("Login") {
             }
             fieldset("Passwort") {
                 passwordfield(passwort).required()
+                addClass(Styles.heading)
             }
 
             vbox(0,Pos.TOP_LEFT){
@@ -70,6 +72,7 @@ class LoginFenster : View("Login") {
                     //addClass(Styles.button)
                     style {
                         backgroundColor = multi(c(colorString = "black"))
+                        textFill= c(colorString="#FFFFFF")
                     }
                     action {
                         RegisterFenster().openWindow()

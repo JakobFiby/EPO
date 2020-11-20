@@ -16,8 +16,9 @@ import javax.swing.text.Position
 import javax.xml.soap.Node
 import kotlin.collections.ArrayList
 
-class UeberblickFenster : View ("Easy Project Organisation")
+class UeberblickFenster : View ("E.P.O")
 {
+
     public var lid = ArrayList<Int>()
     public var lna = ArrayList<String>()
 

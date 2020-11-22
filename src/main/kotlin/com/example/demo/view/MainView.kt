@@ -3,9 +3,6 @@ package com.example.demo.view
 import com.example.demo.app.Styles
 import javafx.scene.control.Label
 import tornadofx.*
-import javax.swing.text.html.ImageView
-import javafx.scene.image.Image
-import javafx.stage.Stage
 
 class MainView : View("Willkommen") {
     var logoepo: Label by singleAssign()
@@ -17,12 +14,11 @@ class MainView : View("Willkommen") {
                 addClass(Styles.heading)
             }
 
-            logoepo=label()
-            logoepo.graphic=imageview("../logo.png", lazyload = true){
-                fitHeight=200.0
-                fitWidth=200.0
+            setPrefSize(100.0, 100.0)
+            imageview("/logo.png") {
+                fitHeightProperty().bind(parent.prefHeight(100.0).toProperty())
+                fitWidthProperty().bind(parent.prefWidth(100.0).toProperty())
             }
-
             button("Login") {
                 isDefaultButton = true
                 useMaxHeight = true

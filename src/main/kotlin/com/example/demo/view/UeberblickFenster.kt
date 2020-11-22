@@ -18,9 +18,9 @@ import kotlin.collections.ArrayList
 
 class UeberblickFenster : View ("E.P.O")
 {
-
     public var lid = ArrayList<Int>()
     public var lna = ArrayList<String>()
+    public var ausgewählteListe:String = ""
 
     override val root = form {
         style{
@@ -77,7 +77,8 @@ class UeberblickFenster : View ("E.P.O")
                     textFill= javafx.scene.paint.Color.WHITE
                 }
                 action {
-                    println("ok")
+                    eintraegeQuery.eintraege.clear()
+                    eintraegeQuery.connection(la)
                 }
             }
             label("")

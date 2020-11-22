@@ -86,7 +86,7 @@ class LoginFenster : View("Login") {
 
     override fun onDock() {
         nutzername.value="jakob"
-        passwort.value="*A4B6157319038724E3560894F7F932C8886EBFCF"
+        passwort.value="1234"
         model.clearDecorators()
     }
 }

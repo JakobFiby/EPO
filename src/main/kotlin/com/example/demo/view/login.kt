@@ -5,7 +5,8 @@ import java.sql.DriverManager
 import java.sql.ResultSet
 import java.sql.SQLException
 import javax.print.DocFlavor
-
+import javax.xml.bind.DatatypeConverter
+import java.math.BigInteger
 
 object login {
     @JvmStatic
@@ -34,6 +35,9 @@ object login {
             val pwHash = MessageDigest.getInstance("MD5")
             //val b = pwHash.digest(pw.getBytes())
 
+            val pwhash = passwort.sha256()
+            //println("computed sha256 value is $pwhash")
+
             //Login-Überprüfung
             while(user.next()){
                 if(user.getString("nutzername").equals(nutzername)){
@@ -46,7 +50,7 @@ object login {
                 }
             } //ende while user
             while(pw.next()){
-                if(pw.getString("passwort").equals(passwort)){
+                if(pw.getString("passwort").equals(pwhash)){
                     pwB=true
                 }
                 else{
@@ -72,4 +76,19 @@ object login {
 
 
     }
+
+    fun String.sha256(): String {
+        val md = MessageDigest.getInstance("SHA-256")
+        return BigInteger(1, md.digest(toByteArray())).toString(16).padStart(32, '0')
+    }
+
+    /*fun sha1(input: String) = hashString("SHA-1", input)
+    fun md5(input: String) = hashString("MD5", input)
+
+    private fun hashString(type: String, input: String): String {
+        val bytes = MessageDigest
+                .getInstance(type)
+                .digest(input.toByteArray())
+        return DatatypeConverter.printHexBinary(bytes).toUpperCase()
+    }*/
 }

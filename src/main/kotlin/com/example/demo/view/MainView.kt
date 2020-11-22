@@ -18,7 +18,7 @@ class MainView : View("Willkommen") {
             }
 
             logoepo=label()
-            logoepo.graphic=imageview("../logo.png", lazyload = true){
+            logoepo.graphic=imageview("https://github.com/JakobFiby/EPO/logo.png", lazyload = true){
                 fitHeight=200.0
                 fitWidth=200.0
             }

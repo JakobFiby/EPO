@@ -9,10 +9,12 @@ object eintraegeQuery {
 
     public var aListenId:Int = 0
     public var eintraege = ArrayList<String>()
+    public var liste:String = ""
 
     fun connection(aListe:String){
         Class.forName("com.mysql.cj.jdbc.Driver")
         try {
+            liste = aListe
             val c = DriverManager.getConnection(
                     "jdbc:mysql://sql516.your-server.de:3306/epofgs",
                     "digbizm_7", "2021##Epo5ck")
@@ -27,7 +29,6 @@ object eintraegeQuery {
             {
                 eintraege.add(r2.getString("eintragname"))
             }
-            //println(eintraege)
 
             EintragUebersichtFenster().openWindow()
         }

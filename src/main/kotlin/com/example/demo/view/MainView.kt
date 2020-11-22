@@ -17,11 +17,11 @@ class MainView : View("Willkommen") {
                 addClass(Styles.heading)
             }
 
-            logoepo=label()
+            /*logoepo=label()
             logoepo.graphic=imageview("../logo.png", lazyload = true){
                 fitHeight=200.0
                 fitWidth=200.0
-            }
+            }*/
 
             button("Login") {
                 isDefaultButton = true

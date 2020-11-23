@@ -6,6 +6,7 @@ import java.sql.ResultSet
 import java.sql.SQLException
 import tornadofx.getValue
 import tornadofx.setValue
+import java.sql.Date
 
 object listenQuery {
     @JvmStatic
@@ -13,6 +14,8 @@ object listenQuery {
     var userid:Int = login.userId
     public var listenid = ArrayList<Int>()
     public var listenname = ArrayList<String>()
+    public var listenFaelligkeitsDatum = ArrayList<Date>()
+
     var li:Int = 0
 
     fun connection(){
@@ -35,6 +38,7 @@ object listenQuery {
                 val r2 = s2.executeQuery("SELECT * FROM liste WHERE listeid = $li")
                 r2.next()
                 listenname.add(r2.getString("listename"))
+                listenFaelligkeitsDatum.add((r2.getDate("faelligkeitsdatum")))
                 //println(r2.getString("listename"))
             }
 

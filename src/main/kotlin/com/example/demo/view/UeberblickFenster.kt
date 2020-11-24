@@ -11,6 +11,7 @@ import javafx.scene.text.FontWeight
 import tornadofx.*
 import java.awt.Color
 import java.awt.Image
+import java.sql.Date
 import java.util.*
 import javax.swing.text.Position
 import javax.xml.soap.Node
@@ -20,6 +21,7 @@ class UeberblickFenster : View ("E.P.O")
 {
     public var lid = ArrayList<Int>()
     public var lna = ArrayList<String>()
+    public var lfd = ArrayList<Date>()
     public var ausgewählteListe:String = ""
 
     override val root = form {
@@ -68,20 +70,36 @@ class UeberblickFenster : View ("E.P.O")
         listenQuery.connection()
         lid = listenQuery.listenid
         lna = listenQuery.listenname
+        lfd = listenQuery.listenFaelligkeitsDatum
 
-        for (la in lna) {
+        var lf:Date
+        var zz:Int = 0
+
+        for (la in lna){
             button("* $la")
             {
-                style{
+                style {
+                    font = Font.font("Segoe UI", FontWeight.NORMAL, 13.0)
                     backgroundColor = multi(c(colorString = "black"))
-                    textFill= javafx.scene.paint.Color.WHITE
+                    textFill = javafx.scene.paint.Color.WHITE
                 }
                 action {
                     eintraegeQuery.eintraege.clear()
                     eintraegeQuery.connection(la)
                 }
             }
+
+            lf = lfd[zz]
+
+            label("       $lf")
+            {
+                style {
+                    textFill = javafx.scene.paint.Color.LIGHTGREY
+                }
+            }
+
             label("")
+            zz++
         }
 
         button("+")

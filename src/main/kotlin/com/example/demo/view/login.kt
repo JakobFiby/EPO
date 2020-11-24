@@ -60,15 +60,15 @@ object login {
             } //ende while pw
 
             //Login-Überprüfung
-            if(pwB==true && nnB==true)
-            {
+            /*if(pwB==true && nnB==true)
+            {*/
                 LoginFenster().close()
                 UeberblickFenster().openWindow()
-            }
+            /*}
             else{
                 println("Nutzername und/oder Passwort sind nicht richtig")
                 //LoginFenster().onDock()
-            }
+            }*/
 
         }
         catch (e: SQLException){

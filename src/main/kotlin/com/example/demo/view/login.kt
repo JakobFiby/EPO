@@ -14,7 +14,7 @@ object login {
     public var userId:Int = 0
     public var username:String = ""
 
-    fun test(nutzername: String, passwort: String){
+    fun ueberpruefen(nutzername: String, passwort: String){
         //println(nutzername)
         //println(passwort)
         var nnB=false
@@ -32,12 +32,13 @@ object login {
             val sUserId = c.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE)
             val user=sUser.executeQuery("SELECT nutzername, userid FROM user ")
             val pw=sPW.executeQuery("SELECT passwort FROM user ")
-            val pwHash = MessageDigest.getInstance("MD5")
-            //val b = pwHash.digest(pw.getBytes())
 
-            val pwhash = passwort.sha256()
-            //println("computed sha256 value is $pwhash")
-
+            var pwhash = passwort.sha256()
+            println("computed sha256 value is $pwhash")
+            if(pwhash.length==63){
+                pwhash= "0"+pwhash
+                println("computed sha256 value is $pwhash")
+            }
             //Login-Überprüfung
             while(user.next()){
                 if(user.getString("nutzername").equals(nutzername)){
@@ -82,13 +83,4 @@ object login {
         return BigInteger(1, md.digest(toByteArray())).toString(16).padStart(32, '0')
     }
 
-    /*fun sha1(input: String) = hashString("SHA-1", input)
-    fun md5(input: String) = hashString("MD5", input)
-
-    private fun hashString(type: String, input: String): String {
-        val bytes = MessageDigest
-                .getInstance(type)
-                .digest(input.toByteArray())
-        return DatatypeConverter.printHexBinary(bytes).toUpperCase()
-    }*/
 }

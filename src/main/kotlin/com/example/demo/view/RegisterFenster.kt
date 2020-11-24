@@ -11,10 +11,11 @@ import tornadofx.*
 
 class RegisterFenster : View("Registrieren") {
     val model = ViewModel()
+    val nutzernameR= model.bind{SimpleStringProperty()}
     val vorname= model.bind{SimpleStringProperty()}
     val nachname= model.bind{SimpleStringProperty()}
     val email= model.bind{SimpleStringProperty()}
-    val passwort= model.bind{SimpleStringProperty()}
+    val passwortR= model.bind{SimpleStringProperty()}
 
 
     override val root = form {
@@ -34,7 +35,10 @@ class RegisterFenster : View("Registrieren") {
             vbox(spacing=20){
 
                 fieldset(title, labelPosition = Orientation.VERTICAL){
-
+                    fieldset("Nutzername") {
+                        textfield(nutzernameR).required()
+                        addClass(Styles.heading)
+                    }
                     fieldset("Vorname") {
                         textfield(vorname).required()
                         addClass(Styles.heading)
@@ -48,7 +52,7 @@ class RegisterFenster : View("Registrieren") {
                         addClass(Styles.heading)
                     }
                     fieldset("Passwort") {
-                        passwordfield(passwort).required()
+                        passwordfield(passwortR).required()
                         addClass(Styles.heading)
                     }
 
@@ -63,7 +67,8 @@ class RegisterFenster : View("Registrieren") {
                             useMaxHeight = true
                             action {
                                 runAsyncWithProgress {
-                                    LoginFenster().openWindow()
+                                    register.anmelden(nutzernameR.value, vorname.value, nachname.value, email.value, passwortR.value)
+                                    //LoginFenster().openWindow()
                                 }
 
                             } //ende action
@@ -75,10 +80,11 @@ class RegisterFenster : View("Registrieren") {
     } //ende form
 
     override fun onDock() {
+        nutzernameR.value=""
         vorname.value=""
         nachname.value=""
         email.value=""
-        passwort.value=""
+        passwortR.value=""
         model.clearDecorators()
     }
 }

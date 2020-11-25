@@ -5,11 +5,13 @@ import javafx.scene.shape.Circle
 import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
 import tornadofx.*
+import java.sql.Date
 
 class EintragUebersichtFenster : View("Einträge Übersicht") {
 
     var einträge = eintraegeQuery.eintraege
     var liste:String = eintraegeQuery.liste
+    public var bg:String = ""
 
     override val root = form {
         style{
@@ -27,17 +29,20 @@ class EintragUebersichtFenster : View("Einträge Übersicht") {
         label()
 
         for (e in einträge) {
-            button("* $e")
-            {
-                style{
-                    backgroundColor = multi(c(colorString = "black"))
-                    textFill= javafx.scene.paint.Color.WHITE
-                }
-                action {
-                    println("ok")
+            hbox {
+                checkbox() {}
+                button("$e")
+                {
+                    style {
+                        backgroundColor = multi(c(colorString = "black"))
+                        textFill = javafx.scene.paint.Color.WHITE
+                    }
+                    action {
+                        eintraegeBeschreibungQuery.connection(e)
+                    }
                 }
             }
-            label("")
+            label()
         }
 
         button("+")

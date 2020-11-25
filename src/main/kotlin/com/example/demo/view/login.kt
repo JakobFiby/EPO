@@ -7,7 +7,6 @@ import java.sql.SQLException
 import javax.print.DocFlavor
 import javax.xml.bind.DatatypeConverter
 import java.math.BigInteger
-import java.util.Base64
 
 object login {
     @JvmStatic
@@ -34,14 +33,12 @@ object login {
             val user=sUser.executeQuery("SELECT nutzername, userid FROM user ")
             val pw=sPW.executeQuery("SELECT passwort FROM user ")
 
-
             var pwhash = passwort.sha256()
-            //println("computed sha256 value is $pwhash")
+            println("computed sha256 value is $pwhash")
             if(pwhash.length==63){
                 pwhash= "0"+pwhash
                 println("computed sha256 value is $pwhash")
             }
-
             //Login-Überprüfung
             while(user.next()){
                 if(user.getString("nutzername").equals(nutzername)){
@@ -53,27 +50,25 @@ object login {
                     //println("Nutzername ist falsch")
                 }
             } //ende while user
-
             while(pw.next()){
                 if(pw.getString("passwort").equals(pwhash)){
-
                     pwB=true
                 }
                 else{
                     //println("Passwort ist falsch")
-
                 }
             } //ende while pw
 
             //Login-Überprüfung
-            if(pwB==true && nnB==true) {
+            /*if(pwB==true && nnB==true)
+            {*/
                 LoginFenster().close()
                 UeberblickFenster().openWindow()
-            }
+            /*}
             else{
                 println("Nutzername und/oder Passwort sind nicht richtig")
                 //LoginFenster().onDock()
-            }
+            }*/
 
         }
         catch (e: SQLException){
@@ -87,12 +82,5 @@ object login {
         val md = MessageDigest.getInstance("SHA-256")
         return BigInteger(1, md.digest(toByteArray())).toString(16).padStart(32, '0')
     }
-
-    /*fun hashen() {
-        val md = MessageDigest.getInstance("SHA-256")
-        val input = "1234".toByteArray()
-        val bytes = md.digest(input)
-        println(Base64.getEncoder().encodeToString(bytes))
-    }*/
 
 }

@@ -1,6 +1,7 @@
 package com.example.demo.view
 
 import com.example.demo.app.Styles
+import com.sun.org.apache.bcel.internal.Repository.addClass
 import javafx.beans.property.SimpleStringProperty
 import javafx.geometry.Orientation
 import javafx.geometry.Pos
@@ -10,6 +11,7 @@ import javafx.scene.paint.Color
 import javax.swing.border.*
 import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
+import javafx.stage.Stage
 import tornadofx.*
 
 class LoginFenster : View("Login") {
@@ -19,35 +21,34 @@ class LoginFenster : View("Login") {
     val passwort= model.bind{SimpleStringProperty()}
 
     override val root = form {
+
         style{
-            padding = box(10.px)
             fontSize = 15.px
             backgroundColor=multi(c(colorString="black"))
         }
+
     hbox{
         addClass(Styles.heading)
-        paddingTop=10
-        paddingBottom=10
-        paddingRight=20
-        paddingLeft=20
+        paddingTop=25
+        paddingBottom=25
+        paddingRight=50
+        paddingLeft=50
         alignment= Pos.CENTER
-        spacing =10.0
+        spacing =30.0
 
         vbox(spacing=20){
 
-            vbox(spacing=20) {
+            vbox(spacing=20, Pos.CENTER) {
             hbox{
                 label("EPO"){
-                    font= Font.font("Segoe UI", FontWeight.BOLD, 30.0)
-                    addClass(Styles.heading)
-                }
-                label(" - Easy Project Organisation"){
-                    font= Font.font("Segoe UI", FontWeight.NORMAL, 20.0)
+                    font= Font.font("Segoe UI", FontWeight.BOLD, 40.0)
                     addClass(Styles.heading)
                 }
             } //ende hbox Titel
             } //ende vbox Titel
-        fieldset(title, labelPosition = Orientation.VERTICAL) {
+
+            vbox(0,Pos.CENTER){
+        fieldset(labelPosition = Orientation.VERTICAL) {
             fieldset("Nutzername") {
                 textfield(nutzername).required()
             }
@@ -56,7 +57,7 @@ class LoginFenster : View("Login") {
                 addClass(Styles.heading)
             }
 
-            vbox(0,Pos.TOP_LEFT){
+
                 button("Anmelden"){
                     enableWhen(model.valid)
                     addClass(Styles.allbuttons)
@@ -67,7 +68,7 @@ class LoginFenster : View("Login") {
                     }
                 }
             }
-            vbox(0,Pos.TOP_RIGHT) {
+            vbox(10,Pos.CENTER) {
                 button("Noch nicht registriert?") {
                     //addClass(Styles.button)
                     style {
@@ -89,4 +90,5 @@ class LoginFenster : View("Login") {
         passwort.value="1234"
         model.clearDecorators()
     }
+
 }

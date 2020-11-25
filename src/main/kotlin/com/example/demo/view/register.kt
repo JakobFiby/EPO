@@ -3,6 +3,8 @@ package com.example.demo.view
 import com.example.demo.view.login.sha256
 import javafx.scene.control.Label
 import tornadofx.*
+import java.awt.Image
+import java.io.InputStream
 import java.security.MessageDigest
 import java.sql.DriverManager
 import java.sql.ResultSet
@@ -30,27 +32,24 @@ object register {
 
             //passwort hashen
             val pwhash: String = passwortR.sha256()
-
+            //Image userbild = url("/user.png")
             user.next()
             user.moveToInsertRow()
             user.updateString("nutzername", nutzernameR)
             user.updateString("passwort", pwhash)
             user.updateBoolean("mitteilungen", true)
             user.updateBoolean("abmelden", false)
-            //user.updateBoolean("profilbild", imageview("/user.png"))
+            //user.updateBlob("profilbild", userbild)
             user.updateString("vorname", vorname)
             user.updateString("nachname", nachname)
             user.updateString("email", email)
             user.updateString("farbschemaid", "1")
             user.insertRow()
 
-
-
         }
         catch(e:SQLException){
             e.printStackTrace()
         }
-
     }
 
     fun String.sha256(): String {

@@ -34,7 +34,7 @@ object login {
             val pw=sPW.executeQuery("SELECT passwort FROM user ")
 
             var pwhash = passwort.sha256()
-            println("computed sha256 value is $pwhash")
+            //println("computed sha256 value is $pwhash")
             if(pwhash.length==63){
                 pwhash= "0"+pwhash
                 println("computed sha256 value is $pwhash")
@@ -60,15 +60,14 @@ object login {
             } //ende while pw
 
             //Login-Überprüfung
-            /*if(pwB==true && nnB==true)
-            {*/
+            if(pwB==true && nnB==true) {
                 LoginFenster().close()
                 UeberblickFenster().openWindow()
-            /*}
+            }
             else{
                 println("Nutzername und/oder Passwort sind nicht richtig")
                 //LoginFenster().onDock()
-            }*/
+            }
 
         }
         catch (e: SQLException){

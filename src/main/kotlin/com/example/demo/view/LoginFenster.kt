@@ -37,7 +37,7 @@ class LoginFenster : View("Login") {
             spacing = 30.0
 
             vbox(spacing = 20) {
-
+            // hoffentlich funktioniert des jetzt
                 vbox(spacing = 20, Pos.CENTER) {
                     label("EPO") {
                         font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 40.0)

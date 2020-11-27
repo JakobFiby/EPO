@@ -59,10 +59,7 @@ class RegisterFenster : View("Registrieren") {
                     vbox(0,Pos.TOP_LEFT){
                         button("Registrieren"){
                             enableWhen(model.valid)
-                            style{
-                                backgroundColor = multi(c(colorString = "lightgrey"))
-                                textFill= Color.BLACK
-                            }
+                            addClass(Styles.allbuttons)
                             isDefaultButton = true
                             useMaxHeight = true
                             action {

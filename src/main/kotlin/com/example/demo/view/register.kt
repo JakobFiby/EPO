@@ -46,6 +46,10 @@ object register {
             user.updateString("farbschemaid", "1")
             user.insertRow()
 
+            //Registrieren erfolgreich
+            RegisterFenster().close()
+            LoginFenster().openWindow()
+
         }
         catch(e:SQLException){
             e.printStackTrace()

@@ -38,6 +38,7 @@ class MainView : View("EPO") {
                 isDefaultButton = true
                 useMaxHeight = true
                 action {
+                    close()
                     LoginFenster().openWindow()
                 }
             }

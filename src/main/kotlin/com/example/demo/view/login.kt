@@ -1,5 +1,6 @@
 package com.example.demo.view
 
+import tornadofx.*
 import java.security.MessageDigest
 import java.sql.DriverManager
 import java.sql.ResultSet
@@ -7,18 +8,22 @@ import java.sql.SQLException
 import javax.print.DocFlavor
 import javax.xml.bind.DatatypeConverter
 import java.math.BigInteger
+import com.example.demo.view.LoginFenster
+import com.example.demo.view.UeberblickFenster
 
 object login {
     @JvmStatic
 
     public var userId:Int = 0
     public var username:String = ""
+    public var nnB:Boolean=false
+    public var pwB:Boolean=false
 
     fun ueberpruefen(nutzername: String, passwort: String){
         //println(nutzername)
         //println(passwort)
-        var nnB=false
-        var pwB=false
+
+        var funktioniert=false
 
         Class.forName("com.mysql.cj.jdbc.Driver")
         try {
@@ -60,14 +65,18 @@ object login {
             } //ende while pw
 
             //Login-Überprüfung
-            if(pwB==true && nnB==true) {
-                LoginFenster().close()
-                UeberblickFenster().openWindow()
-            }
-            else{
-                println("Nutzername und/oder Passwort sind nicht richtig")
+            //if(pwB==true && nnB==true) {
+                //LoginFenster().close()
+                //UeberblickFenster().openWindow()
+
+                //LoginFenster().replaceWith(UeberblickFenster::class, sizeToScene = true, centerOnScreen = true)
+                //println("funktioniert ned")
+
+            //}
+            //else{
+                //println("Nutzername und/oder Passwort sind nicht richtig")
                 //LoginFenster().onDock()
-            }
+            //}
 
         }
         catch (e: SQLException){

@@ -8,6 +8,7 @@ import javax.swing.text.html.ImageView
 import javafx.scene.image.Image
 import javafx.scene.paint.Color
 import javafx.stage.Stage
+import com.example.demo.view.LoginFenster
 
 class MainView : View("EPO") {
 
@@ -38,8 +39,8 @@ class MainView : View("EPO") {
                 isDefaultButton = true
                 useMaxHeight = true
                 action {
-                    close()
-                    LoginFenster().openWindow()
+                    replaceWith(LoginFenster::class, sizeToScene = false, centerOnScreen = true)
+                    //LoginFenster().openWindow()
                 }
             }
         }

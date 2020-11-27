@@ -32,23 +32,24 @@ object register {
 
             //passwort hashen
             val pwhash: String = passwortR.sha256()
-            //Image userbild = url("/user.png")
+
+            //Vorname und Nachname müssen groß geschrieben sein
+
             user.next()
             user.moveToInsertRow()
             user.updateString("nutzername", nutzernameR)
             user.updateString("passwort", pwhash)
             user.updateBoolean("mitteilungen", true)
             user.updateBoolean("abmelden", false)
-            //user.updateBlob("profilbild", userbild)
             user.updateString("vorname", vorname)
             user.updateString("nachname", nachname)
             user.updateString("email", email)
             user.updateString("farbschemaid", "1")
+            user.updateString("profilbildid", "1")
             user.insertRow()
 
             //Registrieren erfolgreich
-            RegisterFenster().close()
-            LoginFenster().openWindow()
+
 
         }
         catch(e:SQLException){

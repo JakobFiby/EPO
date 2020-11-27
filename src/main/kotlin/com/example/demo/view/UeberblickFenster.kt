@@ -30,7 +30,7 @@ class UeberblickFenster : View ("E.P.O")
             fontSize = 15.px
             backgroundColor=multi(c(colorString="black"))
             textFill= javafx.scene.paint.Color.WHITE
-            setPrefSize(360.0, 600.0)
+            //setPrefSize(360.0, 600.0)
         }
 
         var username = login.username

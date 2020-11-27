@@ -17,7 +17,7 @@ class MainView : View("EPO") {
             backgroundColor=multi(c(colorString="black"))
         }
         alignment = Pos.CENTER
-        vbox(spacing = 50,Pos.CENTER){
+        vbox(50,Pos.CENTER){
             setPrefSize(250.0, 250.0)
             imageview("/logo.png", lazyload = false) {
                 fitHeightProperty().bind(parent.prefHeight(600.0).toProperty())
@@ -25,7 +25,6 @@ class MainView : View("EPO") {
             }
 
             button("Login >") {
-
                 style{
                     backgroundColor = multi(c(colorString = "black"))
                     textFill= c(colorString = "#4c2dc6")
@@ -35,7 +34,6 @@ class MainView : View("EPO") {
                             right= c(colorString = "#4c2dc6"),
                             left=c(colorString = "#4c2dc6")
                     ))
-
                 }
                 isDefaultButton = true
                 useMaxHeight = true
@@ -43,8 +41,6 @@ class MainView : View("EPO") {
                     LoginFenster().openWindow()
                 }
             }
-
         }
     }
-
-    }
+}

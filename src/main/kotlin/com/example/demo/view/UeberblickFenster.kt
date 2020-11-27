@@ -30,6 +30,7 @@ class UeberblickFenster : View ("E.P.O")
             fontSize = 15.px
             backgroundColor=multi(c(colorString="black"))
             textFill= javafx.scene.paint.Color.WHITE
+            setPrefSize(360.0, 600.0)
         }
 
         var username = login.username
@@ -67,6 +68,7 @@ class UeberblickFenster : View ("E.P.O")
                 }
             }
         }
+
         listenQuery.connection()
         lid = listenQuery.listenid
         lna = listenQuery.listenname
@@ -86,6 +88,9 @@ class UeberblickFenster : View ("E.P.O")
                 action {
                     eintraegeQuery.eintraege.clear()
                     eintraegeQuery.connection(la)
+                    lna.clear()
+                    lid.clear()
+                    lfd.clear()
                 }
             }
 
@@ -114,6 +119,9 @@ class UeberblickFenster : View ("E.P.O")
             }
             action{
                 ListeErstellenFenster().openWindow()
+                lna.clear()
+                lid.clear()
+                lfd.clear()
             }
         }
     }

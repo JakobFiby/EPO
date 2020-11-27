@@ -1,10 +1,12 @@
 package com.example.demo.view
 
+import javafx.scene.image.Image
 import javafx.scene.paint.Color
 import javafx.scene.shape.Circle
 import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
 import tornadofx.*
+import java.net.URI
 import java.sql.Date
 
 class EintragUebersichtFenster : View("Einträge Übersicht") {
@@ -19,6 +21,7 @@ class EintragUebersichtFenster : View("Einträge Übersicht") {
             fontSize = 15.px
             backgroundColor=multi(c(colorString="black"))
             textFill= javafx.scene.paint.Color.WHITE
+            setPrefSize(360.0, 600.0)
         }
 
         label("Einträge der Liste '$liste':") {
@@ -34,6 +37,7 @@ class EintragUebersichtFenster : View("Einträge Übersicht") {
                 button("$e")
                 {
                     style {
+                        font = Font.font("Segoe UI", FontWeight.NORMAL, 13.0)
                         backgroundColor = multi(c(colorString = "black"))
                         textFill = javafx.scene.paint.Color.WHITE
                     }
@@ -45,18 +49,23 @@ class EintragUebersichtFenster : View("Einträge Übersicht") {
             label()
         }
 
-        button("+")
+        hbox(spacing = 20)
         {
-            font = Font.font("Segoe UI", FontWeight.BOLD, 14.0)
-            shape = Circle(15.0)
-            setMaxSize(15.0*2, 15.0*2)
-            setMinSize(15.0*2, 15.0*2)
-            style{
-                backgroundColor = multi(c("#05B90A"))
-                textFill = javafx.scene.paint.Color.BLACK
-            }
-            action{
-                EintragErstellenFenster().openWindow()
+            label()
+
+            button("+")
+            {
+                font = Font.font("Segoe UI", FontWeight.BOLD, 14.0)
+                shape = Circle(15.0)
+                setMaxSize(15.0 * 2, 15.0 * 2)
+                setMinSize(15.0 * 2, 15.0 * 2)
+                style {
+                    backgroundColor = multi(c("#05B90A"))
+                    textFill = javafx.scene.paint.Color.BLACK
+                }
+                action {
+                    EintragErstellenFenster().openWindow()
+                }
             }
         }
     }

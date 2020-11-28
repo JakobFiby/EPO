@@ -15,6 +15,7 @@ import java.sql.Date
 import java.util.*
 import javax.swing.text.Position
 import javax.xml.soap.Node
+import javax.xml.stream.Location
 import kotlin.collections.ArrayList
 
 class UeberblickFenster : View ("E.P.O")
@@ -77,51 +78,59 @@ class UeberblickFenster : View ("E.P.O")
         var lf:Date
         var zz:Int = 0
 
-        for (la in lna){
-            button("* $la")
+        vbox {
+            style{
+                backgroundColor = multi(c("#111111"))
+            }
+            for (la in lna) {
+                button("o $la")
+                {
+                    style {
+                        font = Font.font("Segoe UI", FontWeight.NORMAL, 13.0)
+                        backgroundColor = multi(c("#111111"))
+                        textFill = javafx.scene.paint.Color.WHITE
+                    }
+                    action {
+                        eintraegeQuery.eintraege.clear()
+                        eintraegeQuery.connection(la)
+                        lna.clear()
+                        lid.clear()
+                        lfd.clear()
+                    }
+                }
+
+                lf = lfd[zz]
+
+                label("       $lf")
+                {
+                    style {
+                        textFill = javafx.scene.paint.Color.LIGHTGREY
+                    }
+                }
+
+                label("")
+                zz++
+            }
+        }
+
+        hbox{
+            button("+")
             {
+                font = Font.font("Segoe UI", FontWeight.BOLD, 14.0)
+                shape = Circle(15.0)
+                setMaxSize(15.0 * 2, 15.0 * 2)
+                setMinSize(15.0 * 2, 15.0 * 2)
+
                 style {
-                    font = Font.font("Segoe UI", FontWeight.NORMAL, 13.0)
-                    backgroundColor = multi(c(colorString = "black"))
-                    textFill = javafx.scene.paint.Color.WHITE
+                    backgroundColor = multi(c("#05B90A"))
+                    textFill = javafx.scene.paint.Color.BLACK
                 }
                 action {
-                    eintraegeQuery.eintraege.clear()
-                    eintraegeQuery.connection(la)
+                    ListeErstellenFenster().openWindow()
                     lna.clear()
                     lid.clear()
                     lfd.clear()
                 }
-            }
-
-            lf = lfd[zz]
-
-            label("       $lf")
-            {
-                style {
-                    textFill = javafx.scene.paint.Color.LIGHTGREY
-                }
-            }
-
-            label("")
-            zz++
-        }
-
-        button("+")
-        {
-            font = Font.font("Segoe UI", FontWeight.BOLD, 14.0)
-            shape = Circle(15.0)
-            setMaxSize(15.0*2, 15.0*2)
-            setMinSize(15.0*2, 15.0*2)
-            style{
-                backgroundColor = multi(c("#05B90A"))
-                textFill = javafx.scene.paint.Color.BLACK
-            }
-            action{
-                ListeErstellenFenster().openWindow()
-                lna.clear()
-                lid.clear()
-                lfd.clear()
             }
         }
     }

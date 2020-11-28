@@ -49,10 +49,6 @@ class EintragUebersichtFenster : View("Einträge Übersicht") {
             label()
         }
 
-        hbox(spacing = 20)
-        {
-            label()
-
             button("+")
             {
                 font = Font.font("Segoe UI", FontWeight.BOLD, 14.0)
@@ -67,6 +63,6 @@ class EintragUebersichtFenster : View("Einträge Übersicht") {
                     EintragErstellenFenster().openWindow()
                 }
             }
-        }
+
     }
 }

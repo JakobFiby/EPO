@@ -38,18 +38,28 @@ object register {
             user.next()
             user.moveToInsertRow()
             user.updateString("nutzername", nutzernameR)
+            //println("Nutzername funktioniert $nutzernameR")
             user.updateString("passwort", pwhash)
+            //println("Pw funktioniert $pwhash")
             user.updateBoolean("mitteilungen", true)
+            //println("Mitteilungen funktioniert")
             user.updateBoolean("abmelden", false)
+            //println("Abmelden funktioniert ")
             user.updateString("vorname", vorname)
+            //println("Vorname funktioniert $vorname")
             user.updateString("nachname", nachname)
+            //println("Nachname funktioniert $nachname")
             user.updateString("email", email)
+            //println("Email funktioniert $email")
             user.updateString("farbschemaid", "1")
+            //println("Farbschema funktioniert")
             user.updateString("profilbildid", "1")
+            //println("Profilbild funktioniert")
             user.insertRow()
+            user.updateRow()
 
             //Registrieren erfolgreich
-
+            //LoginFenster().openWindow()
 
         }
         catch(e:SQLException){

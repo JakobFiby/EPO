@@ -20,9 +20,9 @@ class MainView : View("Willkommen!") {
         alignment = Pos.CENTER
         vbox(50,Pos.CENTER){
             setPrefSize(250.0, 250.0)
-            imageview("/logoNeu.jpeg", lazyload = false) {
+            imageview("/logoNeu.png", lazyload = false) {
                 fitHeightProperty().bind(parent.prefHeight(600.0).toProperty())
-                fitWidthProperty().bind(parent.prefWidth(600.0).toProperty())
+                fitWidthProperty().bind(parent.prefWidth(800.0).toProperty())
             }
 
             button("Login >") {

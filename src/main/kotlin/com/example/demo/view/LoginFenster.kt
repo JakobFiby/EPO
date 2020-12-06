@@ -86,11 +86,11 @@ class LoginFenster : View("Login") {
                             action {
                                 login.ueberpruefen(nutzername.value, passwort.value)
                                 if(login.pwB==true && login.nnB==true) {
-                                replaceWith(UeberblickFenster::class, sizeToScene = false, centerOnScreen = true)
+                                    replaceWith(UeberblickFenster::class, sizeToScene = false, centerOnScreen = true)
                                 }
                                 else{
-                                println("Nutzername und/oder Passwort sind nicht richtig")
-                                LoginFenster().onDock()
+                                    println("Nutzername und/oder Passwort sind nicht richtig")
+                                    LoginFenster().onDock()
                                 }
                             }
 

@@ -14,6 +14,8 @@ fun main(args: Array<out String>)
 
     val r = get("http://localhost/api/public/index.php/liste")
 
+    val string:String = r.toString()
+
     val json = r.jsonArray
 
     println(json)
@@ -21,7 +23,9 @@ fun main(args: Array<out String>)
     val gson = Gson()
     val arrayTutorialType = object : TypeToken<Array<liste>>() {}.type
 
-    //var listen: Array<liste> = gson.fromJson(json, arrayTutorialType)
+    var listen: Array<liste> = gson.fromJson(string, arrayTutorialType)
+
+    println(listen)
 
     //val liste_1: liste = gson.fromJson(json, liste::class.java)
 }

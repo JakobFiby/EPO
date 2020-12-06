@@ -42,6 +42,9 @@ class LoginFenster : View("Login") {
                     label("EPO") {
                         font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 40.0)
                         addClass(Styles.heading)
+                        style{
+                            textFill = c("#4C2DC6")
+                        }
                     }
                     label("Easy Project Organisation") {
                         font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 15.0)
@@ -56,7 +59,7 @@ class LoginFenster : View("Login") {
                     //fontIcon.iconLiteral="gmi-mail-outline"
                     fieldset(labelPosition = Orientation.VERTICAL) {
                         style {
-                            textFill=Color.web("#202020D0")
+                            textFill=Color.web("#CECED0")
                         }
                         fieldset("NUTZERNAME") {
                             textfield(nutzername).required()

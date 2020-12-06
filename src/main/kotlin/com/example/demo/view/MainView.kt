@@ -10,7 +10,7 @@ import javafx.scene.paint.Color
 import javafx.stage.Stage
 import com.example.demo.view.LoginFenster
 
-class MainView : View("EPO") {
+class MainView : View("Willkommen!") {
 
     override val root = hbox {
         style{
@@ -20,7 +20,7 @@ class MainView : View("EPO") {
         alignment = Pos.CENTER
         vbox(50,Pos.CENTER){
             setPrefSize(250.0, 250.0)
-            imageview("/logo.png", lazyload = false) {
+            imageview("/logoNeu.jpeg", lazyload = false) {
                 fitHeightProperty().bind(parent.prefHeight(600.0).toProperty())
                 fitWidthProperty().bind(parent.prefWidth(600.0).toProperty())
             }

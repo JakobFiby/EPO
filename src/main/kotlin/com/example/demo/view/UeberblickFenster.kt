@@ -59,7 +59,7 @@ class UeberblickFenster : View ("E.P.O")
                         setMaxSize(15.0*2, 15.0*2)
                         setMinSize(15.0*2, 15.0*2)
                         style{
-                            backgroundColor = multi(c("#F98E01"))
+                            backgroundColor = multi(c("#777678"))
                             textFill = javafx.scene.paint.Color.BLACK
                         }
                         action{
@@ -122,7 +122,7 @@ class UeberblickFenster : View ("E.P.O")
                 setMinSize(15.0 * 2, 15.0 * 2)
 
                 style {
-                    backgroundColor = multi(c("#05B90A"))
+                    backgroundColor = multi(c("#4C2DC6"))
                     textFill = javafx.scene.paint.Color.BLACK
                 }
                 action {

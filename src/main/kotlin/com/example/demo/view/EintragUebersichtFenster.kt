@@ -31,22 +31,27 @@ class EintragUebersichtFenster : View("Einträge Übersicht") {
 
         label()
 
-        for (e in einträge) {
-            hbox {
-                checkbox() {}
-                button("$e")
-                {
-                    style {
-                        font = Font.font("Segoe UI", FontWeight.NORMAL, 13.0)
-                        backgroundColor = multi(c(colorString = "black"))
-                        textFill = javafx.scene.paint.Color.WHITE
-                    }
-                    action {
-                        eintraegeBeschreibungQuery.connection(e)
+        vbox {
+            style{
+                backgroundColor = multi(c("#111111"))
+            }
+            for (e in einträge) {
+                hbox {
+                    checkbox() {}
+                    button("$e")
+                    {
+                        style {
+                            font = Font.font("Segoe UI", FontWeight.NORMAL, 13.0)
+                            backgroundColor = multi(c("#111111"))
+                            textFill = javafx.scene.paint.Color.WHITE
+                        }
+                        action {
+                            eintraegeBeschreibungQuery.connection(e)
+                        }
                     }
                 }
+                label()
             }
-            label()
         }
 
             button("+")
@@ -56,7 +61,7 @@ class EintragUebersichtFenster : View("Einträge Übersicht") {
                 setMaxSize(15.0 * 2, 15.0 * 2)
                 setMinSize(15.0 * 2, 15.0 * 2)
                 style {
-                    backgroundColor = multi(c("#05B90A"))
+                    backgroundColor = multi(c("#4C2DC6"))
                     textFill = javafx.scene.paint.Color.BLACK
                 }
                 action {

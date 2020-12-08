@@ -17,7 +17,15 @@ object listenController{
 
     fun connection(userid: Int){
         try {
-            val r = khttp.get("http://localhost/api/public/index.php/listeid")
+            ui = ""
+            li = ""
+            fd = ""
+            ln = ""
+            listenid.clear()
+            listenname.clear()
+            listenFaelligkeitsDatum.clear()
+
+            val r = khttp.get("http://localhost/api/public/index.php/userliste")
             val json = r.jsonArray
             //println(json)
 
@@ -32,7 +40,7 @@ object listenController{
                 }
             }
 
-            val r2 = khttp.get("http://localhost/api/public/index.php/listename")
+            val r2 = khttp.get("http://localhost/api/public/index.php/liste")
             val json2 = r2.jsonArray
             //println(json2)
 

@@ -4,7 +4,7 @@ import tornadofx.*
 
 class EintraegeBeschreibung : View("Beschreibung") {
 
-    public var beschreibung = eintraegeBeschreibungQuery.beschreibung
+    var beschreibung = eintraegeBeschreibungController.beschreibung
 
     override val root = form {
         style{

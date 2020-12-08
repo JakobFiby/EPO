@@ -79,8 +79,8 @@ class UeberblickFenster : View ("E.P.O")
                         textFill = javafx.scene.paint.Color.WHITE
                     }
                     action {
-                        eintraegeQuery.eintraege.clear()
-                        eintraegeQuery.connection(la)
+                        eintraegeController.eintraege.clear()
+                        eintraegeController.connection(la)
                         lna.clear()
                         lid.clear()
                         lfd.clear()

@@ -1,18 +1,14 @@
 package com.example.demo.view
 
-import javafx.scene.image.Image
-import javafx.scene.paint.Color
 import javafx.scene.shape.Circle
 import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
 import tornadofx.*
-import java.net.URI
-import java.sql.Date
 
 class EintragUebersichtFenster : View("Einträge Übersicht") {
 
-    var einträge = eintraegeQuery.eintraege
-    var liste:String = eintraegeQuery.liste
+    var einträge = eintraegeController.eintraege
+    var liste:String = eintraegeController.liste
     public var bg:String = ""
 
     override val root = form {
@@ -46,7 +42,7 @@ class EintragUebersichtFenster : View("Einträge Übersicht") {
                             textFill = javafx.scene.paint.Color.WHITE
                         }
                         action {
-                            eintraegeBeschreibungQuery.connection(e)
+                            eintraegeBeschreibungController.connection(e)
                         }
                     }
                 }

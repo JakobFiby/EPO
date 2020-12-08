@@ -1,14 +1,7 @@
 package com.example.demo.view
 
-import com.example.demo.app.Styles
 import javafx.geometry.Pos
-import javafx.scene.control.Label
 import tornadofx.*
-import javax.swing.text.html.ImageView
-import javafx.scene.image.Image
-import javafx.scene.paint.Color
-import javafx.stage.Stage
-import com.example.demo.view.LoginFenster
 
 class MainView : View("Willkommen!") {
 
@@ -40,7 +33,6 @@ class MainView : View("Willkommen!") {
                 useMaxHeight = true
                 action {
                     replaceWith(LoginFenster::class, sizeToScene = false, centerOnScreen = true)
-                    //LoginFenster().openWindow()
                 }
             }
         }

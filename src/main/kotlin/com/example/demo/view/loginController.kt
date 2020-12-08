@@ -72,7 +72,7 @@ object loginController{
             }
 
             if (pwB == true && nnB == true) {
-                println("Login funktioniert")
+                //println("Login funktioniert")
                 working = true
             } else {
                 println("Nutzername und/oder Passwort sind nicht richtig")

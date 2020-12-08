@@ -1,31 +1,17 @@
 package com.example.demo.view
 
-import com.example.demo.app.Styles
-import javafx.beans.property.SimpleStringProperty
-import javafx.geometry.Orientation
-import javafx.geometry.Pos
 import javafx.scene.shape.Circle
-import javafx.scene.shape.TriangleMesh
 import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
 import tornadofx.*
-import java.awt.Color
-import java.awt.Image
-import java.sql.Date
-import java.util.*
-import javax.swing.text.Position
-import javax.xml.soap.Node
-import javax.xml.stream.Location
 import kotlin.collections.ArrayList
-import com.example.demo.view.UserModel
-import com.example.demo.view.loginController
 
 class UeberblickFenster : View ("E.P.O")
 {
-    public var lid = ArrayList<Int>()
-    public var lna = ArrayList<String>()
-    public var lfd = ArrayList<Date>()
-    public var ausgewählteListe:String = ""
+    var lid = ArrayList<Int>()
+    var lna = ArrayList<String>()
+    var lfd = ArrayList<String>()
+    var ausgewählteListe:String = ""
 
     override val root = form {
 
@@ -38,7 +24,7 @@ class UeberblickFenster : View ("E.P.O")
         }
 
         var username = loginController.username
-        //println(username + "*")
+        var userid:Int = loginController.userId
 
         hbox {
             paddingTop = 10
@@ -72,14 +58,13 @@ class UeberblickFenster : View ("E.P.O")
                 }
             }
         }
-        /*
-        listenQuery.connection()
-        lid = listenQuery.listenid
-        lna = listenQuery.listenname
-        lfd = listenQuery.listenFaelligkeitsDatum
-        */
-        var lf:Date
-        var zz:Int = 0
+
+        listenController.connection(userid)
+        lna = listenController.listenname
+        lfd = listenController.listenFaelligkeitsDatum
+
+        var lf:String
+        var zz = 0
 
         vbox {
             style{

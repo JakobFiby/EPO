@@ -1,5 +1,6 @@
 package com.example.demo.view
 
+import com.example.demo.app.Styles
 import javafx.beans.property.SimpleStringProperty
 import javafx.geometry.Orientation
 import javafx.geometry.Pos
@@ -40,17 +41,23 @@ class ListeErstellenFenster : View("Liste erstellen") {
                         }
                     }
                 }
-                fieldset("Listenname") {
+                label("LISTENNAME"){
+                    font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 15.0)
+                    addClass(Styles.heading)
+                }
                     textfield(name).required()
                     setMaxSize(212.0, 03.0)
+
+                label("FÄLLIGKEITSDATUM"){
+                    font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 15.0)
+                    addClass(Styles.heading)
                 }
-                fieldset("Fälligkeitsdatum") {
                     datepicker()
                     {
                         value = LocalDate.now()
                     }
                     //wie kann ich das required setzen --> wär mega nice
-                }
+
 
                 button("Erstellen") {
                     enableWhen(model.valid)

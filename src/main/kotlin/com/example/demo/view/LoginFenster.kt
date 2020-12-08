@@ -27,6 +27,7 @@ class LoginFenster : View("Login") {
         style {
             fontSize = 15.px
             backgroundColor = multi(c(colorString = "black"))
+            textFill= c(colorString="#FFFFFF")
         }
 
         hbox {
@@ -50,9 +51,7 @@ class LoginFenster : View("Login") {
                     }
                     label("Easy Project Organisation") {
                         font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 15.0)
-                        style{
-                            textFill= c(colorString="#FFFFFF")
-                        }
+                        addClass(Styles.heading)
                     }
                 } //ende vbox Titel
 
@@ -60,15 +59,19 @@ class LoginFenster : View("Login") {
                     //val fontIcon=FontIcon()
                     //fontIcon.iconLiteral="gmi-mail-outline"
                     fieldset(labelPosition = Orientation.VERTICAL) {
-                        style {
-                            textFill=Color.web("#CECED0")
+
+                        label("NUTZERNAME"){
+                            font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 15.0)
+                            addClass(Styles.heading)
                         }
-                        fieldset("NUTZERNAME") {
-                            textfield(nutzername).required()
+                        textfield(nutzername).required()
+
+                        label("PASSWORT"){
+                            font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 15.0)
+                            addClass(Styles.heading)
                         }
-                        fieldset("PASSWORT") {
                             passwordfield(passwort).required()
-                        }
+
                     }
                     button("Anmelden") {
                         enableWhen(model.valid)

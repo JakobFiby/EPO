@@ -1,5 +1,6 @@
 package com.example.demo.view
 
+import com.example.demo.app.Styles
 import javafx.beans.property.SimpleStringProperty
 import javafx.geometry.Pos
 import javafx.scene.text.Font
@@ -16,6 +17,7 @@ class ListeBearbeiten : View("Bearbeiten") {
             fontSize = 15.px
             backgroundColor=multi(c(colorString="black"))
             textFill= javafx.scene.paint.Color.WHITE
+            alignment = Pos.CENTER
             setPrefSize(360.0, 600.0)
         }
 
@@ -26,10 +28,14 @@ class ListeBearbeiten : View("Bearbeiten") {
                     alignment = Pos.CENTER
                 }
 
-                fieldset("Username") {
+                label("USERNAME"){
+                    font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 15.0)
+                    addClass(Styles.heading)
+                }
                     textfield(name).required()
                     setMaxSize(212.0, 03.0)
-                }
+
+                label()
 
                 button("HINZUFÜGEN") {
                     enableWhen(model.valid)

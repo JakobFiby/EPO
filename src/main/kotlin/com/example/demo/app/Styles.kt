@@ -8,6 +8,7 @@ import tornadofx.*
 class Styles : Stylesheet() {
     companion object {
         val heading by cssclass()
+        val label by cssclass()
         val allbuttons by cssclass()
     }
 

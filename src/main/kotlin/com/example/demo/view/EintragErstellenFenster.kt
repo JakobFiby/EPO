@@ -1,5 +1,6 @@
 package com.example.demo.view
 
+import com.example.demo.app.Styles
 import javafx.beans.property.SimpleStringProperty
 import javafx.collections.FXCollections
 import javafx.collections.ObservableList
@@ -42,20 +43,29 @@ class EintragErstellenFenster : View("Liste erstellen") {
                         }
                     }
                 }
-                fieldset("Name") {
+                label("NAME"){
+                    font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 15.0)
+                    addClass(Styles.heading)
+                }
                     textfield(eName).required()
+
+                label("BESCHREIBUNG"){
+                    font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 15.0)
+                    addClass(Styles.heading)
                 }
-                fieldset("Beschreibung") {
                     textfield(eBeschreibung).required()
+
+                label("WICHTIGKEIT"){
+                    font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 15.0)
+                    addClass(Styles.heading)
                 }
-                fieldset("Wichtigkeit") {
                     combobox(selectedItem, items) {
                         setMaxSize(420.0, 03.0)
                         cellFormat {
                             text = it
                         }
                     }
-                }
+
 
                 vbox(0,Pos.TOP_CENTER) {
                     button("Erstellen") {

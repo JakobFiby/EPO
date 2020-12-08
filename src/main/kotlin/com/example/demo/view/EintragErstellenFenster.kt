@@ -35,8 +35,10 @@ class EintragErstellenFenster : View("Liste erstellen") {
             vbox (spacing=20) {
                 vbox(spacing = 20) {
                     hbox {
-                        label("Neuen Eintrag erstellen!") {
+                        label("Neuen Eintrag erstellen:") {
                             font = Font.font("Segoe UI", FontWeight.BOLD, 25.0)
+                            textFill = c("#4c2dc6")
+                            alignment = Pos.CENTER
                         }
                     }
                 }
@@ -60,6 +62,16 @@ class EintragErstellenFenster : View("Liste erstellen") {
                         enableWhen(model.valid)
                         isDefaultButton = true
                         useMaxHeight = true
+                        setPrefSize(300.0, 10.0)
+                        style{
+                            backgroundColor = multi(c("black"))
+                            textFill = c("#4c2dc6")
+                            borderColor = multi(box(
+                                    top = c("#4c2dc6"),
+                                    bottom = c("#4c2dc6"),
+                                    right = c("#4c2dc6"),
+                                    left = c("#4c2dc6")))
+                        }
                         action {
 
                         }

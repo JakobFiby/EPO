@@ -1,0 +1,77 @@
+package com.example.demo.view
+
+import javafx.beans.property.SimpleStringProperty
+import javafx.geometry.Pos
+import javafx.scene.text.Font
+import javafx.scene.text.FontWeight
+import tornadofx.*
+
+class ListeBearbeiten : View("Bearbeiten") {
+    val model = ViewModel()
+    val name= model.bind{ SimpleStringProperty() }
+
+    override val root = form{
+        style{
+            padding = box(10.px)
+            fontSize = 15.px
+            backgroundColor=multi(c(colorString="black"))
+            textFill= javafx.scene.paint.Color.WHITE
+            setPrefSize(360.0, 600.0)
+        }
+
+            vbox(0, Pos.CENTER) {
+                label("Liste bearbeiten:") {
+                    font = Font.font("Segoe UI", FontWeight.BOLD, 25.0)
+                    textFill = c("#4c2dc6")
+                    alignment = Pos.CENTER
+                }
+
+                fieldset("Username") {
+                    textfield(name).required()
+                    setMaxSize(212.0, 03.0)
+                }
+
+                button("HINZUFÜGEN") {
+                    enableWhen(model.valid)
+                    isDefaultButton = true
+                    setPrefSize(200.0, 10.0)
+                    useMaxHeight = true
+                    style {
+                        backgroundColor = multi(c("black"))
+                        textFill = c("#4c2dc6")
+                        borderColor = multi(box(
+                                top = c("#4c2dc6"),
+                                bottom = c("#4c2dc6"),
+                                right = c("#4c2dc6"),
+                                left = c("#4c2dc6")
+                        ))
+                    }
+                    action {
+                        name.value = ""
+                    }
+                }
+
+                label()
+
+                button("LÖSCHEN") {
+                    isDefaultButton = true
+                    setPrefSize(200.0, 10.0)
+                    useMaxHeight = true
+                    style {
+                        backgroundColor = multi(c("black"))
+                        textFill = c("#c63229")
+                        borderColor = multi(box(
+                                top = c("#c63229"),
+                                bottom = c("#c63229"),
+                                right = c("#c63229"),
+                                left = c("#c63229")
+                        ))
+                    }
+                    action {
+                        name.value = ""
+                    }
+                }
+            }
+
+    }
+}

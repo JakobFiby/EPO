@@ -30,11 +30,13 @@ class ListeErstellenFenster : View("Liste erstellen") {
             paddingRight=20
             paddingLeft=20
 
-            vbox (spacing=20) {
+            vbox (20) {
                 vbox(spacing = 20) {
                     hbox {
-                        label("Neue Liste erstellen!") {
+                        label("Neue Liste erstellen:") {
                             font = Font.font("Segoe UI", FontWeight.BOLD, 25.0)
+                            textFill = c("#4c2dc6")
+                            alignment = Pos.CENTER
                         }
                     }
                 }
@@ -50,14 +52,22 @@ class ListeErstellenFenster : View("Liste erstellen") {
                     //wie kann ich das required setzen --> wär mega nice
                 }
 
-                vbox(0,Pos.TOP_CENTER) {
-                    button("Erstellen") {
-                        enableWhen(model.valid)
-                        isDefaultButton = true
-                        useMaxHeight = true
-                        action {
-
+                button("Erstellen") {
+                    enableWhen(model.valid)
+                    isDefaultButton = true
+                    setPrefSize(212.0, 10.0)
+                    useMaxHeight = true
+                    style {
+                        backgroundColor = multi(c("black"))
+                        textFill = c("#4c2dc6")
+                        borderColor = multi(box(
+                                top = c("#4c2dc6"),
+                                bottom = c("#4c2dc6"),
+                                right = c("#4c2dc6"),
+                                left = c("#4c2dc6")))
                         }
+                    action {
+
                     }
                 }
             }

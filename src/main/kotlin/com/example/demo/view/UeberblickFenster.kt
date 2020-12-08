@@ -71,19 +71,31 @@ class UeberblickFenster : View ("E.P.O")
                 backgroundColor = multi(c("#111111"))
             }
             for (la in lna) {
-                button("o $la")
-                {
-                    style {
-                        font = Font.font("Segoe UI", FontWeight.NORMAL, 13.0)
-                        backgroundColor = multi(c("#111111"))
-                        textFill = javafx.scene.paint.Color.WHITE
+                hbox {
+                    button("o $la") {
+                        style {
+                            font = Font.font("Segoe UI", FontWeight.NORMAL, 13.0)
+                            backgroundColor = multi(c("#111111"))
+                            textFill = javafx.scene.paint.Color.WHITE
+                        }
+                        action {
+                            eintraegeController.eintraege.clear()
+                            eintraegeController.connection(la)
+                            lna.clear()
+                            lid.clear()
+                            lfd.clear()
+                        }
                     }
-                    action {
-                        eintraegeController.eintraege.clear()
-                        eintraegeController.connection(la)
-                        lna.clear()
-                        lid.clear()
-                        lfd.clear()
+
+                    button("..."){
+                        style{
+                            font = Font.font("Segoe UI", FontWeight.NORMAL, 15.0)
+                            backgroundColor = multi(c("#111111"))
+                            textFill = c(colorString = "#4c2dc6")
+                        }
+                        action {
+                            ListeBearbeiten().openWindow()
+                        }
                     }
                 }
 

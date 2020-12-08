@@ -1,8 +1,9 @@
 package com.example.demo.view
 
 import java.util.*
+import tornadofx.*
 
-class liste {
+class liste{
     var listename: String? = null
     var faelligkeitsdatum: Date? = null
     var listedatum: Date? = null

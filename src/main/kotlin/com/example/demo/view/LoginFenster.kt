@@ -40,7 +40,7 @@ class LoginFenster : View("Login") {
 
             vbox(spacing = 20) {
 
-                vbox(20, Pos.CENTER) {
+                vbox(10, Pos.CENTER) {
                     label("EPO") {
                         font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 40.0)
                         addClass(Styles.heading)

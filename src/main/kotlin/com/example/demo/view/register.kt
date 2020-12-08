@@ -1,6 +1,6 @@
 package com.example.demo.view
 
-import com.example.demo.view.login.sha256
+import com.example.demo.view.loginController
 import javafx.scene.control.Label
 import tornadofx.*
 import java.awt.Image

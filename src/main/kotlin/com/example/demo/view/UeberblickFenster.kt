@@ -17,6 +17,8 @@ import javax.swing.text.Position
 import javax.xml.soap.Node
 import javax.xml.stream.Location
 import kotlin.collections.ArrayList
+import com.example.demo.view.UserModel
+import com.example.demo.view.loginController
 
 class UeberblickFenster : View ("E.P.O")
 {
@@ -26,6 +28,7 @@ class UeberblickFenster : View ("E.P.O")
     public var ausgewählteListe:String = ""
 
     override val root = form {
+
         style{
             padding = box(10.px)
             fontSize = 15.px
@@ -34,7 +37,7 @@ class UeberblickFenster : View ("E.P.O")
             //setPrefSize(360.0, 600.0)
         }
 
-        var username = login.username
+        var username = loginController.username
         //println(username + "*")
 
         hbox {
@@ -69,12 +72,12 @@ class UeberblickFenster : View ("E.P.O")
                 }
             }
         }
-
+        /*
         listenQuery.connection()
         lid = listenQuery.listenid
         lna = listenQuery.listenname
         lfd = listenQuery.listenFaelligkeitsDatum
-
+        */
         var lf:Date
         var zz:Int = 0
 

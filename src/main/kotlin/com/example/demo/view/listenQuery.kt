@@ -11,7 +11,7 @@ import java.sql.Date
 object listenQuery {
     @JvmStatic
 
-    var userid:Int = login.userId
+    var userid:Int = loginController.userId
     public var listenid = ArrayList<Int>()
     public var listenname = ArrayList<String>()
     public var listenFaelligkeitsDatum = ArrayList<Date>()

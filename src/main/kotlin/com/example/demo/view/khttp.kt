@@ -20,7 +20,8 @@ fun main(args: Array<out String>)
     val json = r.jsonArray
 
     println(json)
-
+    val eins=json[0].toString()
+    println(eins)
     val gson = Gson()
     /*val arrayTutorialType = object : TypeToken<Array<liste>>() {}.type
 
@@ -46,4 +47,5 @@ fun main(args: Array<out String>)
         System.out.println(single);
     }*/
 }
+
 

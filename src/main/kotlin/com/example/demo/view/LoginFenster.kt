@@ -13,12 +13,14 @@ import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
 import javafx.stage.Stage
 import tornadofx.*
+import com.example.demo.view.loginController
 
 class LoginFenster : View("Login") {
 
     val model = ViewModel()
     val nutzername = model.bind { SimpleStringProperty() }
     val passwort = model.bind { SimpleStringProperty() }
+    //val loginController: loginController by inject()
 
     override val root = form {
 
@@ -37,7 +39,7 @@ class LoginFenster : View("Login") {
             spacing = 30.0
 
             vbox(spacing = 20) {
-                // hoffentlich funktioniert des jetzt
+
                 vbox(20, Pos.CENTER) {
                     label("EPO") {
                         font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 40.0)
@@ -79,23 +81,21 @@ class LoginFenster : View("Login") {
                                     right = c(colorString = "#4c2dc6"),
                                     left = c(colorString = "#4c2dc6")
                             ))
+                        }
                             isDefaultButton = true
                             useMaxHeight = true
                             useMaxWidth = true
 
                             action {
-                                login.ueberpruefen(nutzername.value, passwort.value)
-                                if(login.pwB==true && login.nnB==true) {
+                                loginController.login(nutzername.value, passwort.value)
+                                //println("Login = "+ loginController.working+loginController.pwB+loginController.nnB)
+                                if(loginController.working==true)
+                                {
                                     replaceWith(UeberblickFenster::class, sizeToScene = false, centerOnScreen = true)
                                 }
-                                else{
-                                    println("Nutzername und/oder Passwort sind nicht richtig")
-                                    LoginFenster().onDock()
-                                }
                             }
+                    } //ende button
 
-                        }
-                    } //ende vbox
 
                     vbox(10, Pos.CENTER) {
                         button("Noch nicht registriert?") {
@@ -110,6 +110,7 @@ class LoginFenster : View("Login") {
                         } //ende button noch nicht registriert
                     } //ende vbox noch nicht registriert
                 } //ende vbox gesamt
+
             } //ende hbox gesamt
         }
     }

@@ -11,13 +11,13 @@ import java.math.BigInteger
 import com.example.demo.view.LoginFenster
 import com.example.demo.view.UeberblickFenster
 
-object login {
+object loginAlt {
     @JvmStatic
 
-    public var userId:Int = 0
-    public var username:String = ""
-    public var nnB:Boolean=false
-    public var pwB:Boolean=false
+    var userId:Int = 0
+    var username:String = ""
+    var nnB:Boolean=false
+    var pwB:Boolean=false
 
     fun ueberpruefen(nutzername: String, passwort: String){
         //println(nutzername)

@@ -9,13 +9,15 @@ import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
 import tornadofx.*
 import java.awt.event.ActionListener
+import java.sql.Date
 import java.text.SimpleDateFormat
 import java.time.LocalDate
+import java.util.*
 
 class ListeErstellenFenster : View("Liste erstellen") {
     val model = ViewModel()
     val name= model.bind{SimpleStringProperty()}
-    //val fdatum = model.{SimpleDateFormat()} wie vereinbare ich diese Variable?
+    //val fdatum = model.bind{SimpleDateFormat()} //wie vereinbare ich diese Variable?
 
     override val root = form {
         style{
@@ -52,8 +54,7 @@ class ListeErstellenFenster : View("Liste erstellen") {
                     font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 15.0)
                     addClass(Styles.heading)
                 }
-                    datepicker()
-                    {
+                    datepicker() {
                         value = LocalDate.now()
                     }
                     //wie kann ich das required setzen --> wär mega nice

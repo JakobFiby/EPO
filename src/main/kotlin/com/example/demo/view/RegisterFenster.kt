@@ -96,7 +96,7 @@ class RegisterFenster : View("Registrieren") {
                                 action {
                                     runAsyncWithProgress {
                                         registration.anmelden(nutzernameR.value, vornameR.value, nachnameR.value, emailR.value, passwortR.value)
-                                        //replaceWith(LoginFenster::class, sizeToScene = false, centerOnScreen = true)
+                                        replaceWith(LoginFenster::class, sizeToScene = false, centerOnScreen = true)
                                     }
                                 } //ende action
                             }//ende button Registrieren

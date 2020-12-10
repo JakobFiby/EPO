@@ -81,9 +81,11 @@ object ListeBearbeitenController {
             }
         }
 
+        var berechtigungs = 0
+
         if(anlegen && gf){
+            val request = khttp.post("http://localhost/api/public/index.php/userzuliste?berechtigungs=$berechtigungs&listeid=$listeid&userid=$userid")
             text = 2
-            //khttp befehl
             gf = false
         }
         else{

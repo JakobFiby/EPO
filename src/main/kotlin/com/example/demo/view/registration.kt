@@ -37,6 +37,10 @@ object registration {
             //Variablen zuordnen
             nutzername=nutzernameR
             passwort=passwortR.sha256()
+            if (passwort.length == 63) {
+                passwort = "0" + passwort
+                //println("computed sha256 value is $pwhash")
+            }
             mitteilungen=1
             abmelden=0
             vorname=vornameR

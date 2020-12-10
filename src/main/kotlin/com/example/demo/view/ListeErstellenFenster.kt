@@ -25,6 +25,7 @@ class ListeErstellenFenster : View("Liste erstellen") {
             fontSize = 15.px
             backgroundColor=multi(c(colorString="black"))
             textFill= Color.LIGHTGREY
+            alignment = Pos.CENTER
         }
 
         hbox {
@@ -32,12 +33,24 @@ class ListeErstellenFenster : View("Liste erstellen") {
             paddingBottom=10
             paddingRight=20
             paddingLeft=20
+            alignment = Pos.CENTER
 
             vbox (20) {
                 vbox(spacing = 20) {
                     hbox {
-                        label("Neue Liste erstellen:") {
-                            font = Font.font("Segoe UI", FontWeight.BOLD, 25.0)
+                        button("< ") {
+                            font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 20.0)
+                            style {
+                                backgroundColor = multi(c(colorString = "black"))
+                                textFill = c(colorString = "#777678")
+                            }
+                            action {
+                                replaceWith(UeberblickFenster::class)
+                            } //ende action
+                        } //ende button zurück
+
+                        label("Neue Liste:") {
+                            font = Font.font("Segoe UI", FontWeight.BOLD, 30.0)
                             textFill = c("#4c2dc6")
                             alignment = Pos.CENTER
                         }

@@ -52,7 +52,7 @@ object eintraegeController {
 
                 i++
             }
-            EintragUebersichtFenster().openWindow()
+
         }
         catch(e: SQLException){
             e.printStackTrace()

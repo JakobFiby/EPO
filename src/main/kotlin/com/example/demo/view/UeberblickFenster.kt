@@ -20,6 +20,7 @@ class UeberblickFenster : View ("E.P.O")
             fontSize = 15.px
             backgroundColor=multi(c(colorString="black"))
             textFill= javafx.scene.paint.Color.WHITE
+
             //setPrefSize(360.0, 600.0)
         }
 
@@ -84,6 +85,7 @@ class UeberblickFenster : View ("E.P.O")
                             lna.clear()
                             lid.clear()
                             lfd.clear()
+                            replaceWith(EintragUebersichtFenster::class, sizeToScene = false, centerOnScreen = true)
                         }
                     }
 
@@ -94,7 +96,8 @@ class UeberblickFenster : View ("E.P.O")
                             textFill = c(colorString = "#4c2dc6")
                         }
                         action {
-                            ListeBearbeiten().openWindow()
+                            replaceWith(ListeBearbeiten::class, sizeToScene = false, centerOnScreen = true)
+
                         }
                     }
                 }
@@ -126,7 +129,7 @@ class UeberblickFenster : View ("E.P.O")
                     textFill = javafx.scene.paint.Color.BLACK
                 }
                 action {
-                    ListeErstellenFenster().openWindow()
+                    replaceWith(ListeErstellenFenster::class, sizeToScene = false, centerOnScreen = true)
                     lna.clear()
                     lid.clear()
                     lfd.clear()

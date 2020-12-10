@@ -20,9 +20,22 @@ class EintragUebersichtFenster : View("Einträge Übersicht") {
             setPrefSize(360.0, 600.0)
         }
 
-        label("Einträge der Liste '$liste':") {
-            font = Font.font("Segoe UI", FontWeight.BOLD, 25.0)
-            textFill= c("#4C2DC6")
+        hbox {
+            button("< ") {
+                font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 20.0)
+                style {
+                    backgroundColor = multi(c(colorString = "black"))
+                    textFill = c(colorString = "#777678")
+                }
+                action {
+                    replaceWith(UeberblickFenster::class)
+                } //ende action
+            } //ende button zurück
+
+            label("$liste:") {
+                font = Font.font("Segoe UI", FontWeight.BOLD, 30.0)
+                textFill = c("#4C2DC6")
+            }
         }
 
         label()
@@ -61,7 +74,7 @@ class EintragUebersichtFenster : View("Einträge Übersicht") {
                     textFill = javafx.scene.paint.Color.BLACK
                 }
                 action {
-                    EintragErstellenFenster().openWindow()
+                    replaceWith(EintragErstellenFenster::class, sizeToScene = false, centerOnScreen = true)
                 }
             }
 

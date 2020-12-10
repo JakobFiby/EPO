@@ -36,8 +36,19 @@ class EintragErstellenFenster : View("Liste erstellen") {
             vbox (spacing=20) {
                 vbox(spacing = 20) {
                     hbox {
-                        label("Neuen Eintrag erstellen:") {
-                            font = Font.font("Segoe UI", FontWeight.BOLD, 25.0)
+                        button("< ") {
+                            font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 20.0)
+                            style {
+                                backgroundColor = multi(c(colorString = "black"))
+                                textFill = c(colorString = "#777678")
+                            }
+                            action {
+                                replaceWith(EintragUebersichtFenster::class)
+                            } //ende action
+                        } //ende button zurück
+
+                        label("Neuer Eintrag:") {
+                            font = Font.font("Segoe UI", FontWeight.BOLD, 30.0)
                             textFill = c("#4c2dc6")
                             alignment = Pos.CENTER
                         }

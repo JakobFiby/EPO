@@ -32,12 +32,27 @@ class RegisterFenster : View("Registrieren") {
             paddingLeft = 20
             alignment = Pos.CENTER
 
-            vbox(spacing = 20) {
-                label("Registrierung") {
-                    font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 25.0)
-                    addClass(Styles.heading)
-                    style{
-                        textFill = c("#4C2DC6")
+            vbox(20) {
+                vbox(20) {
+                    hbox() {
+                        button("< ") {
+                            font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 20.0)
+                            style {
+                                backgroundColor = multi(c(colorString = "black"))
+                                textFill = c(colorString = "#777678")
+                            }
+                            action {
+                                replaceWith(LoginFenster::class)
+                            } //ende action
+                        } //ende button zurück
+
+                        label("Registrierung") {
+                            font = Font.font("Segoe UI", FontWeight.BOLD, 30.0)
+                            addClass(Styles.heading)
+                            style {
+                                textFill = c("#4C2DC6")
+                            }
+                        }
                     }
                 }
                 fieldset(labelPosition = Orientation.VERTICAL) {
@@ -79,6 +94,7 @@ class RegisterFenster : View("Registrieren") {
                     label()
 
                     vbox(0, Pos.TOP_LEFT) {
+                        alignment = Pos.CENTER
                         button("Registrieren") {
                             enableWhen(model.valid)
                             style {
@@ -94,14 +110,14 @@ class RegisterFenster : View("Registrieren") {
                                 useMaxHeight = true
                                 useMaxWidth = true
                                 action {
-                                    runAsyncWithProgress {
-                                        registration.anmelden(nutzernameR.value, vornameR.value, nachnameR.value, emailR.value, passwortR.value)
-                                        replaceWith(LoginFenster::class, sizeToScene = false, centerOnScreen = true)
-                                    }
+                                    registration.anmelden(nutzernameR.value, vornameR.value, nachnameR.value, emailR.value, passwortR.value)
+                                    replaceWith(LoginFenster::class, sizeToScene = false, centerOnScreen = true)
+                                    onDock()
+                                    LoginFenster().onDock()
                                 } //ende action
                             }//ende button Registrieren
                         } //ende vbox button
-                    } //ende fieldset
+                    }
                 } //ende vbox
             } //ende hbox
         } //ende form

@@ -36,7 +36,7 @@ class RegisterFenster : View("Registrieren") {
                 vbox(20) {
                     hbox() {
                         button("< ") {
-                            font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 20.0)
+                            font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 30.0)
                             style {
                                 backgroundColor = multi(c(colorString = "black"))
                                 textFill = c(colorString = "#777678")

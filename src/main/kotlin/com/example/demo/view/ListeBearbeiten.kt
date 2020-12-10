@@ -10,6 +10,7 @@ import tornadofx.*
 class ListeBearbeiten : View("Bearbeiten") {
     val model = ViewModel()
     val name= model.bind{ SimpleStringProperty() }
+    var ename:String = ""
 
     override val root = form{
         style{
@@ -30,6 +31,7 @@ class ListeBearbeiten : View("Bearbeiten") {
                             textFill = c(colorString = "#777678")
                         }
                         action {
+                            name.value = ""
                             replaceWith(UeberblickFenster::class)
                         } //ende action
                     } //ende button zurück
@@ -62,11 +64,21 @@ class ListeBearbeiten : View("Bearbeiten") {
                                 top = c("#4c2dc6"),
                                 bottom = c("#4c2dc6"),
                                 right = c("#4c2dc6"),
-                                left = c("#4c2dc6")
-                        ))
+                                left = c("#4c2dc6")))
                     }
                     action {
-                        name.value = ""
+                        ename = name.value
+                        ListeBearbeitenController.userhinzufügen(ename)
+
+                        if(ListeBearbeitenController.text == 0){
+                            name.value = "User nicht gefunden!"
+                        }
+                        else if(ListeBearbeitenController.text == 1){
+                            name.value = "User bereits hinzugefügt!"
+                        }
+                        else if(ListeBearbeitenController.text == 2){
+                            name.value = "User erfolgreich hinzugefügt!"
+                        }
                     }
                 }
 
@@ -87,7 +99,7 @@ class ListeBearbeiten : View("Bearbeiten") {
                         ))
                     }
                     action {
-                        name.value = ""
+
                     }
                 }
             }

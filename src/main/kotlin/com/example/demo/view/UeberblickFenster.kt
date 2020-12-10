@@ -96,8 +96,8 @@ class UeberblickFenster : View ("E.P.O")
                             textFill = c(colorString = "#4c2dc6")
                         }
                         action {
+                            ListeBearbeitenController.getName(la)
                             replaceWith(ListeBearbeiten::class, sizeToScene = false, centerOnScreen = true)
-
                         }
                     }
                 }

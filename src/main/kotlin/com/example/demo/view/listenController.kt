@@ -59,7 +59,6 @@ object listenController{
                         listenFaelligkeitsDatum.add(fd)
                     }
                 }
-
                 i++
             }
         }

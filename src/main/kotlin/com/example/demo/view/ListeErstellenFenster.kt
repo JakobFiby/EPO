@@ -3,24 +3,17 @@ package com.example.demo.view
 import com.example.demo.app.Styles
 import javafx.beans.property.SimpleObjectProperty
 import javafx.beans.property.SimpleStringProperty
-import javafx.geometry.Orientation
 import javafx.geometry.Pos
-import javafx.scene.control.DatePicker
 import javafx.scene.paint.Color
 import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
 import tornadofx.*
-import java.awt.event.ActionListener
-import java.sql.Date
-import java.text.SimpleDateFormat
 import java.time.LocalDate
-import java.util.*
 
 class ListeErstellenFenster : View("Liste erstellen") {
     val model = ViewModel()
     val name= model.bind{SimpleStringProperty()}
     private val dateProperty = SimpleObjectProperty<LocalDate>()
-    //val fdatum = model.bind{SimpleDateFormat()} //wie vereinbare ich diese Variable?
 
     override val root = form {
         style{
@@ -49,6 +42,8 @@ class ListeErstellenFenster : View("Liste erstellen") {
                             }
                             action {
                                 replaceWith(UeberblickFenster::class)
+                                name.value = ""
+                                //sollte reloaded werden --> Kathi fragen!!
                             } //ende action
                         } //ende button zurück
 
@@ -93,12 +88,20 @@ class ListeErstellenFenster : View("Liste erstellen") {
                     action {
                         val dateValue = dateProperty.value
                         val todaysDate = LocalDate.now()
+                        val listename = name.value
+                        var userid:Int = loginController.userId
 
-                        if(dateValue<todaysDate){
-                            println("Datum ist geringer als heutiges Datum!")
+                        if(dateValue < todaysDate){
+                            name.value = "Fälligkeitsd. darf nicht kleiner als heutiges Datum sein!"
                         }
                         else{
-                            println(dateValue)
+                            listeErstellenController.listehinzufügen(listename, userid, dateValue, todaysDate)
+                            if(!listeErstellenController.erstellt){
+                                name.value = "Liste konnte nicht erstellt werden!"
+                            }
+                            else{
+                                name.value = ""
+                            }
                         }
                     }
                 }

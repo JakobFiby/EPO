@@ -1,9 +1,11 @@
 package com.example.demo.view
 
 import com.example.demo.app.Styles
+import javafx.beans.property.SimpleObjectProperty
 import javafx.beans.property.SimpleStringProperty
 import javafx.geometry.Orientation
 import javafx.geometry.Pos
+import javafx.scene.control.DatePicker
 import javafx.scene.paint.Color
 import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
@@ -17,6 +19,7 @@ import java.util.*
 class ListeErstellenFenster : View("Liste erstellen") {
     val model = ViewModel()
     val name= model.bind{SimpleStringProperty()}
+    private val dateProperty = SimpleObjectProperty<LocalDate>()
     //val fdatum = model.bind{SimpleDateFormat()} //wie vereinbare ich diese Variable?
 
     override val root = form {
@@ -67,7 +70,7 @@ class ListeErstellenFenster : View("Liste erstellen") {
                     font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 15.0)
                     addClass(Styles.heading)
                 }
-                    datepicker() {
+                    datepicker(dateProperty) {
                         value = LocalDate.now()
                     }
                     //wie kann ich das required setzen --> wär mega nice
@@ -88,7 +91,15 @@ class ListeErstellenFenster : View("Liste erstellen") {
                                 left = c("#4c2dc6")))
                         }
                     action {
+                        val dateValue = dateProperty.value
+                        val todaysDate = LocalDate.now()
 
+                        if(dateValue<todaysDate){
+                            println("Datum ist geringer als heutiges Datum!")
+                        }
+                        else{
+                            println(dateValue)
+                        }
                     }
                 }
             }

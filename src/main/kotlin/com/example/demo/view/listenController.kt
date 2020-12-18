@@ -36,7 +36,6 @@ object listenController{
 
                 if(ui.equals(userid.toString())) {
                     listenid.add(li)
-                    //println(li)
                 }
             }
 
@@ -61,6 +60,8 @@ object listenController{
                 }
                 i++
             }
+            //println(listenname)
+
         }
         catch(e: SQLException){
             e.printStackTrace()

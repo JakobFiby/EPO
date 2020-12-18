@@ -77,6 +77,5 @@ class EintragUebersichtFenster : View("Einträge Übersicht") {
                     replaceWith(EintragErstellenFenster::class, sizeToScene = false, centerOnScreen = true)
                 }
             }
-
     }
 }

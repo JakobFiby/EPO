@@ -94,7 +94,21 @@ class EintragErstellenFenster : View("Liste erstellen") {
                                     left = c("#4c2dc6")))
                         }
                         action {
+                            val name = eName.value
+                            val beschreibung = eBeschreibung.value
+                            val erledigt = 0
+                            val wichtigkeit = selectedItem.value
+                            val listeid = eintraegeController.listeid.toInt()
+                            eintragErstellenController.eintraghinzufügen(name, beschreibung, erledigt, wichtigkeit, listeid)
 
+                            if(eintragErstellenController.erstellt){
+                                eName.value = ""
+                            }
+                            else{
+                                eName.value = "Eintrag konnte nicht erstellt werden!"
+                            }
+                            eBeschreibung.value = ""
+                            selectedItem.value = items.first()
                         }
                     }
                 }

@@ -63,6 +63,7 @@ class UeberblickFenster : View ("E.P.O")
         listenController.connection(userid)
         lna = listenController.listenname
         lfd = listenController.listenFaelligkeitsDatum
+        println(lna)
 
         var lf:String
         var zz = 0

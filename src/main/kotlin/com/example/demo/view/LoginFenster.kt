@@ -92,8 +92,7 @@ class LoginFenster : View("Login") {
                             action {
                                 loginController.login(nutzername.value, passwort.value)
                                 //println("Login = "+ loginController.working+loginController.pwB+loginController.nnB)
-                                if(loginController.working==true)
-                                {
+                                if(loginController.working==true) {
                                     replaceWith(UeberblickFenster::class, sizeToScene = false, centerOnScreen = true)
                                 }
                             }

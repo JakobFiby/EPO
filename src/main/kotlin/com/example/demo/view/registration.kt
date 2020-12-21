@@ -29,6 +29,8 @@ object registration {
     var email: String = ""
     var farbschemaid: Int = 1
     var profilbildid: Int = 1
+    var nn: String = ""
+    var funktioniert: Boolean = true
 
     fun anmelden(nutzernameR:String, vornameR:String, nachnameR:String, emailR:String, passwortR:String) {
         //println(nutzernameR+vorname+nachname+email+passwortR)
@@ -44,15 +46,38 @@ object registration {
             mitteilungen=1
             abmelden=0
             vorname=vornameR
+            //vorname.toUpperCase()
+            vorname=vorname.substring(0,1).toUpperCase()+vorname.substring(1)
+            println(vorname)
             nachname=nachnameR
+            nachname=nachname.substring(0,1).toUpperCase()+nachname.substring(1)
+            println(nachname)
             email= emailR
             farbschemaid=1
             profilbildid=1
 
+            val r = khttp.get("http://localhost/api/public/index.php/benutzer")
+            val json = r.jsonArray
+            //println(json)
 
 
-            val request = khttp.post("http://localhost/api/public/index.php/registrieren" +
-                    "?nutzername=$nutzername&passwort=$passwort&mitteilungen=$mitteilungen&abmelden=$abmelden&vorname=$vorname&nachname=$nachname&email=$email&farbschemaid=$farbschemaid&profilbildid=$profilbildid")
+            for (ja in json) {
+                val jo = ja as JSONObject
+                nn = jo.get("nutzername").toString()
+                if(nutzername.equals(nn)){
+                    println("Nutzername $nutzername schon vorhanden")
+                    funktioniert=false
+                }
+            }
+
+            if(funktioniert==true)
+            {
+                //println("jej")
+                  /*val request = khttp.post("http://localhost/api/public/index.php/registrieren" +
+                            "?nutzername=$nutzername&passwort=$passwort&mitteilungen=$mitteilungen&abmelden=$abmelden&vorname=$vorname&nachname=$nachname&email=$email&farbschemaid=$farbschemaid&profilbildid=$profilbildid")
+*/
+            }
+
 
         }
         catch (e: SQLException){

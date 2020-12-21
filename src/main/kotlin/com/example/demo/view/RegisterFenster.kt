@@ -8,6 +8,7 @@ import javafx.scene.paint.Color
 import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
 import tornadofx.*
+import com.example.demo.view.LoginFenster
 
 class RegisterFenster : View("Registrieren") {
     val model = ViewModel()
@@ -111,9 +112,14 @@ class RegisterFenster : View("Registrieren") {
                                 useMaxWidth = true
                                 action {
                                     registration.anmelden(nutzernameR.value, vornameR.value, nachnameR.value, emailR.value, passwortR.value)
-                                    replaceWith(LoginFenster::class, sizeToScene = false, centerOnScreen = true)
-                                    onDock()
-                                    LoginFenster().onDock()
+                                    if(registration.funktioniert==true){
+                                        replaceWith(LoginFenster::class, sizeToScene = false, centerOnScreen = true)
+                                        onDock()
+                                        //LoginFenster().onDock()
+                                    }
+                                    else{
+                                        registration.funktioniert = true
+                                    }
                                 } //ende action
                             }//ende button Registrieren
                         } //ende vbox button

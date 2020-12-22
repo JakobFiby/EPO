@@ -119,6 +119,13 @@ class RegisterFenster : View("Registrieren") {
                                     }
                                     else{
                                         registration.funktioniert = true
+                                        if(registration.passwortRichtig!=false) {
+                                            onDock()
+                                        }
+                                        else{
+                                            passwortR.value=""
+                                        }
+
                                     }
                                 } //ende action
                             }//ende button Registrieren

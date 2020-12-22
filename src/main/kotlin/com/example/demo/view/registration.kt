@@ -16,6 +16,7 @@ import java.security.MessageDigest
 import java.sql.SQLException
 import javax.json.JsonObject
 
+
 object registration {
 
     var userph: Label by singleAssign()
@@ -31,6 +32,7 @@ object registration {
     var profilbildid: Int = 1
     var nn: String = ""
     var funktioniert: Boolean = true
+    var passwortRichtig: Boolean = true
 
     fun anmelden(nutzernameR:String, vornameR:String, nachnameR:String, emailR:String, passwortR:String) {
         //println(nutzernameR+vorname+nachname+email+passwortR)
@@ -38,20 +40,21 @@ object registration {
         try {
             //Variablen zuordnen
             nutzername=nutzernameR
-            passwort=passwortR.sha256()
+
+            passwort = passwortR.sha256()
             if (passwort.length == 63) {
-                passwort = "0" + passwort
-                //println("computed sha256 value is $pwhash")
+                    passwort = "0" + passwort
+                    //println("computed sha256 value is $pwhash")
             }
             mitteilungen=1
             abmelden=0
             vorname=vornameR
             //vorname.toUpperCase()
             vorname=vorname.substring(0,1).toUpperCase()+vorname.substring(1)
-            println(vorname)
+            //println(vorname)
             nachname=nachnameR
             nachname=nachname.substring(0,1).toUpperCase()+nachname.substring(1)
-            println(nachname)
+            //println(nachname)
             email= emailR
             farbschemaid=1
             profilbildid=1
@@ -72,12 +75,19 @@ object registration {
 
             if(funktioniert==true)
             {
-                //println("jej")
-                  /*val request = khttp.post("http://localhost/api/public/index.php/registrieren" +
-                            "?nutzername=$nutzername&passwort=$passwort&mitteilungen=$mitteilungen&abmelden=$abmelden&vorname=$vorname&nachname=$nachname&email=$email&farbschemaid=$farbschemaid&profilbildid=$profilbildid")
-*/
-            }
+                if(passwortR.length>=6) {
 
+                //println("jej")
+                  val request = khttp.post("http://localhost/api/public/index.php/registrieren" +
+                            "?nutzername=$nutzername&passwort=$passwort&mitteilungen=$mitteilungen&abmelden=$abmelden&vorname=$vorname&nachname=$nachname&email=$email&farbschemaid=$farbschemaid&profilbildid=$profilbildid")
+                }
+                else
+                {
+                    println("Passwort zu kurz")
+                    funktioniert=false
+                    passwortRichtig=false
+                }
+            }
 
         }
         catch (e: SQLException){

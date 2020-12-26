@@ -9,7 +9,7 @@ class EintragUebersichtFenster : View("Einträge Übersicht") {
 
     var einträge = eintraegeController.eintraege
     var liste:String = eintraegeController.liste
-    public var bg:String = ""
+    //public var bg:String = ""
 
     override val root = form {
         style{
@@ -19,6 +19,8 @@ class EintragUebersichtFenster : View("Einträge Übersicht") {
             textFill= javafx.scene.paint.Color.WHITE
             setPrefSize(360.0, 600.0)
         }
+        /*println(liste)
+        println(einträge)*/
 
         hbox {
             button("< ") {
@@ -78,4 +80,9 @@ class EintragUebersichtFenster : View("Einträge Übersicht") {
                 }
             }
     }
+    override fun onRefresh() {
+        super.onRefresh()
+        reloadViewsOnFocus()
+    }
 }
+

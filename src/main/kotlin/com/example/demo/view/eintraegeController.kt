@@ -1,6 +1,7 @@
 package com.example.demo.view
 
 import org.json.JSONObject
+import tornadofx.*
 import java.sql.SQLException
 
 object eintraegeController {
@@ -52,7 +53,11 @@ object eintraegeController {
 
                 i++
             }
+            //println(liste)
+            EintragUebersichtFenster().onRefresh()
+            EintragUebersichtFenster().root.reloadStylesheets()
 
+            EintragUebersichtFenster().form().button("Hallo")
         }
         catch(e: SQLException){
             e.printStackTrace()

@@ -5,6 +5,8 @@ import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
 import tornadofx.*
 import kotlin.collections.ArrayList
+import com.example.demo.view.EintragUebersichtFenster
+import com.example.demo.view.EinstellungenFenster
 
 class UeberblickFenster : View ("E.P.O")
 {
@@ -53,7 +55,7 @@ class UeberblickFenster : View ("E.P.O")
                             textFill = javafx.scene.paint.Color.BLACK
                         }
                         action{
-
+                            replaceWith(EinstellungenFenster::class, sizeToScene = false, centerOnScreen = true)
                         }
                     }
                 }
@@ -81,12 +83,15 @@ class UeberblickFenster : View ("E.P.O")
                             textFill = javafx.scene.paint.Color.WHITE
                         }
                         action {
+                            //println(la)
                             eintraegeController.eintraege.clear()
                             eintraegeController.connection(la)
                             lna.clear()
                             lid.clear()
                             lfd.clear()
-                            replaceWith(EintragUebersichtFenster::class, sizeToScene = false, centerOnScreen = true)
+                            //println(la)
+                            EintragUebersichtFenster().root
+                            replaceWith(EintragUebersichtFenster::class)
                         }
                     }
 

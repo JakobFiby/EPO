@@ -26,12 +26,16 @@ object einstellungenController {
     var nachn: String = ""
     var email: String = ""
     var userId: Int = 0
-    var profil: String = ""
+    var profilopt: String = ""
+    var andernaufruf:String=""
 
-    fun profil(profil: String){
+    fun profil(profil: String, andern: String){
 
         try {
             userId=loginController.userId
+            profilopt =profil
+            andernaufruf=andern
+
             val r = khttp.get("http://localhost/api/public/index.php/benutzer")
             val json = r.jsonArray
             println(json)

@@ -31,7 +31,6 @@ class EinstellungenFenster : View("Einstellungen") {
         var nachname=einstellungenController.nachn
         var email=einstellungenController.email
         var passwort=einstellungenController.pw
-        var profil=""
         //println(nutzername+vorname+nachname+email)
 
         hbox {
@@ -95,53 +94,49 @@ class EinstellungenFenster : View("Einstellungen") {
                             button(nutzername) {
                                 font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
                                 addClass(Styles.heading)
-                                profil="Nutzername"
                                 //paddingBottom = 25
                                 style {
                                     backgroundColor = multi(c(colorString = "black"))
                                     textFill = c(colorString = "#FFFFFF")
                                 }
                                 action {
-                                    einstellungenController.profil(profil)
+                                    einstellungenController.profil("Nutzername", nutzername)
                                     replaceWith(ProfilFenster())
                                 }
                             }
                             button(vorname) {
                                 font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
                                 addClass(Styles.heading)
-                                profil="Vorname"
                                 style {
                                     backgroundColor = multi(c(colorString = "black"))
                                     textFill = c(colorString = "#FFFFFF")
                                 }
                                 action {
-                                    einstellungenController.profil(profil)
+                                    einstellungenController.profil("Vorname", vorname)
                                     replaceWith(ProfilFenster())
                                 }
                             }
                             button(nachname) {
                                 font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
                                 addClass(Styles.heading)
-                                profil="Nachname"
                                 style {
                                     backgroundColor = multi(c(colorString = "black"))
                                     textFill = c(colorString = "#FFFFFF")
                                 }
                                 action {
-                                    einstellungenController.profil(profil)
+                                    einstellungenController.profil("Nachname", nachname)
                                     replaceWith(ProfilFenster())
                                 }
                             }
                             button(email) {
                                 font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
                                 addClass(Styles.heading)
-                                profil="Email"
                                 style {
                                     backgroundColor = multi(c(colorString = "black"))
                                     textFill = c(colorString = "#FFFFFF")
                                 }
                                 action {
-                                    einstellungenController.profil(profil)
+                                    einstellungenController.profil("Email", email)
                                     replaceWith(ProfilFenster())
                                 }
                             }

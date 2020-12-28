@@ -26,8 +26,9 @@ object einstellungenController {
     var nachn: String = ""
     var email: String = ""
     var userId: Int = 0
+    var profil: String = ""
 
-    fun profil(){
+    fun profil(profil: String){
 
         try {
             userId=loginController.userId

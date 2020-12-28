@@ -31,6 +31,7 @@ class EinstellungenFenster : View("Einstellungen") {
         var nachname=einstellungenController.nachn
         var email=einstellungenController.email
         var passwort=einstellungenController.pw
+        var profil=""
         //println(nutzername+vorname+nachname+email)
 
         hbox {
@@ -38,9 +39,29 @@ class EinstellungenFenster : View("Einstellungen") {
             paddingBottom = 25
             paddingRight = 50
             paddingLeft = 50
+            alignment=Pos.TOP_LEFT
 
-            vbox(spacing = 20) {
-                vbox(0) {
+            vbox(spacing = 10){
+            hbox{
+            button("< ") {
+                font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 15.0)
+                style {
+                    backgroundColor = multi(c(colorString = "black"))
+                    textFill = c(colorString = "#777678")
+                }
+                action {
+                    replaceWith(UeberblickFenster::class)
+                } //ende action
+            } //ende button zurück
+                label("Einstellungen") {
+                    font = Font.font("Segoe UI", FontWeight.BOLD, 25.0)
+                    textFill = c("#4C2DC6")
+                }
+            }
+        }
+        }
+            vbox() {
+                vbox(10) {
                     //Profilbild
 
                         label("Profil") {
@@ -70,22 +91,59 @@ class EinstellungenFenster : View("Einstellungen") {
                                 addClass(Styles.heading)
                             }
                         } // ende vbox Überschriften
-                        vbox(spacing=20){
-                            label(nutzername) {
+                        vbox(spacing=32){
+                            button(nutzername) {
                                 font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
                                 addClass(Styles.heading)
+                                profil="Nutzername"
+                                //paddingBottom = 25
+                                style {
+                                    backgroundColor = multi(c(colorString = "black"))
+                                    textFill = c(colorString = "#FFFFFF")
+                                }
+                                action {
+                                    einstellungenController.profil(profil)
+                                    replaceWith(ProfilFenster())
+                                }
                             }
-                            label(vorname) {
+                            button(vorname) {
                                 font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
                                 addClass(Styles.heading)
+                                profil="Vorname"
+                                style {
+                                    backgroundColor = multi(c(colorString = "black"))
+                                    textFill = c(colorString = "#FFFFFF")
+                                }
+                                action {
+                                    einstellungenController.profil(profil)
+                                    replaceWith(ProfilFenster())
+                                }
                             }
-                            label(nachname) {
+                            button(nachname) {
                                 font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
                                 addClass(Styles.heading)
+                                profil="Nachname"
+                                style {
+                                    backgroundColor = multi(c(colorString = "black"))
+                                    textFill = c(colorString = "#FFFFFF")
+                                }
+                                action {
+                                    einstellungenController.profil(profil)
+                                    replaceWith(ProfilFenster())
+                                }
                             }
-                            label(email) {
+                            button(email) {
                                 font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
                                 addClass(Styles.heading)
+                                profil="Email"
+                                style {
+                                    backgroundColor = multi(c(colorString = "black"))
+                                    textFill = c(colorString = "#FFFFFF")
+                                }
+                                action {
+                                    einstellungenController.profil(profil)
+                                    replaceWith(ProfilFenster())
+                                }
                             }
                         } // ende vbox eingelesenes Profil
                         }
@@ -139,7 +197,7 @@ class EinstellungenFenster : View("Einstellungen") {
                 }
             }
 
-        }
+
     }
     override fun onDock() {
 

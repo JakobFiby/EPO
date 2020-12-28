@@ -3,15 +3,19 @@ package com.example.demo.view
 import javafx.scene.shape.Circle
 import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
+import khttp.delete
 import tornadofx.*
 
 class EintragUebersichtFenster : View("Einträge Übersicht") {
 
-    var einträge = eintraegeController.eintraege
-    var liste:String = eintraegeController.liste
-    //public var bg:String = ""
+    var einträge = ArrayList<String>()
+    var liste = ""
 
     override val root = form {
+
+        einträge = eintraegeController.eintraege
+        liste = eintraegeController.liste
+
         style{
             padding = box(10.px)
             fontSize = 15.px
@@ -19,9 +23,9 @@ class EintragUebersichtFenster : View("Einträge Übersicht") {
             textFill= javafx.scene.paint.Color.WHITE
             setPrefSize(360.0, 600.0)
         }
-        /*println(liste)
-        println(einträge)*/
+    }
 
+    init {
         hbox {
             button("< ") {
                 font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 20.0)
@@ -65,24 +69,20 @@ class EintragUebersichtFenster : View("Einträge Übersicht") {
             }
         }
 
-            button("+")
-            {
-                font = Font.font("Segoe UI", FontWeight.BOLD, 14.0)
-                shape = Circle(15.0)
-                setMaxSize(15.0 * 2, 15.0 * 2)
-                setMinSize(15.0 * 2, 15.0 * 2)
-                style {
-                    backgroundColor = multi(c("#4C2DC6"))
-                    textFill = javafx.scene.paint.Color.BLACK
-                }
-                action {
-                    replaceWith(EintragErstellenFenster::class, sizeToScene = false, centerOnScreen = true)
-                }
+        button("+")
+        {
+            font = Font.font("Segoe UI", FontWeight.BOLD, 14.0)
+            shape = Circle(15.0)
+            setMaxSize(15.0 * 2, 15.0 * 2)
+            setMinSize(15.0 * 2, 15.0 * 2)
+            style {
+                backgroundColor = multi(c("#4C2DC6"))
+                textFill = javafx.scene.paint.Color.BLACK
             }
-    }
-    override fun onRefresh() {
-        super.onRefresh()
-        reloadViewsOnFocus()
+            action {
+                replaceWith(EintragErstellenFenster::class, sizeToScene = false, centerOnScreen = true)
+            }
+        }
     }
 }
 

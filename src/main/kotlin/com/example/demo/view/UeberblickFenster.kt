@@ -67,7 +67,6 @@ class UeberblickFenster : View ("E.P.O")
         listenController.connection(userid)
         lna = listenController.listenname
         lfd = listenController.listenFaelligkeitsDatum
-        println(lna)
 
         var lf:String
         var zz = 0
@@ -85,15 +84,14 @@ class UeberblickFenster : View ("E.P.O")
                             textFill = javafx.scene.paint.Color.WHITE
                         }
                         action {
-                            //println(la)
                             eintraegeController.eintraege.clear()
                             eintraegeController.connection(la)
                             lna.clear()
                             lid.clear()
                             lfd.clear()
-                            //println(la)
-                            EintragUebersichtFenster().root
-                            replaceWith(EintragUebersichtFenster::class)
+                            /*val a = EintragUebersichtFenster()
+                            replaceWith(a)*/
+                            replaceWith(EintragUebersichtFenster())
                         }
                     }
 

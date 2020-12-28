@@ -16,15 +16,16 @@ import java.security.MessageDigest
 import java.sql.SQLException
 import javax.json.JsonObject
 
-var nn: String = ""
-var pw: String = ""
-var id: String = ""
-var vn: String = ""
-var nachn: String = ""
-var email: String = ""
-var userId: Int = 0
-
 object einstellungenController {
+
+    var nnTest: String = ""
+    var nn: String = ""
+    var pw: String = ""
+    var id: String = ""
+    var vn: String = ""
+    var nachn: String = ""
+    var email: String = ""
+    var userId: Int = 0
 
     fun profil(){
 
@@ -32,14 +33,20 @@ object einstellungenController {
             userId=loginController.userId
             val r = khttp.get("http://localhost/api/public/index.php/benutzer")
             val json = r.jsonArray
-            val eins = json[0].toString()
             println(json)
             for (ja in json) {
                 val jo = ja as JSONObject
-                nn = jo.get("nutzername").toString()
-                pw = jo.get("passwort").toString()
-                id = jo.get("userid").toString()
-                println(nn)
+                nnTest = jo.get("nutzername").toString()
+                if(nnTest.equals(loginController.username)){
+                    //println(nnTest)
+                    nn = jo.get("nutzername").toString()
+                    vn = jo.get("vorname").toString()
+                    nachn = jo.get("nachname").toString()
+                    email = jo.get("email").toString()
+                    pw = jo.get("passwort").toString()
+                    id = jo.get("userid").toString()
+                    //println(nn)
+                }
             }
         }
         catch (e: SQLException){

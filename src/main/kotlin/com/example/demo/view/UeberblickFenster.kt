@@ -7,6 +7,7 @@ import tornadofx.*
 import kotlin.collections.ArrayList
 import com.example.demo.view.EintragUebersichtFenster
 import com.example.demo.view.EinstellungenFenster
+import com.example.demo.view.einstellungenController
 
 class UeberblickFenster : View ("E.P.O")
 {
@@ -55,6 +56,7 @@ class UeberblickFenster : View ("E.P.O")
                             textFill = javafx.scene.paint.Color.BLACK
                         }
                         action{
+                            einstellungenController.profil()
                             replaceWith(EinstellungenFenster::class, sizeToScene = false, centerOnScreen = true)
                         }
                     }

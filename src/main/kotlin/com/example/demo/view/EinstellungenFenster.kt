@@ -19,36 +19,30 @@ import com.example.demo.view.einstellungenController
 
 class EinstellungenFenster : View("Einstellungen") {
 
-    val model = ViewModel()
-    val nutzername = model.bind { SimpleStringProperty() }
-    val vorname = model.bind { SimpleStringProperty() }
-    val nachname = model.bind { SimpleStringProperty() }
-    val email = model.bind { SimpleStringProperty() }
-    val passwort = model.bind { SimpleStringProperty() }
-
     override val root = form {
-
         style {
             fontSize = 15.px
             backgroundColor = multi(c(colorString = "black"))
             textFill = c(colorString = "#FFFFFF")
         }
 
-        hbox {
+        var nutzername=einstellungenController.nn
+        var vorname=einstellungenController.vn
+        var nachname=einstellungenController.nachn
+        var email=einstellungenController.email
+        var passwort=einstellungenController.pw
+        //println(nutzername+vorname+nachname+email)
 
-            addClass(Styles.heading)
+        hbox {
             paddingTop = 25
             paddingBottom = 25
             paddingRight = 50
             paddingLeft = 50
-            alignment = Pos.CENTER
-            spacing = 30.0
 
             vbox(spacing = 20) {
-                vbox(10, Pos.CENTER) {
+                vbox(0) {
                     //Profilbild
 
-                    fieldset(labelPosition = Orientation.VERTICAL) {
                         label("Profil") {
                             font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 20.0)
                             addClass(Styles.heading)
@@ -56,35 +50,48 @@ class EinstellungenFenster : View("Einstellungen") {
                                 textFill = c("#4C2DC6")
                             }
                         }
-                        label("NUTZERNAME") {
-                            font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
-                            addClass(Styles.heading)
-                        }
-                        label() {
-                            font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
-                            addClass(Styles.heading)
+
+                        hbox{
+                        vbox(spacing=20){
+                            label("NUTZERNAME:") {
+                                font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
+                                addClass(Styles.heading)
+                            }
+                            label("VORNAME:") {
+                                font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
+                                addClass(Styles.heading)
+                            }
+                            label("NACHNAME:") {
+                                font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
+                                addClass(Styles.heading)
+                            }
+                            label("EMAIL:") {
+                                font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
+                                addClass(Styles.heading)
+                            }
+                        } // ende vbox Überschriften
+                        vbox(spacing=20){
+                            label(nutzername) {
+                                font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
+                                addClass(Styles.heading)
+                            }
+                            label(vorname) {
+                                font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
+                                addClass(Styles.heading)
+                            }
+                            label(nachname) {
+                                font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
+                                addClass(Styles.heading)
+                            }
+                            label(email) {
+                                font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
+                                addClass(Styles.heading)
+                            }
+                        } // ende vbox eingelesenes Profil
                         }
 
-                        label("VORNAME") {
-                            font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
-                            addClass(Styles.heading)
-                        }
-                        textfield(vorname).required()
 
-                        label("NACHNAME") {
-                            font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
-                            addClass(Styles.heading)
-                        }
-                        textfield(nachname).required()
-
-                        label("EMAIL") {
-                            font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
-                            addClass(Styles.heading)
-                        }
-                        textfield(email).required()
-
-
-                        vbox(10, Pos.CENTER) {
+                        vbox(10) {
                             fieldset(labelPosition = Orientation.VERTICAL) {
                                 label("Optionen") {
                                     font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 20.0)
@@ -93,8 +100,7 @@ class EinstellungenFenster : View("Einstellungen") {
                                         textFill = c("#4C2DC6")
                                     }
                                 }
-                            }
-                        }
+
                         button("Mitteilungen") {
                             style {
                                 backgroundColor = multi(c(colorString = "black"))
@@ -127,16 +133,15 @@ class EinstellungenFenster : View("Einstellungen") {
                                 }
 
                         }
+                }
+            }
 
-                    }
                 }
             }
 
         }
     }
     override fun onDock() {
-        nutzername.value = ""
-        passwort.value = "1234"
-        model.clearDecorators()
+
     }
 }

@@ -103,7 +103,7 @@ class UeberblickFenster : View ("E.P.O")
                         }
                         action {
                             ListeBearbeitenController.getName(la)
-                            replaceWith(ListeBearbeiten::class, sizeToScene = false, centerOnScreen = true)
+                            replaceWith(ListeBearbeiten())
                         }
                     }
                 }

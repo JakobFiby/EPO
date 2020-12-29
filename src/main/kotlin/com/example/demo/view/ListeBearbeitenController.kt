@@ -18,6 +18,7 @@ object ListeBearbeitenController {
     var anlegen:Boolean = true
     var text:Int = 0
     var gf = false
+    var angemeldterUser = loginController.userId
 
     fun getName(aListe:String){
         listeName = aListe
@@ -97,5 +98,23 @@ object ListeBearbeitenController {
             }
             anlegen = true
         }
+    }
+
+    fun listeloeschen(){
+
+        val r2 = khttp.get("http://localhost/api/public/index.php/liste")
+        val json2 = r2.jsonArray
+
+        for (ja2 in json2) {
+            val jo2 = ja2 as JSONObject
+            ln = jo2.get("listename").toString()
+            li = jo2.get("listeid").toString()
+
+            if(ln.equals(listeName)) {
+                listeid = li
+            }
+        }
+
+        var r = khttp.delete("http://localhost/api/public/index.php/listeloeschen?userid=$angemeldterUser&listeid=$listeid")
     }
 }

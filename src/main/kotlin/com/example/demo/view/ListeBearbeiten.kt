@@ -32,7 +32,7 @@ class ListeBearbeiten : View("Bearbeiten") {
                         }
                         action {
                             name.value = ""
-                            replaceWith(UeberblickFenster::class)
+                            replaceWith(UeberblickFenster())
                         } //ende action
                     } //ende button zurück
 
@@ -99,7 +99,7 @@ class ListeBearbeiten : View("Bearbeiten") {
                         ))
                     }
                     action {
-
+                        ListeBearbeitenController.listeloeschen()
                     }
                 }
             }

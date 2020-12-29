@@ -28,13 +28,32 @@ object einstellungenController {
     var userId: Int = 0
     var profilopt: String = ""
     var andernaufruf:String=""
+    var andernJaNein: Boolean = false
 
-    fun profil(profil: String, andern: String){
+    fun profil(profil: String, andern: String, JaNein: Boolean){
+
 
         try {
             userId=loginController.userId
             profilopt =profil
             andernaufruf=andern
+            andernJaNein=JaNein
+            if(andernJaNein==true){
+                println("Änderung erfolgt")
+                if(profil.equals("Nutzername")){
+
+                }
+                if(profil.equals("Vorname")){
+
+                }
+                if(profil.equals("Nachname")){
+
+                }
+                if(profil.equals("Email")){
+
+                }
+            }
+
 
             val r = khttp.get("http://localhost/api/public/index.php/benutzer")
             val json = r.jsonArray
@@ -53,6 +72,7 @@ object einstellungenController {
                     //println(nn)
                 }
             }
+            andernJaNein=false
         }
         catch (e: SQLException){
             e.printStackTrace()

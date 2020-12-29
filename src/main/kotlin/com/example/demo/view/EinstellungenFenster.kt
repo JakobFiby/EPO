@@ -72,7 +72,7 @@ class EinstellungenFenster : View("Einstellungen") {
                         }
 
                         hbox{
-                        vbox(spacing=20){
+                        vbox(spacing=0){
                             label("NUTZERNAME:") {
                                 font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
                                 addClass(Styles.heading)
@@ -90,7 +90,7 @@ class EinstellungenFenster : View("Einstellungen") {
                                 addClass(Styles.heading)
                             }
                         } // ende vbox Überschriften
-                        vbox(spacing=32){
+                        vbox(spacing=13){
                             button(nutzername) {
                                 font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
                                 addClass(Styles.heading)
@@ -100,7 +100,7 @@ class EinstellungenFenster : View("Einstellungen") {
                                     textFill = c(colorString = "#FFFFFF")
                                 }
                                 action {
-                                    einstellungenController.profil("Nutzername", nutzername)
+                                    einstellungenController.profil("Nutzername", nutzername, false)
                                     replaceWith(ProfilFenster())
                                 }
                             }
@@ -112,7 +112,7 @@ class EinstellungenFenster : View("Einstellungen") {
                                     textFill = c(colorString = "#FFFFFF")
                                 }
                                 action {
-                                    einstellungenController.profil("Vorname", vorname)
+                                    einstellungenController.profil("Vorname", vorname, false)
                                     replaceWith(ProfilFenster())
                                 }
                             }
@@ -124,7 +124,7 @@ class EinstellungenFenster : View("Einstellungen") {
                                     textFill = c(colorString = "#FFFFFF")
                                 }
                                 action {
-                                    einstellungenController.profil("Nachname", nachname)
+                                    einstellungenController.profil("Nachname", nachname, false)
                                     replaceWith(ProfilFenster())
                                 }
                             }
@@ -136,7 +136,7 @@ class EinstellungenFenster : View("Einstellungen") {
                                     textFill = c(colorString = "#FFFFFF")
                                 }
                                 action {
-                                    einstellungenController.profil("Email", email)
+                                    einstellungenController.profil("Email", email, false)
                                     replaceWith(ProfilFenster())
                                 }
                             }

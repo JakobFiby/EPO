@@ -56,7 +56,7 @@ class UeberblickFenster : View ("E.P.O")
                             textFill = javafx.scene.paint.Color.BLACK
                         }
                         action{
-                            einstellungenController.profil("", "")
+                            einstellungenController.profil("", "", false)
                             replaceWith(EinstellungenFenster::class, sizeToScene = false, centerOnScreen = true)
                         }
                     }

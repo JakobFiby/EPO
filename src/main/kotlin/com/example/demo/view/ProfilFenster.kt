@@ -42,7 +42,7 @@ class ProfilFenster : View("Profil bearbeiten") {
             vbox(spacing = 10) {
                 hbox {
                     button("< ") {
-                        font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 10.0)
+                        font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 15.0)
                         style {
                             backgroundColor = multi(c(colorString = "black"))
                             textFill = c(colorString = "#777678")
@@ -52,7 +52,7 @@ class ProfilFenster : View("Profil bearbeiten") {
                         } //ende action
                     } //ende button zurück
                     label("Profil bearbeiten") {
-                        font = Font.font("Segoe UI", FontWeight.BOLD, 20.0)
+                        font = Font.font("Segoe UI", FontWeight.BOLD, 25.0)
                         textFill = c("#4C2DC6")
                     }
                 }
@@ -75,19 +75,20 @@ class ProfilFenster : View("Profil bearbeiten") {
         label()
 
         hbox{
-            button("")
+            button("Fertig")
             {
-                font = Font.font("Segoe UI", FontWeight.BOLD, 14.0)
-                shape = Circle(15.0)
-                setMaxSize(15.0 * 2, 15.0 * 2)
-                setMinSize(15.0 * 2, 15.0 * 2)
-
+                font = Font.font("Segoe UI", FontWeight.LIGHT, 15.0)
                 style {
                     backgroundColor = multi(c("#4C2DC6"))
                     textFill = javafx.scene.paint.Color.BLACK
                 }
                 action {
+                    if(aenderung.value != einstellungenController.andernaufruf){
+                        println("Es hat sich was geändert")
+                        einstellungenController.profil(einstellungenController.profilopt, aenderung.value, true)
+                    }
                     replaceWith(EinstellungenFenster())
+
                 }
             }
         }

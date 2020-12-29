@@ -33,8 +33,6 @@ object eintraegeBeschreibungController {
             val r=s.executeQuery("SELECT beschreibung FROM eintrag WHERE eintragname = '$aEintrag'")
             r.next()
             beschreibung = r.getString("beschreibung"*/
-
-            EintraegeBeschreibung().openWindow()
         }
         catch(e: SQLException){
             e.printStackTrace()

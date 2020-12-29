@@ -62,7 +62,7 @@ class ProfilFenster : View("Profil bearbeiten") {
             vbox(10) {
 
                 label(einstellungenController.profilopt) {
-                    font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
+                    font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 20.0)
                     addClass(Styles.heading)
                 }
 

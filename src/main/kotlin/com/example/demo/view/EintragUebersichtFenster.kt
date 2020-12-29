@@ -52,8 +52,7 @@ class EintragUebersichtFenster : View("Einträge Übersicht") {
             }
             for (e in einträge) {
                 hbox {
-                    checkbox() {}
-                    button("$e")
+                    button("o $e")
                     {
                         style {
                             font = Font.font("Segoe UI", FontWeight.NORMAL, 13.0)
@@ -61,7 +60,16 @@ class EintragUebersichtFenster : View("Einträge Übersicht") {
                             textFill = javafx.scene.paint.Color.WHITE
                         }
                         action {
-                            eintraegeBeschreibungController.connection(e)
+                            //eintraegeBeschreibungController.connection(e)
+                            eintragFertigController.connection(e)
+
+                            if(eintragFertigController.fertig){
+                                style{
+                                    font = Font.font("Segoe UI", FontWeight.NORMAL, 13.0)
+                                    backgroundColor = multi(c("#111111"))
+                                    textFill = javafx.scene.paint.Color.BLUE
+                                }
+                            }
                         }
                     }
                 }

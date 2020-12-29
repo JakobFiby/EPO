@@ -52,13 +52,6 @@ object eintraegeController {
 
             i++
         }
-        //println(eintraege)
-        //println(liste)
-
-        /*EintragUebersichtFenster().onRefresh()
-        EintragUebersichtFenster().root.reloadStylesheets()*/
-
-        //EintragUebersichtFenster().form().button("Hallo")
     }
     catch(e: SQLException){
         e.printStackTrace()

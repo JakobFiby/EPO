@@ -87,6 +87,7 @@ class ProfilFenster : View("Profil bearbeiten") {
                         println("Es hat sich was geändert")
                         einstellungenController.profil(einstellungenController.profilopt, aenderung.value, true)
                     }
+                    einstellungenController.profil("", "", false)
                     replaceWith(EinstellungenFenster())
 
                 }

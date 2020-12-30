@@ -19,6 +19,12 @@ import com.example.demo.view.einstellungenController
 
 class EinstellungenFenster : View("Einstellungen") {
 
+    var nutzername=einstellungenController.nn
+    var vorname=einstellungenController.vn
+    var nachname=einstellungenController.nachn
+    var email=einstellungenController.email
+    var passwort=einstellungenController.pw
+
     override val root = form {
         style {
             fontSize = 15.px
@@ -26,11 +32,6 @@ class EinstellungenFenster : View("Einstellungen") {
             textFill = c(colorString = "#FFFFFF")
         }
 
-        var nutzername=einstellungenController.nn
-        var vorname=einstellungenController.vn
-        var nachname=einstellungenController.nachn
-        var email=einstellungenController.email
-        var passwort=einstellungenController.pw
         //println(nutzername+vorname+nachname+email)
 
         hbox {

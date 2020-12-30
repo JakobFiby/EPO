@@ -71,76 +71,92 @@ class EinstellungenFenster : View("Einstellungen") {
                             }
                         }
 
-                        hbox{
-                        vbox(spacing=0){
-                            label("NUTZERNAME:") {
-                                font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
-                                addClass(Styles.heading)
-                            }
-                            label("VORNAME:") {
-                                font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
-                                addClass(Styles.heading)
-                            }
-                            label("NACHNAME:") {
-                                font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
-                                addClass(Styles.heading)
-                            }
-                            label("EMAIL:") {
-                                font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
-                                addClass(Styles.heading)
-                            }
-                        } // ende vbox Überschriften
-                        vbox(spacing=13){
-                            button(nutzername) {
-                                font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
-                                addClass(Styles.heading)
-                                //paddingBottom = 25
-                                style {
-                                    backgroundColor = multi(c(colorString = "black"))
-                                    textFill = c(colorString = "#FFFFFF")
+                        hbox {
+                            style {
+                                backgroundColor = multi(c("#111111"))
+                            }//ende style
+                            vbox(spacing = 0) {
+                                label("NUTZERNAME:") {
+                                    style {
+                                        backgroundColor = multi(c("#111111"))
+                                    }
+                                    font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
+                                    addClass(Styles.heading)
                                 }
-                                action {
-                                    einstellungenController.profil("Nutzername", nutzername, false)
-                                    replaceWith(ProfilFenster())
+                                label("VORNAME:") {
+                                    style {
+                                        backgroundColor = multi(c("#111111"))
+                                    }
+                                    font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
+                                    addClass(Styles.heading)
                                 }
-                            }
-                            button(vorname) {
-                                font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
-                                addClass(Styles.heading)
-                                style {
-                                    backgroundColor = multi(c(colorString = "black"))
-                                    textFill = c(colorString = "#FFFFFF")
+                                label("NACHNAME:") {
+                                    style {
+                                        backgroundColor = multi(c("#111111"))
+                                    }
+                                    font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
+                                    addClass(Styles.heading)
                                 }
-                                action {
-                                    einstellungenController.profil("Vorname", vorname, false)
-                                    replaceWith(ProfilFenster())
+                                label("EMAIL:") {
+                                    style {
+                                        backgroundColor = multi(c("#111111"))
+                                    }
+                                    font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
+                                    addClass(Styles.heading)
                                 }
-                            }
-                            button(nachname) {
-                                font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
-                                addClass(Styles.heading)
-                                style {
-                                    backgroundColor = multi(c(colorString = "black"))
-                                    textFill = c(colorString = "#FFFFFF")
+                            } // ende vbox Überschriften
+                            vbox(spacing = 13) {
+                                button(nutzername) {
+                                    font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
+                                    addClass(Styles.heading)
+                                    //paddingBottom = 25
+                                    style {
+                                        backgroundColor = multi(c("#111111"))
+                                        textFill = c(colorString = "#FFFFFF")
+                                    }
+                                    action {
+                                        einstellungenController.profil("Nutzername", nutzername, false)
+                                        replaceWith(ProfilFenster())
+                                    }
                                 }
-                                action {
-                                    einstellungenController.profil("Nachname", nachname, false)
-                                    replaceWith(ProfilFenster())
+                                button(vorname) {
+                                    font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
+                                    addClass(Styles.heading)
+                                    style {
+                                        backgroundColor = multi(c("#111111"))
+                                        textFill = c(colorString = "#FFFFFF")
+                                    }
+                                    action {
+                                        einstellungenController.profil("Vorname", vorname, false)
+                                        replaceWith(ProfilFenster())
+                                    }
                                 }
-                            }
-                            button(email) {
-                                font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
-                                addClass(Styles.heading)
-                                style {
-                                    backgroundColor = multi(c(colorString = "black"))
-                                    textFill = c(colorString = "#FFFFFF")
+                                button(nachname) {
+                                    font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
+                                    addClass(Styles.heading)
+                                    style {
+                                        backgroundColor = multi(c("#111111"))
+                                        textFill = c(colorString = "#FFFFFF")
+                                    }
+                                    action {
+                                        einstellungenController.profil("Nachname", nachname, false)
+                                        replaceWith(ProfilFenster())
+                                    }
                                 }
-                                action {
-                                    einstellungenController.profil("Email", email, false)
-                                    replaceWith(ProfilFenster())
+                                button(email) {
+                                    font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
+                                    addClass(Styles.heading)
+                                    style {
+                                        backgroundColor = multi(c("#111111"))
+                                        textFill = c(colorString = "#FFFFFF")
+                                    }
+                                    action {
+                                        einstellungenController.profil("Email", email, false)
+                                        replaceWith(ProfilFenster())
+                                    }
                                 }
-                            }
-                        } // ende vbox eingelesenes Profil
+                            } // ende vbox eingelesenes Profil
+                        }
                         }
 
 
@@ -153,10 +169,13 @@ class EinstellungenFenster : View("Einstellungen") {
                                         textFill = c("#4C2DC6")
                                     }
                                 }
-
+                        vbox(){
+                            style{
+                                backgroundColor = multi(c("#111111"))
+                            }//ende style
                         button("Mitteilungen") {
                             style {
-                                backgroundColor = multi(c(colorString = "black"))
+                                backgroundColor = multi(c("#111111"))
                                 textFill = c(colorString = "#FFFFFF")
                             }
                             action{
@@ -167,7 +186,7 @@ class EinstellungenFenster : View("Einstellungen") {
 
                         button("Nachtmodus") {
                             style {
-                                backgroundColor = multi(c(colorString = "black"))
+                                backgroundColor = multi(c("#111111"))
                                 textFill = c(colorString = "#FFFFFF")
                             }
                             action{
@@ -178,7 +197,7 @@ class EinstellungenFenster : View("Einstellungen") {
 
                             button("Abmelden") {
                                 style {
-                                    backgroundColor = multi(c(colorString = "black"))
+                                    backgroundColor = multi(c("#111111"))
                                     textFill = c(colorString = "#FFFFFF")
                                 }
                                 action{
@@ -188,13 +207,11 @@ class EinstellungenFenster : View("Einstellungen") {
                         }
                 }
             }
-
+                        }
                 }
             }
 
 
     }
-    override fun onDock() {
 
-    }
-}
+

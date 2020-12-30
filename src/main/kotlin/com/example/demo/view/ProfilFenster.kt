@@ -42,7 +42,7 @@ class ProfilFenster : View("Profil bearbeiten") {
             vbox(spacing = 10) {
                 hbox {
                     button("< ") {
-                        font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 15.0)
+                        font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 13.0)
                         style {
                             backgroundColor = multi(c(colorString = "black"))
                             textFill = c(colorString = "#777678")
@@ -52,7 +52,7 @@ class ProfilFenster : View("Profil bearbeiten") {
                         } //ende action
                     } //ende button zurück
                     label("Profil bearbeiten") {
-                        font = Font.font("Segoe UI", FontWeight.BOLD, 25.0)
+                        font = Font.font("Segoe UI", FontWeight.BOLD, 23.0)
                         textFill = c("#4C2DC6")
                     }
                 }

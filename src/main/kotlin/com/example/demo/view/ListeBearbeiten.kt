@@ -95,11 +95,11 @@ class ListeBearbeiten : View("Bearbeiten") {
                                 top = c("#c63229"),
                                 bottom = c("#c63229"),
                                 right = c("#c63229"),
-                                left = c("#c63229")
-                        ))
+                                left = c("#c63229")))
                     }
                     action {
                         ListeBearbeitenController.listeloeschen()
+                        replaceWith(UeberblickFenster())
                     }
                 }
             }

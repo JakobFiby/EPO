@@ -11,6 +11,8 @@ object eintragFertigController {
     var eid = ""
     var erledigt = ""
     var fertig = false
+    var wk = ""
+    var wichtigkeit = ""
 
     fun connection(aEintrag:String) = try {
         val r = khttp.get("http://localhost/api/public/index.php/eintrag")
@@ -22,15 +24,19 @@ object eintragFertigController {
             en = jo.get("eintragname").toString()
             ed = jo.get("erledigt").toString()
             eid = jo.get("eintragid").toString()
+            wk = jo.get("wichtigkeit").toString()
 
             if(en.equals(aEintrag)) {
+                wichtigkeit = wk
                 if(ed.equals("0")) {
                     erledigt = "1"
                     val r2 = khttp.put("http://localhost/api/public/index.php/updateEintrag?eintragid=$eid&erledigt=$erledigt")
                     fertig = true
                 }
                 else{
-                    //println("schon fertig")
+                    erledigt = "0"
+                    val r2 = khttp.put("http://localhost/api/public/index.php/updateEintrag?eintragid=$eid&erledigt=$erledigt")
+                    fertig = false
                 }
             }
         }

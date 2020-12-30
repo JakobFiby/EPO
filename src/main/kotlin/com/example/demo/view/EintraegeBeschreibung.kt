@@ -47,6 +47,7 @@ class EintraegeBeschreibung : View("Beschreibung") {
                 }
 
             label()
+
             button("LÖSCHEN") {
                 isDefaultButton = true
                 setPrefSize(200.0, 10.0)
@@ -58,11 +59,11 @@ class EintraegeBeschreibung : View("Beschreibung") {
                             top = c("#c63229"),
                             bottom = c("#c63229"),
                             right = c("#c63229"),
-                            left = c("#c63229")
-                    ))
+                            left = c("#c63229")))
                 }
                 action {
-
+                    eintraegeBeschreibungController.eintragLoeschen()
+                    replaceWith(EintragUebersichtFenster())
                 }
             }
         }

@@ -22,7 +22,7 @@ class ListeErstellenFenster : View("Liste erstellen") {
             backgroundColor=multi(c(colorString="black"))
             textFill= Color.LIGHTGREY
             alignment = Pos.CENTER
-        }
+        }//ende style
 
         hbox {
             paddingTop=10
@@ -39,11 +39,10 @@ class ListeErstellenFenster : View("Liste erstellen") {
                             style {
                                 backgroundColor = multi(c(colorString = "black"))
                                 textFill = c(colorString = "#777678")
-                            }
+                            }//ende style
                             action {
-                                replaceWith(UeberblickFenster::class)
+                                replaceWith(UeberblickFenster())
                                 name.value = ""
-                                //sollte reloaded werden --> Kathi fragen!!
                             } //ende action
                         } //ende button zurück
 
@@ -51,25 +50,24 @@ class ListeErstellenFenster : View("Liste erstellen") {
                             font = Font.font("Segoe UI", FontWeight.BOLD, 30.0)
                             textFill = c("#4c2dc6")
                             alignment = Pos.CENTER
-                        }
-                    }
-                }
+                        }//ende label neue liste
+                    }//ende hbox
+                }//ende vbox
+
                 label("LISTENNAME"){
                     font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 15.0)
                     addClass(Styles.heading)
-                }
+                }//ende label listename
                     textfield(name).required()
                     setMaxSize(212.0, 03.0)
 
                 label("FÄLLIGKEITSDATUM"){
                     font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 15.0)
                     addClass(Styles.heading)
-                }
+                }//ende label fälligkeitsdatum
                     datepicker(dateProperty) {
                         value = LocalDate.now()
-                    }
-                    //wie kann ich das required setzen --> wär mega nice
-
+                    }//ende datepicker
 
                 button("Erstellen") {
                     enableWhen(model.valid)
@@ -84,29 +82,28 @@ class ListeErstellenFenster : View("Liste erstellen") {
                                 bottom = c("#4c2dc6"),
                                 right = c("#4c2dc6"),
                                 left = c("#4c2dc6")))
-                        }
+                        }//ende style
                     action {
                         val dateValue = dateProperty.value
                         val todaysDate = LocalDate.now()
                         val listename = name.value
-                        var userid:Int = loginController.userId
+                        val userid:Int = loginController.userId
 
                         if(dateValue < todaysDate){
                             name.value = "Fälligkeitsd. darf nicht kleiner als heutiges Datum sein!"
-                        }
+                        }//ende 1. if
                         else{
                             listeErstellenController.listehinzufügen(listename, userid, dateValue, todaysDate)
                             if(!listeErstellenController.erstellt){
                                 name.value = "Liste konnte nicht erstellt werden!"
-                            }
+                            }//ende 2. if
                             else{
                                 name.value = ""
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-}
+                            }//ende 2. else
+                        }//ende 1. else
+                    }//ende action
+                }//ende button erstellen
+            }//ende vbox
+        }//ende hbox
+    }//ende root
+}//ende class

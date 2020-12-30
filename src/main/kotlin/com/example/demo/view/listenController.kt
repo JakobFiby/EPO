@@ -27,7 +27,6 @@ object listenController{
 
             val r = khttp.get("http://localhost/api/public/index.php/userliste")
             val json = r.jsonArray
-            //println(json)
 
             for (ja in json) {
                 val jo = ja as JSONObject
@@ -36,17 +35,15 @@ object listenController{
 
                 if(ui.equals(userid.toString())) {
                     listenid.add(li)
-                }
-            }
+                }//ende if
+            }//ende for
 
             val r2 = khttp.get("http://localhost/api/public/index.php/liste")
             val json2 = r2.jsonArray
-            //println(json2)
 
             var i = 0
 
-            for(ja2 in json2)
-            {
+            for(ja2 in json2) {
                 val jo2 = ja2 as JSONObject
                 li = jo2.get("listeid").toString()
                 fd = jo2.get("faelligkeitsdatum").toString()
@@ -56,15 +53,13 @@ object listenController{
                     if (li.equals(listid)) {
                         listenname.add((ln))
                         listenFaelligkeitsDatum.add(fd)
-                    }
-                }
+                    }//ende if
+                }//ende for
                 i++
-            }
-            //println(listenname)
-
-        }
+            }//ende for
+        }//ende try
         catch(e: SQLException){
             e.printStackTrace()
-        }
-    }
-}
+        }//ende catch
+    }//ende connection
+}//ende object

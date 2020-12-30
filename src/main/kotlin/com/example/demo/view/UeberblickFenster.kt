@@ -5,16 +5,14 @@ import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
 import tornadofx.*
 import kotlin.collections.ArrayList
-import com.example.demo.view.EintragUebersichtFenster
-import com.example.demo.view.EinstellungenFenster
-import com.example.demo.view.einstellungenController
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 class UeberblickFenster : View ("E.P.O")
 {
     var lid = ArrayList<Int>()
     var lna = ArrayList<String>()
     var lfd = ArrayList<String>()
-    var ausgewählteListe:String = ""
 
     override val root = form {
 
@@ -23,12 +21,10 @@ class UeberblickFenster : View ("E.P.O")
             fontSize = 15.px
             backgroundColor=multi(c(colorString="black"))
             textFill= javafx.scene.paint.Color.WHITE
+        }//ende style
 
-            //setPrefSize(360.0, 600.0)
-        }
-
-        var username = loginController.username
-        var userid:Int = loginController.userId
+        val username = loginController.username
+        val userid:Int = loginController.userId
 
         hbox {
             paddingTop = 10
@@ -41,7 +37,7 @@ class UeberblickFenster : View ("E.P.O")
                     label("Willkommen $username:") {
                         font = Font.font("Segoe UI", FontWeight.BOLD, 25.0)
                         textFill= c("#4C2DC6")
-                    }
+                    }//ende label willkommen
 
                     label("    ")
 
@@ -54,15 +50,15 @@ class UeberblickFenster : View ("E.P.O")
                         style{
                             backgroundColor = multi(c("#777678"))
                             textFill = javafx.scene.paint.Color.BLACK
-                        }
+                        }//ende style
                         action{
                             einstellungenController.profil("", "", false)
-                            replaceWith(EinstellungenFenster::class, sizeToScene = false, centerOnScreen = true)
-                        }
-                    }
-                }
-            }
-        }
+                            replaceWith(EinstellungenFenster())
+                        }//ende action
+                    }//ende button Einstellungen
+                }//ende hbox
+            }//ende vbox
+        }//ende hbox
 
         listenController.connection(userid)
         lna = listenController.listenname
@@ -74,7 +70,7 @@ class UeberblickFenster : View ("E.P.O")
         vbox {
             style{
                 backgroundColor = multi(c("#111111"))
-            }
+            }//ende style
             for (la in lna) {
                 hbox {
                     button("o $la") {
@@ -82,45 +78,51 @@ class UeberblickFenster : View ("E.P.O")
                             font = Font.font("Segoe UI", FontWeight.NORMAL, 13.0)
                             backgroundColor = multi(c("#111111"))
                             textFill = javafx.scene.paint.Color.WHITE
-                        }
+                        }//ende style
                         action {
                             eintraegeController.eintraege.clear()
                             eintraegeController.connection(la)
                             lna.clear()
                             lid.clear()
                             lfd.clear()
-                            /*val a = EintragUebersichtFenster()
-                            replaceWith(a)*/
                             replaceWith(EintragUebersichtFenster())
-                        }
-                    }
+                        }//ende action
+                    }//ende button listename
 
                     button("..."){
                         style{
                             font = Font.font("Segoe UI", FontWeight.NORMAL, 15.0)
                             backgroundColor = multi(c("#111111"))
                             textFill = c(colorString = "#4c2dc6")
-                        }
+                        }//ende style
                         action {
                             ListeBearbeitenController.getName(la)
                             replaceWith(ListeBearbeiten())
-                        }
-                    }
-                }
+                        }//ende action
+                    }//ende button ...
+                }//ende hbox
 
                 lf = lfd[zz]
+                val todaysDate = LocalDate.now()
+                val date = LocalDate.parse(lf, DateTimeFormatter.ISO_DATE)
 
                 label("       $lf")
                 {
                     style {
                         textFill = javafx.scene.paint.Color.LIGHTGREY
-                    }
-                }
+                    }//ende style
+
+                    if(todaysDate>date){
+                        style{
+                            textFill = javafx.scene.paint.Color.RED
+                        }//ende style
+                    }//ende if ob überfällig
+                }//ende label fälligkeitsdatum
 
                 label("")
                 zz++
-            }
-        }
+            }//ende for
+        }//ende vbox
 
         hbox{
             button("+")
@@ -133,14 +135,14 @@ class UeberblickFenster : View ("E.P.O")
                 style {
                     backgroundColor = multi(c("#4C2DC6"))
                     textFill = javafx.scene.paint.Color.BLACK
-                }
+                }//ende style
                 action {
-                    replaceWith(ListeErstellenFenster::class, sizeToScene = false, centerOnScreen = true)
+                    replaceWith(ListeErstellenFenster())
                     lna.clear()
                     lid.clear()
                     lfd.clear()
-                }
-            }
-        }
-    }
-}
+                }//ende action
+            }//ende button +
+        }//ende hbox
+    }//ende root
+}//ende class

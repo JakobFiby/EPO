@@ -14,6 +14,10 @@ object eintraegeController {
     var li:String = ""
     var en:String = ""
     var listeid:String = ""
+    var wk = ""
+    var wichtigkeit = ArrayList<String>()
+    var fertig = ""
+    var erledigt = ArrayList<String>()
 
     fun connection(aListe:String) = try {
         liste = aListe
@@ -45,9 +49,13 @@ object eintraegeController {
             val jo2 = ja2 as JSONObject
             li = jo2.get("listeid").toString()
             en = jo2.get("eintragname").toString()
+            wk = jo2.get("wichtigkeit").toString()
+            fertig = jo2.get("erledigt").toString()
 
             if(li.equals(listeid)){
                 eintraege.add(en)
+                wichtigkeit.add((wk))
+                erledigt.add((fertig))
             }
 
             i++

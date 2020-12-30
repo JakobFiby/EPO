@@ -41,9 +41,9 @@ class EintragErstellenFenster : View("Liste erstellen") {
                             style {
                                 backgroundColor = multi(c(colorString = "black"))
                                 textFill = c(colorString = "#777678")
-                            }
+                            }//ende style
                             action {
-                                replaceWith(EintragUebersichtFenster::class)
+                                replaceWith(EintragUebersichtFenster())
                             } //ende action
                         } //ende button zurück
 
@@ -51,9 +51,9 @@ class EintragErstellenFenster : View("Liste erstellen") {
                             font = Font.font("Segoe UI", FontWeight.BOLD, 30.0)
                             textFill = c("#4c2dc6")
                             alignment = Pos.CENTER
-                        }
-                    }
-                }
+                        }//ende label 'neuer Eintrag'
+                    }//ende hbox
+                }//ende vbox
                 label("NAME"){
                     font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 15.0)
                     addClass(Styles.heading)

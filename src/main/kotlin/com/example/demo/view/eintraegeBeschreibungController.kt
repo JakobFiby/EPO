@@ -9,9 +9,12 @@ object eintraegeBeschreibungController {
     var beschreibung = ""
     var en:String = ""
     var b:String = ""
+    var eintragname = ""
 
-    fun connection(aEintrag:String){
+    fun beschreibung(aEintrag:String){
         try {
+            eintragname = aEintrag
+
             val r = khttp.get("http://localhost/api/public/index.php/eintrag")
             val json = r.jsonArray
             //println(json)
@@ -25,17 +28,17 @@ object eintraegeBeschreibungController {
                     beschreibung = b
                 }
             }
-
-            /*val c = DriverManager.getConnection(
-                    "jdbc:mysql://sql516.your-server.de:3306/epofgs",
-                    "digbizm_7", "2021##Epo5ck")
-            val s=c.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE)
-            val r=s.executeQuery("SELECT beschreibung FROM eintrag WHERE eintragname = '$aEintrag'")
-            r.next()
-            beschreibung = r.getString("beschreibung"*/
         }
         catch(e: SQLException){
             e.printStackTrace()
         }
+    }
+
+    fun eintragLoeschen(){
+
+        var r = khttp.delete("http://localhost/api/public/index.php/eintragloeschen?eintragname=$eintragname")
+
+        eintraegeController.eintraege.clear()
+        eintraegeController.connection(eintraegeController.liste)
     }
 }

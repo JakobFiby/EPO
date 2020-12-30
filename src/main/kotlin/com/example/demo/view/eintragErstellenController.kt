@@ -11,8 +11,6 @@ object eintragErstellenController {
 
     fun eintraghinzufügen(name:String, beschreibung:String, erledigt:Int, wichtigkeit:String, listeid:Int){
 
-        //println("$name $beschreibung $erledigt $wichtigkeit $listeid")
-
         gefunden.clear()
 
         val r = khttp.get("http://localhost/api/public/index.php/eintrag")
@@ -39,5 +37,7 @@ object eintragErstellenController {
             val request = khttp.post("http://localhost/api/public/index.php/eintragneu?eintragname=$name&beschreibung=$beschreibung&erledigt=$erledigt&wichtigkeit=$wichtigkeit&listeid=$listeid")
         }
 
+        eintraegeController.eintraege.clear()
+        eintraegeController.connection(eintraegeController.liste)
     }
 }

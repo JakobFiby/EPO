@@ -6,7 +6,7 @@ import javafx.stage.Stage
 import tornadofx.*
 
 
-class MyApp: App(MainView::class, Styles::class){
+class MyApp: App(StartView::class, Styles::class){
     override fun start(stage: Stage) {
         with(stage){
             minWidth =360.0

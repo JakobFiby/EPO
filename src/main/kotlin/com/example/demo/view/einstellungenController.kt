@@ -32,6 +32,7 @@ object einstellungenController {
     var profilopt: String = ""
     var andernaufruf:String=""
     var andernJaNein: Boolean = false
+    var farbmodus:String =""
 
     fun abmelden(){
         abmelden="1"
@@ -41,6 +42,20 @@ object einstellungenController {
         abmelden="0"
         val pro = khttp.put("http://localhost/api/public/index.php/updateUser?userid=${userId}&nutzername=${andernaufruf}&vorname=${vn}&nachname=${nachn}&email=${email}&abmelden=${abmelden}&farbschemaid=${farbschemaid}")
 
+    }
+    fun farbschemaaendern(farbmod:String){
+        if(farbmod.equals("Nachtmodus")){
+            farbmodus="Tagmodus"
+            farbschemaid="1"
+            val pro = khttp.put("http://localhost/api/public/index.php/updateUser?userid=${userId}&nutzername=${nn}&vorname=${vn}&nachname=${nachn}&email=${email}&abmelden=${abmelden}&farbschemaid=${farbschemaid}")
+
+        }
+        if(farbmod.equals("Tagmodus")){
+            farbmodus="Nachtmodus"
+            farbschemaid="2"
+            val pro = khttp.put("http://localhost/api/public/index.php/updateUser?userid=${userId}&nutzername=${nn}&vorname=${vn}&nachname=${nachn}&email=${email}&abmelden=${abmelden}&farbschemaid=${farbschemaid}")
+
+        }
     }
 
     fun profil(profil: String, andern: String, JaNein: Boolean){
@@ -91,6 +106,13 @@ object einstellungenController {
                 }
             }
             andernJaNein=false
+
+            if(farbschemaid.equals("1")){
+                farbmodus="Tagmodus"
+            }
+            if(farbschemaid.equals("2")){
+                farbmodus="Nachtmodus"
+            }
             /*EinstellungenFenster.nutzername=nn
             EinstellungenFenster.vorname=vn
             EinstellungenFenster.nachname=nachn

@@ -24,6 +24,7 @@ class EinstellungenFenster : View("Einstellungen") {
     var nachname=einstellungenController.nachn
     var email=einstellungenController.email
     var passwort=einstellungenController.pw
+    var farbmodus=einstellungenController.farbmodus
 
     override val root = form {
         style {
@@ -170,45 +171,54 @@ class EinstellungenFenster : View("Einstellungen") {
                                         textFill = c("#4C2DC6")
                                     }
                                 }
-                        vbox(){
+                        vbox(10){
                             style{
                                 backgroundColor = multi(c("#111111"))
                             }//ende style
-                        button("Mitteilungen") {
+                            hbox(10){
+                            radiobutton("Mitteilungen") {
                             style {
-                                backgroundColor = multi(c("#111111"))
-                                textFill = c(colorString = "#FFFFFF")
+                            backgroundColor = multi(c("#111111"))
+                            textFill = c(colorString = "#FFFFFF")
                             }
-                            action{
-
+                            action {
+                                println("Mitteilungen")
                             }
-
                         }
-
-                        button("Nachtmodus") {
-                            style {
-                                backgroundColor = multi(c("#111111"))
-                                textFill = c(colorString = "#FFFFFF")
-                            }
-                            action{
-
                             }
 
-                        }
-
-                            button("Abmelden") {
-                                style {
-                                    backgroundColor = multi(c("#111111"))
-                                    textFill = c(colorString = "#FFFFFF")
+                            hbox(10){
+                                radiobutton(farbmodus){
+                                    style {
+                                        backgroundColor = multi(c("#111111"))
+                                        textFill = c(colorString = "#FFFFFF")
+                                    }
+                                    action {
+                                        println(farbmodus)
+                                        //einstellungenController.profil("", "", false)
+                                        einstellungenController.farbschemaaendern(farbmodus)
+                                        replaceWith(EinstellungenFenster())
+                                    }
                                 }
-                                action{
-                                    einstellungenController.abmelden()
-                                    close()
-                                }
+                            }
 
-                        }
-                }
+                            hbox(10) {
+                                button("Abmelden") {
+                                    style {
+                                        backgroundColor = multi(c("#111111"))
+                                        textFill = c("#4C2DC6")
+                                    }
+                                    action {
+                                        einstellungenController.abmelden()
+                                        close()
+                                    }
+
+                                }
+                            }
+
             }
+
+                            }
                         }
                 }
             }

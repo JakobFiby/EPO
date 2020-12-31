@@ -93,6 +93,7 @@ class LoginFenster : View("Login") {
                                 loginController.login(nutzername.value, passwort.value)
                                 //println("Login = "+ loginController.working+loginController.pwB+loginController.nnB)
                                 if(loginController.working==true) {
+                                    einstellungenController.anmelden()
                                     replaceWith(UeberblickFenster::class, sizeToScene = false, centerOnScreen = true)
                                 }
                             }

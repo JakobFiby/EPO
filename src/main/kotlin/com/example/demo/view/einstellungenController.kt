@@ -33,6 +33,16 @@ object einstellungenController {
     var andernaufruf:String=""
     var andernJaNein: Boolean = false
 
+    fun abmelden(){
+        abmelden="1"
+        val pro = khttp.put("http://localhost/api/public/index.php/updateUser?userid=${userId}&nutzername=${andernaufruf}&vorname=${vn}&nachname=${nachn}&email=${email}&abmelden=${abmelden}&farbschemaid=${farbschemaid}")
+    }
+    fun anmelden(){
+        abmelden="0"
+        val pro = khttp.put("http://localhost/api/public/index.php/updateUser?userid=${userId}&nutzername=${andernaufruf}&vorname=${vn}&nachname=${nachn}&email=${email}&abmelden=${abmelden}&farbschemaid=${farbschemaid}")
+
+    }
+
     fun profil(profil: String, andern: String, JaNein: Boolean){
 
         try {
@@ -43,7 +53,7 @@ object einstellungenController {
 
             val r = khttp.get("http://localhost/api/public/index.php/benutzer")
             val json = r.jsonArray
-            println(json)
+            //println(json)
             for (ja in json) {
                 val jo = ja as JSONObject
                 nnTest = jo.get("nutzername").toString()

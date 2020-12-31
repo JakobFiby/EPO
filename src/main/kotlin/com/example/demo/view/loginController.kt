@@ -22,8 +22,19 @@ object loginController{
     var nnB: Boolean = false
     var pwB: Boolean = false
     var userId: Int = 0
+    var abmelden:String =""
     public var username: String = ""
     public var working: Boolean = false
+
+    fun eingeloggt(){
+        val u = khttp.get("http://localhost/api/public/index.php/benutzer")
+        val json = u.jsonArray
+        for (ja in json) {
+            val jo = ja as JSONObject
+            abmelden = jo.get("abmelden").toString()
+        }
+
+    }
 
     fun login(nutzername: String, passwort: String) {
 

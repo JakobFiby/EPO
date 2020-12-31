@@ -202,6 +202,7 @@ class EinstellungenFenster : View("Einstellungen") {
                                     textFill = c(colorString = "#FFFFFF")
                                 }
                                 action{
+                                    einstellungenController.abmelden()
                                     close()
                                 }
 

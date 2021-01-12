@@ -22,14 +22,12 @@ object ListeBearbeitenController {
 
     fun getName(aListe:String){
         listeName = aListe
-        //println(listeName)
     }
 
     fun userhinzufügen(name:String){
-        //println(name)
         gefunden.clear()
         
-        val r = khttp.get("http://localhost/api/public/index.php/benutzer")
+        val r = khttp.get("http://digbizmistelbach.at/epo/api/public/index.php/benutzer")
         val json = r.jsonArray
 
         for (ja in json) {
@@ -47,12 +45,9 @@ object ListeBearbeitenController {
             }
         }
 
-        if(gefunden.contains("true")) { gf = true}
-        else{ gf = false }
+        gf = gefunden.contains("true")
 
-        //println(listeName)
-
-        val r2 = khttp.get("http://localhost/api/public/index.php/liste")
+        val r2 = khttp.get("http://digbizmistelbach.at/epo/api/public/index.php/liste")
         val json2 = r2.jsonArray
 
         for (ja2 in json2) {
@@ -66,7 +61,7 @@ object ListeBearbeitenController {
             }
         }
 
-        val r3 = khttp.get("http://localhost/api/public/index.php/userliste")
+        val r3 = khttp.get("http://digbizmistelbach.at/epo/api/public/index.php/userliste")
         val json3 = r3.jsonArray
         //println(json3)
 
@@ -85,7 +80,7 @@ object ListeBearbeitenController {
         var berechtigungs = 0
 
         if(anlegen && gf){
-            val request = khttp.post("http://localhost/api/public/index.php/userzuliste?berechtigungs=$berechtigungs&listeid=$listeid&userid=$userid")
+            val request = khttp.post("http://digbizmistelbach.at/epo/api/public/index.php/userzuliste?berechtigungs=$berechtigungs&listeid=$listeid&userid=$userid")
             text = 2
             gf = false
         }
@@ -102,7 +97,7 @@ object ListeBearbeitenController {
 
     fun listeloeschen(){
 
-        val r2 = khttp.get("http://localhost/api/public/index.php/liste")
+        val r2 = khttp.get("http://digbizmistelbach.at/epo/api/public/index.php/liste")
         val json2 = r2.jsonArray
 
         for (ja2 in json2) {
@@ -115,6 +110,6 @@ object ListeBearbeitenController {
             }
         }
 
-        var r = khttp.delete("http://localhost/api/public/index.php/listeloeschen?userid=$angemeldterUser&listeid=$listeid")
+        var r = khttp.delete("http://digbizmistelbach.at/epo/api/public/index.php/listeloeschen?userid=$angemeldterUser&listeid=$listeid")
     }
 }

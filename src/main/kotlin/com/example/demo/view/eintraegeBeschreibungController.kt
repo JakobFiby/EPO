@@ -15,7 +15,7 @@ object eintraegeBeschreibungController {
         try {
             eintragname = aEintrag
 
-            val r = khttp.get("http://localhost/api/public/index.php/eintrag")
+            val r = khttp.get("http://digbizmistelbach.at/epo/api/public/index.php/eintrag")
             val json = r.jsonArray
             //println(json)
 
@@ -36,7 +36,7 @@ object eintraegeBeschreibungController {
 
     fun eintragLoeschen(){
 
-        var r = khttp.delete("http://localhost/api/public/index.php/eintragloeschen?eintragname=$eintragname")
+        var r = khttp.delete("http://digbizmistelbach.at/epo/api/public/index.php/eintragloeschen?eintragname=$eintragname")
 
         eintraegeController.eintraege.clear()
         eintraegeController.connection(eintraegeController.liste)

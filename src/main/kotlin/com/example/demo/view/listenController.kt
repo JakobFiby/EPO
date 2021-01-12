@@ -25,7 +25,7 @@ object listenController{
             listenname.clear()
             listenFaelligkeitsDatum.clear()
 
-            val r = khttp.get("http://localhost/api/public/index.php/userliste")
+            val r = khttp.get("http://digbizmistelbach.at/epo/api/public/index.php/userliste")
             val json = r.jsonArray
 
             for (ja in json) {
@@ -38,7 +38,7 @@ object listenController{
                 }//ende if
             }//ende for
 
-            val r2 = khttp.get("http://localhost/api/public/index.php/liste")
+            val r2 = khttp.get("http://digbizmistelbach.at/epo/api/public/index.php/liste")
             val json2 = r2.jsonArray
 
             var i = 0

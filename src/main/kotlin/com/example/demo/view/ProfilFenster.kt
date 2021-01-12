@@ -1,22 +1,11 @@
 package com.example.demo.view
 
 import com.example.demo.app.Styles
-import com.sun.org.apache.bcel.internal.Repository.addClass
 import javafx.beans.property.SimpleStringProperty
-import javafx.geometry.Orientation
 import javafx.geometry.Pos
-import javafx.scene.layout.*
-import javafx.scene.layout.Border
-import javafx.scene.paint.Color
-import javax.swing.border.*
 import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
-import javafx.stage.Stage
 import tornadofx.*
-import com.example.demo.view.UeberblickFenster
-import com.example.demo.view.LoginFenster
-import com.example.demo.view.einstellungenController
-import javafx.scene.shape.Circle
 
 class ProfilFenster : View("Profil bearbeiten") {
 
@@ -58,7 +47,7 @@ class ProfilFenster : View("Profil bearbeiten") {
                 }
             }
         }
-        vbox() {
+        vbox {
             vbox(10) {
 
                 label(einstellungenController.profilopt) {
@@ -67,8 +56,6 @@ class ProfilFenster : View("Profil bearbeiten") {
                 }
 
                 textfield(aenderung).required()
-
-
             }
         }
 
@@ -89,7 +76,6 @@ class ProfilFenster : View("Profil bearbeiten") {
                     }
                     einstellungenController.profil("", "", false)
                     replaceWith(EinstellungenFenster())
-
                 }
             }
         }

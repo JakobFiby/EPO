@@ -20,7 +20,6 @@ class LoginFenster : View("Login") {
     val model = ViewModel()
     val nutzername = model.bind { SimpleStringProperty() }
     val passwort = model.bind { SimpleStringProperty() }
-    //val loginController: loginController by inject()
 
     override val root = form {
 
@@ -99,7 +98,6 @@ class LoginFenster : View("Login") {
                             }
                     } //ende button
 
-
                     vbox(10, Pos.CENTER) {
                         button("Noch nicht registriert?") {
                             //addClass(Styles.button)
@@ -113,14 +111,13 @@ class LoginFenster : View("Login") {
                         } //ende button noch nicht registriert
                     } //ende vbox noch nicht registriert
                 } //ende vbox gesamt
-
             } //ende hbox gesamt
         }
     }
-        override fun onDock() {
-            nutzername.value = "jakob"
-            passwort.value = "1234"
-            model.clearDecorators()
-        }
 
+    override fun onDock() {
+        nutzername.value = "jakob"
+        passwort.value = "1234"
+        model.clearDecorators()
+    }
 }

@@ -35,8 +35,6 @@ object registration {
     var passwortRichtig: Boolean = true
 
     fun anmelden(nutzernameR:String, vornameR:String, nachnameR:String, emailR:String, passwortR:String) {
-        //println(nutzernameR+vorname+nachname+email+passwortR)
-
         try {
             //Variablen zuordnen
             nutzername=nutzernameR
@@ -44,25 +42,23 @@ object registration {
             passwort = passwortR.sha256()
             if (passwort.length == 63) {
                     passwort = "0" + passwort
-                    //println("computed sha256 value is $pwhash")
             }
+
             mitteilungen=1
             abmelden=0
             vorname=vornameR
-            //vorname.toUpperCase()
+
             vorname=vorname.substring(0,1).toUpperCase()+vorname.substring(1)
-            //println(vorname)
+
             nachname=nachnameR
             nachname=nachname.substring(0,1).toUpperCase()+nachname.substring(1)
-            //println(nachname)
+
             email= emailR
             farbschemaid=1
             profilbildid=1
 
-            val r = khttp.get("http://localhost/api/public/index.php/benutzer")
+            val r = khttp.get("http://digbizmistelbach.at/epo/api/public/index.php/benutzer")
             val json = r.jsonArray
-            //println(json)
-
 
             for (ja in json) {
                 val jo = ja as JSONObject
@@ -76,9 +72,7 @@ object registration {
             if(funktioniert==true)
             {
                 if(passwortR.length>=6) {
-
-                //println("jej")
-                  val request = khttp.post("http://localhost/api/public/index.php/registrieren" +
+                  val request = khttp.post("http://digbizmistelbach.at/epo/api/public/index.php/registrieren" +
                             "?nutzername=$nutzername&passwort=$passwort&mitteilungen=$mitteilungen&abmelden=$abmelden&vorname=$vorname&nachname=$nachname&email=$email&farbschemaid=$farbschemaid&profilbildid=$profilbildid")
                 }
                 else

@@ -1,18 +1,10 @@
 package com.example.demo.view
 
-import javafx.beans.property.SimpleStringProperty
-import com.example.demo.view.LoginFenster
-import com.example.demo.view.UeberblickFenster
-import com.example.demo.view.UserModel
-import tornadofx.*
-import com.example.demo.view.User
 import com.google.gson.Gson
-import netscape.javascript.JSObject
 import org.json.JSONObject
 import java.math.BigInteger
 import java.security.MessageDigest
 import java.sql.SQLException
-import javax.json.JsonObject
 
 object loginController{
 
@@ -23,28 +15,24 @@ object loginController{
     var pwB: Boolean = false
     var userId: Int = 0
     var abmelden:String =""
-    public var username: String = ""
-    public var working: Boolean = false
+    var username: String = ""
+    var working: Boolean = false
 
     fun eingeloggt(){
-        val u = khttp.get("http://localhost/api/public/index.php/benutzer")
+        val u = khttp.get("http://digbizmistelbach.at/epo/api/public/index.php/benutzer")
         val json = u.jsonArray
         for (ja in json) {
             val jo = ja as JSONObject
             abmelden = jo.get("abmelden").toString()
         }
-
     }
 
     fun login(nutzername: String, passwort: String) {
-
         try {
-            val r = khttp.get("http://localhost/api/public/index.php/benutzer")
+            val r = khttp.get("http://digbizmistelbach.at/epo/api/public/index.php/benutzer")
             val string: String = r.toString()
             val json = r.jsonArray
-            //println(json)
             val eins = json[0].toString()
-            //println(eins)
             val gson = Gson()
 
             for (ja in json) {
@@ -52,13 +40,11 @@ object loginController{
                 nn = jo.get("nutzername").toString()
                 pw = jo.get("passwort").toString()
                 id = jo.get("userid").toString()
-                //println(nn)
 
                 //Passwort hashen
                 var pwhash = passwort.sha256()
                 if (pwhash.length == 63) {
                     pwhash = "0" + pwhash
-                    //println("computed sha256 value is $pwhash")
                 }
 
                 //Login-Überprüfung
@@ -67,7 +53,6 @@ object loginController{
                     nnB = true
                     userId = id.toInt()
                     username = nn
-                    //println(nnB)
                 } else {
                     //println("Nutzername ist falsch")
                 }
@@ -75,7 +60,6 @@ object loginController{
                 //Passwort überprüfen
                 if (pw.equals(pwhash)) {
                     pwB = true
-                    //println(pwB)
                 } else {
                     //println("Passwort ist falsch")
                 }

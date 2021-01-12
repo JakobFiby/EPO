@@ -21,11 +21,9 @@ object eintraegeController {
 
     fun connection(aListe:String) = try {
         liste = aListe
-        //println(liste)
 
-        val r = khttp.get("http://localhost/api/public/index.php/liste")
+        val r = khttp.get("http://digbizmistelbach.at/epo/api/public/index.php/liste")
         val json = r.jsonArray
-        //println(json)
 
         for (ja in json) {
             val jo = ja as JSONObject
@@ -34,13 +32,11 @@ object eintraegeController {
 
             if(ln.equals(liste)) {
                 listeid = li
-                //println(listeid)
             }
         }
 
-        val r2 = khttp.get("http://localhost/api/public/index.php/eintrag")
+        val r2 = khttp.get("http://digbizmistelbach.at/epo/api/public/index.php/eintrag")
         val json2 = r2.jsonArray
-        //println(json2)
 
         var i = 0
 

@@ -35,7 +35,7 @@ class RegisterFenster : View("Registrieren") {
 
             vbox(20) {
                 vbox(20) {
-                    hbox() {
+                    hbox {
                         button("< ") {
                             font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 30.0)
                             style {

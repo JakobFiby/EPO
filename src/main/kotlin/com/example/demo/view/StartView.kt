@@ -11,6 +11,7 @@ class StartView : View("Willkommen!") {
             backgroundColor=multi(c(colorString="black"))
         }
         alignment = Pos.CENTER
+
         vbox(50,Pos.CENTER){
             setPrefSize(250.0, 250.0)
             imageview("/logoNeu.png", lazyload = false) {
@@ -26,13 +27,12 @@ class StartView : View("Willkommen!") {
                             top=c(colorString = "#4c2dc6"),
                             bottom = c(colorString = "#4c2dc6"),
                             right= c(colorString = "#4c2dc6"),
-                            left=c(colorString = "#4c2dc6")
-                    ))
+                            left=c(colorString = "#4c2dc6")))
                 }
                 isDefaultButton = true
                 useMaxHeight = true
                 action {
-                    replaceWith(LoginFenster::class, sizeToScene = false, centerOnScreen = true)
+                    replaceWith(LoginFenster())
                 }
             }
         }

@@ -61,7 +61,7 @@ class EinstellungenFenster : View("Einstellungen") {
             }
         }
         }
-            vbox() {
+            vbox {
                 vbox(10) {
                     //Profilbild
 

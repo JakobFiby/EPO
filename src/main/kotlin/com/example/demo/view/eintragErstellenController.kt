@@ -13,7 +13,7 @@ object eintragErstellenController {
 
         gefunden.clear()
 
-        val r = khttp.get("http://localhost/api/public/index.php/eintrag")
+        val r = khttp.get("http://digbizmistelbach.at/epo/api/public/index.php/eintrag")
         val json = r.jsonArray
 
         for (ja in json) {
@@ -34,7 +34,7 @@ object eintragErstellenController {
         else{
             erstellt = true
 
-            val request = khttp.post("http://localhost/api/public/index.php/eintragneu?eintragname=$name&beschreibung=$beschreibung&erledigt=$erledigt&wichtigkeit=$wichtigkeit&listeid=$listeid")
+            val request = khttp.post("http://digbizmistelbach.at/epo/api/public/index.php/eintragneu?eintragname=$name&beschreibung=$beschreibung&erledigt=$erledigt&wichtigkeit=$wichtigkeit&listeid=$listeid")
         }
 
         eintraegeController.eintraege.clear()

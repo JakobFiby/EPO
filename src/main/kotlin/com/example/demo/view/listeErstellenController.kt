@@ -14,11 +14,9 @@ object listeErstellenController {
 
     fun listehinzufügen(listename:String, userid:Int, fdatum: LocalDate, ldatum: LocalDate){
 
-        //println("$listename, $userid, $fdatum, $ldatum")
-
         gefunden.clear()
 
-        val r = khttp.get("http://localhost/api/public/index.php/liste")
+        val r = khttp.get("http://digbizmistelbach.at/epo/api/public/index.php/liste")
         val json = r.jsonArray
 
         for (ja in json) {
@@ -38,9 +36,9 @@ object listeErstellenController {
         }
         else{
             erstellt = true
-            val request = khttp.post("http://localhost/api/public/index.php/listeneu?listename=$listename&listedatum=$ldatum&faelligkeitsdatum=$fdatum")
+            val request = khttp.post("http://digbizmistelbach.at/epo/api/public/index.php/listeneu?listename=$listename&listedatum=$ldatum&faelligkeitsdatum=$fdatum")
 
-            val r2 = khttp.get("http://localhost/api/public/index.php/liste")
+            val r2 = khttp.get("http://digbizmistelbach.at/epo/api/public/index.php/liste")
             val json2 = r2.jsonArray
 
             for (ja2 in json2) {
@@ -54,7 +52,7 @@ object listeErstellenController {
                 }
             }
 
-            val request2 = khttp.post("http://localhost/api/public/index.php/userzuliste?berechtigungs=$berechtigungs&listeid=$listeid&userid=$userid")
+            val request2 = khttp.post("http://digbizmistelbach.at/epo/api/public/index.php/userzuliste?berechtigungs=$berechtigungs&listeid=$listeid&userid=$userid")
         }
     }
 }

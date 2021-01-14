@@ -3,10 +3,10 @@ package com.example.demo.view
 import java.sql.SQLException
 import org.json.JSONObject
 
-object listenController{
+object ListenController{
     @JvmStatic
 
-    var userid:Int = loginController.userId
+    var userid:Int = LoginController.userId
     var ui: String = ""
     var li: String = ""
     var fd: String = ""
@@ -61,5 +61,6 @@ object listenController{
         catch(e: SQLException){
             e.printStackTrace()
         }//ende catch
-    }//ende connection
-}//ende object
+    }//ende connection()
+
+}

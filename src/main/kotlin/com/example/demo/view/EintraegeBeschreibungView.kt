@@ -5,9 +5,9 @@ import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
 import tornadofx.*
 
-class EintraegeBeschreibung : View("Beschreibung") {
+class EintraegeBeschreibungView : View("Beschreibung") {
 
-    var beschreibung = eintraegeBeschreibungController.beschreibung
+    var beschreibung = EintraegeBeschreibungController.beschreibung
 
     override val root = form {
         style{
@@ -16,7 +16,8 @@ class EintraegeBeschreibung : View("Beschreibung") {
             backgroundColor=multi(c(colorString="black"))
             textFill= javafx.scene.paint.Color.WHITE
             alignment = Pos.CENTER
-        }
+        }//ende style
+
         vbox(0, Pos.CENTER) {
             hbox {
                 button("< ") {
@@ -24,9 +25,9 @@ class EintraegeBeschreibung : View("Beschreibung") {
                     style {
                         backgroundColor = multi(c(colorString = "black"))
                         textFill = c(colorString = "#777678")
-                    }
+                    }//ende style
                     action {
-                        replaceWith(EintragUebersichtFenster())
+                        replaceWith(EintraegeUebersichtView())
                     } //ende action
                 } //ende button zurück
                 label("Beschreibung:")
@@ -34,17 +35,16 @@ class EintraegeBeschreibung : View("Beschreibung") {
                     font = Font.font("Segoe UI", FontWeight.BOLD, 30.0)
                     textFill = c("#4C2DC6")
                     alignment = Pos.CENTER
-                }
-            }
+                }//ende label beschreibung
+            }//ende hbox Titel
 
             label()
 
-            label("$beschreibung")
-                {
-                    style {
-                        textFill = javafx.scene.paint.Color.WHITE
-                    }
-                }
+            label("$beschreibung") {
+                style {
+                    textFill = javafx.scene.paint.Color.WHITE
+                }//ende style
+            }//ende label beschreibung
 
             label()
 
@@ -60,12 +60,12 @@ class EintraegeBeschreibung : View("Beschreibung") {
                             bottom = c("#c63229"),
                             right = c("#c63229"),
                             left = c("#c63229")))
-                }
+                }//ende style
                 action {
-                    eintraegeBeschreibungController.eintragLoeschen()
-                    replaceWith(EintragUebersichtFenster())
-                }
-            }
-        }
-    }
+                    EintraegeBeschreibungController.eintragLoeschen()
+                    replaceWith(EintraegeUebersichtView())
+                }//ende action
+            }//ende button loeschen
+        }//ende vbox gesamt
+    }//ende root
 }

@@ -6,7 +6,7 @@ import java.math.BigInteger
 import java.security.MessageDigest
 import java.sql.SQLException
 
-object loginController{
+object LoginController{
 
     var nn: String = ""
     var pw: String = ""
@@ -15,25 +15,24 @@ object loginController{
     var pwB: Boolean = false
     var userId: Int = 0
     var abmelden:String =""
-    var username: String = ""
-    var working: Boolean = false
+    public var username: String = ""
+    public var working: Boolean = false
 
     fun eingeloggt(){
-        val u = khttp.get("http://digbizmistelbach.at/epo/api/public/index.php/benutzer")
-        val json = u.jsonArray
+        val request = khttp.get("http://localhost/api/public/index.php/benutzer")
+        val json = request.jsonArray
         for (ja in json) {
             val jo = ja as JSONObject
             abmelden = jo.get("abmelden").toString()
-        }
-    }
+        }//ende for
+
+    } //ende eingeloggt()
 
     fun login(nutzername: String, passwort: String) {
+
         try {
-            val r = khttp.get("http://digbizmistelbach.at/epo/api/public/index.php/benutzer")
-            val string: String = r.toString()
-            val json = r.jsonArray
-            val eins = json[0].toString()
-            val gson = Gson()
+            val request = khttp.get("http://localhost/api/public/index.php/benutzer")
+            val json = request.jsonArray
 
             for (ja in json) {
                 val jo = ja as JSONObject
@@ -53,38 +52,31 @@ object loginController{
                     nnB = true
                     userId = id.toInt()
                     username = nn
-                } else {
-                    //println("Nutzername ist falsch")
                 }
 
                 //Passwort überprüfen
                 if (pw.equals(pwhash)) {
                     pwB = true
-                } else {
-                    //println("Passwort ist falsch")
                 }
-
-            }
+            }//ende for
 
             if (pwB == true && nnB == true) {
-                //println("Login funktioniert")
                 working = true
             } else {
                 println("Nutzername und/oder Passwort sind nicht richtig")
-                LoginFenster().onDock()
+                LoginView().onDock()
             }
-        }
+        }//ende try
         catch (e: SQLException){
             e.printStackTrace()
-        }
-        //println("Login = "+ working+pwB+nnB)
-    }
+        }//ende catch
+    }//ende login()
 
     //Hashen
     fun String.sha256(): String {
         val md = MessageDigest.getInstance("SHA-256")
         return BigInteger(1, md.digest(toByteArray())).toString(16).padStart(32, '0')
-    }
+    }//ende sha256()
 
 }
 

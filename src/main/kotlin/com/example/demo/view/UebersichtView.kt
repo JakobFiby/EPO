@@ -7,9 +7,8 @@ import tornadofx.*
 import kotlin.collections.ArrayList
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
-import com.example.demo.view.EinstellungenFenster
 
-class UeberblickFenster : View ("E.P.O")
+class UebersichtView : View ("E.P.O")
 {
     var lid = ArrayList<Int>()
     var lna = ArrayList<String>()
@@ -24,8 +23,8 @@ class UeberblickFenster : View ("E.P.O")
             textFill= javafx.scene.paint.Color.WHITE
         }//ende style
 
-        val username = loginController.username
-        val userid:Int = loginController.userId
+        val username = LoginController.username
+        val userid:Int = LoginController.userId
 
         hbox {
             paddingTop = 10
@@ -53,17 +52,17 @@ class UeberblickFenster : View ("E.P.O")
                             textFill = javafx.scene.paint.Color.BLACK
                         }//ende style
                         action{
-                            einstellungenController.profil("", "", false)
-                            replaceWith(EinstellungenFenster())
+                            EinstellungenController.profil("", "", false)
+                            replaceWith(EinstellungenView())
                         }//ende action
                     }//ende button Einstellungen
                 }//ende hbox
             }//ende vbox
-        }//ende hbox
+        }//ende hbox gesamt
 
-        listenController.connection(userid)
-        lna = listenController.listenname
-        lfd = listenController.listenFaelligkeitsDatum
+        ListenController.connection(userid)
+        lna = ListenController.listenname
+        lfd = ListenController.listenFaelligkeitsDatum
 
         var lf:String
         var zz = 0
@@ -81,12 +80,12 @@ class UeberblickFenster : View ("E.P.O")
                             textFill = javafx.scene.paint.Color.WHITE
                         }//ende style
                         action {
-                            eintraegeController.eintraege.clear()
-                            eintraegeController.connection(la)
+                            EintraegeController.eintraege.clear()
+                            EintraegeController.connection(la)
                             lna.clear()
                             lid.clear()
                             lfd.clear()
-                            replaceWith(EintragUebersichtFenster())
+                            replaceWith(EintraegeUebersichtView())
                         }//ende action
                     }//ende button listename
 
@@ -98,9 +97,9 @@ class UeberblickFenster : View ("E.P.O")
                         }//ende style
                         action {
                             ListeBearbeitenController.getName(la)
-                            replaceWith(ListeBearbeiten())
+                            replaceWith(ListeBearbeitenView())
                         }//ende action
-                    }//ende button ...
+                    }//ende button Einstellungen
                 }//ende hbox
 
                 lf = lfd[zz]
@@ -138,7 +137,7 @@ class UeberblickFenster : View ("E.P.O")
                     textFill = javafx.scene.paint.Color.BLACK
                 }//ende style
                 action {
-                    replaceWith(ListeErstellenFenster())
+                    replaceWith(ListeErstellenView())
                     lna.clear()
                     lid.clear()
                     lfd.clear()
@@ -146,4 +145,4 @@ class UeberblickFenster : View ("E.P.O")
             }//ende button +
         }//ende hbox
     }//ende root
-}//ende class
+}

@@ -17,7 +17,7 @@ class StartView : View("Willkommen!") {
             imageview("/logoNeu.png", lazyload = false) {
                 fitHeightProperty().bind(parent.prefHeight(600.0).toProperty())
                 fitWidthProperty().bind(parent.prefWidth(800.0).toProperty())
-            }
+            } // ende image
 
             button("Login >") {
                 style{
@@ -28,13 +28,13 @@ class StartView : View("Willkommen!") {
                             bottom = c(colorString = "#4c2dc6"),
                             right= c(colorString = "#4c2dc6"),
                             left=c(colorString = "#4c2dc6")))
-                }
+                }//ende style
                 isDefaultButton = true
                 useMaxHeight = true
                 action {
-                    replaceWith(LoginFenster())
-                }
-            }
-        }
-    }
+                    replaceWith(LoginView())
+                }//ende action
+            } //ende btn Login
+        } //ende vbox
+    }//ende root
 }

@@ -10,7 +10,7 @@ import javafx.scene.text.FontWeight
 import tornadofx.*
 import java.time.LocalDate
 
-class ListeErstellenFenster : View("Liste erstellen") {
+class ListeErstellenView : View("Liste erstellen") {
     val model = ViewModel()
     val name= model.bind{SimpleStringProperty()}
     private val dateProperty = SimpleObjectProperty<LocalDate>()
@@ -41,7 +41,7 @@ class ListeErstellenFenster : View("Liste erstellen") {
                                 textFill = c(colorString = "#777678")
                             }//ende style
                             action {
-                                replaceWith(UeberblickFenster())
+                                replaceWith(UebersichtView())
                                 name.value = ""
                             } //ende action
                         } //ende button zurück
@@ -51,8 +51,8 @@ class ListeErstellenFenster : View("Liste erstellen") {
                             textFill = c("#4c2dc6")
                             alignment = Pos.CENTER
                         }//ende label neue liste
-                    }//ende hbox
-                }//ende vbox
+                    }//ende hbox Titel
+                }//ende vbox Titel
 
                 label("LISTENNAME"){
                     font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 15.0)
@@ -87,14 +87,14 @@ class ListeErstellenFenster : View("Liste erstellen") {
                         val dateValue = dateProperty.value
                         val todaysDate = LocalDate.now()
                         val listename = name.value
-                        val userid:Int = loginController.userId
+                        val userid:Int = LoginController.userId
 
                         if(dateValue < todaysDate){
                             name.value = "Fälligkeitsd. darf nicht kleiner als heutiges Datum sein!"
                         }//ende 1. if
                         else{
-                            listeErstellenController.listehinzufügen(listename, userid, dateValue, todaysDate)
-                            if(!listeErstellenController.erstellt){
+                            ListeErstellenController.listehinzufügen(listename, userid, dateValue, todaysDate)
+                            if(!ListeErstellenController.erstellt){
                                 name.value = "Liste konnte nicht erstellt werden!"
                             }//ende 2. if
                             else{
@@ -103,7 +103,7 @@ class ListeErstellenFenster : View("Liste erstellen") {
                         }//ende 1. else
                     }//ende action
                 }//ende button erstellen
-            }//ende vbox
-        }//ende hbox
+            }//ende vbox gesamt
+        }//ende hbox gesamt
     }//ende root
-}//ende class
+}

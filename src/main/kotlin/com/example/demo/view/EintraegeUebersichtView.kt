@@ -5,15 +5,15 @@ import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
 import tornadofx.*
 
-class EintragUebersichtFenster : View("Einträge Übersicht") {
+class EintraegeUebersichtView : View("Einträge Übersicht") {
 
     var einträge = ArrayList<String>()
     var liste = ""
 
     override val root = form {
 
-        einträge = eintraegeController.eintraege
-        liste = eintraegeController.liste
+        einträge = EintraegeController.eintraege
+        liste = EintraegeController.liste
 
         style{
             padding = box(10.px)
@@ -33,9 +33,9 @@ class EintragUebersichtFenster : View("Einträge Übersicht") {
                     textFill = c(colorString = "#777678")
                 }//ende style
                 action {
-                    eintraegeController.wichtigkeit.clear()
-                    eintraegeController.erledigt.clear()
-                    replaceWith(UeberblickFenster())
+                    EintraegeController.wichtigkeit.clear()
+                    EintraegeController.erledigt.clear()
+                    replaceWith(UebersichtView())
                 } //ende action
             } //ende button zurück
 
@@ -53,8 +53,8 @@ class EintragUebersichtFenster : View("Einträge Übersicht") {
             }//ende style
 
             var zz = 0
-            val wichtigkeit = eintraegeController.wichtigkeit
-            val erledigt = eintraegeController.erledigt
+            val wichtigkeit = EintraegeController.wichtigkeit
+            val erledigt = EintraegeController.erledigt
 
             for (e in einträge) {
                 hbox {
@@ -66,9 +66,9 @@ class EintragUebersichtFenster : View("Einträge Übersicht") {
                             textFill = javafx.scene.paint.Color.WHITE
                         }//style
                         action {
-                            eintragFertigController.connection(e)
+                            EintragFertigController.connection(e)
 
-                            if(eintragFertigController.fertig){
+                            if(EintragFertigController.fertig){
                                 style{
                                     font = Font.font("Segoe UI", FontWeight.NORMAL, 13.0)
                                     backgroundColor = multi(c("#111111"))
@@ -76,21 +76,21 @@ class EintragUebersichtFenster : View("Einträge Übersicht") {
                                 }//ende style
                             }//ende if
                             else{
-                                if(eintragFertigController.wichtigkeit.equals("low")){
+                                if(EintragFertigController.wichtigkeit.equals("low")){
                                     style{
                                         font = Font.font("Segoe UI", FontWeight.NORMAL, 13.0)
                                         backgroundColor = multi(c("#111111"))
                                         textFill = c("#ffd700")
                                     }//ende style
                                 }//ende if low
-                                else if(eintragFertigController.wichtigkeit.equals("medium")){
+                                else if(EintragFertigController.wichtigkeit.equals("medium")){
                                     style{
                                         font = Font.font("Segoe UI", FontWeight.NORMAL, 13.0)
                                         backgroundColor = multi(c("#111111"))
                                         textFill = c("#cd950c")
                                     }//ende style
                                 }//ende if medium
-                                else if(eintragFertigController.wichtigkeit.equals("high")){
+                                else if(EintragFertigController.wichtigkeit.equals("high")){
                                     style{
                                         font = Font.font("Segoe UI", FontWeight.NORMAL, 13.0)
                                         backgroundColor = multi(c("#111111"))
@@ -140,8 +140,8 @@ class EintragUebersichtFenster : View("Einträge Übersicht") {
                             textFill = c(colorString = "#4c2dc6")
                         }//ende style
                         action {
-                            eintraegeBeschreibungController.beschreibung(e)
-                            replaceWith(EintraegeBeschreibung())
+                            EintraegeBeschreibungController.beschreibung(e)
+                            replaceWith(EintraegeBeschreibungView())
                         }//ende action
                     }//ende button Bearbeiten
                 }//ende hbox
@@ -159,7 +159,7 @@ class EintragUebersichtFenster : View("Einträge Übersicht") {
                 textFill = javafx.scene.paint.Color.BLACK
             }//ende style
             action {
-                replaceWith(EintragErstellenFenster())
+                replaceWith(EintragErstellenView())
             }//ende action
         }//ende button +
     }//ende init

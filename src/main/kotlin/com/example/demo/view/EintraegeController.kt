@@ -4,7 +4,7 @@ import org.json.JSONObject
 import tornadofx.*
 import java.sql.SQLException
 
-object eintraegeController {
+object EintraegeController {
     @JvmStatic
 
     var aListenId:Int = 0
@@ -22,8 +22,8 @@ object eintraegeController {
     fun connection(aListe:String) = try {
         liste = aListe
 
-        val r = khttp.get("http://digbizmistelbach.at/epo/api/public/index.php/liste")
-        val json = r.jsonArray
+        val request = khttp.get("http://digbizmistelbach.at/epo/api/public/index.php/liste")
+        val json = request.jsonArray
 
         for (ja in json) {
             val jo = ja as JSONObject
@@ -33,15 +33,14 @@ object eintraegeController {
             if(ln.equals(liste)) {
                 listeid = li
             }
-        }
+        } //ende for
 
-        val r2 = khttp.get("http://digbizmistelbach.at/epo/api/public/index.php/eintrag")
-        val json2 = r2.jsonArray
+        val request2 = khttp.get("http://digbizmistelbach.at/epo/api/public/index.php/eintrag")
+        val json2 = request2.jsonArray
 
         var i = 0
 
-        for(ja2 in json2)
-        {
+        for(ja2 in json2){
             val jo2 = ja2 as JSONObject
             li = jo2.get("listeid").toString()
             en = jo2.get("eintragname").toString()
@@ -55,9 +54,9 @@ object eintraegeController {
             }
 
             i++
-        }
-    }
+        }//ende for
+    } //ende try
     catch(e: SQLException){
         e.printStackTrace()
-    }
+    }//ende catch
 }

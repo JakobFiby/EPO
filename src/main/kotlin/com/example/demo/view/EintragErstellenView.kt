@@ -2,17 +2,14 @@ package com.example.demo.view
 
 import com.example.demo.app.Styles
 import javafx.beans.property.SimpleStringProperty
-import javafx.collections.FXCollections
-import javafx.collections.ObservableList
 import javafx.geometry.Pos
-import javafx.scene.control.ComboBox
 import javafx.scene.paint.Color
 import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
 import tornadofx.*
 
 
-class EintragErstellenFenster : View("Liste erstellen") {
+class EintragErstellenView : View("Liste erstellen") {
     val model = ViewModel()
     val eName= model.bind{SimpleStringProperty()}
     val eBeschreibung= model.bind{SimpleStringProperty()}
@@ -25,7 +22,7 @@ class EintragErstellenFenster : View("Liste erstellen") {
             fontSize = 15.px
             backgroundColor = multi(c(colorString="black"))
             textFill = Color.LIGHTGREY
-        }
+        }//ende style
 
         hbox {
             paddingTop=10
@@ -43,7 +40,7 @@ class EintragErstellenFenster : View("Liste erstellen") {
                                 textFill = c(colorString = "#777678")
                             }//ende style
                             action {
-                                replaceWith(EintragUebersichtFenster())
+                                replaceWith(EintraegeUebersichtView())
                             } //ende action
                         } //ende button zurück
 
@@ -57,25 +54,25 @@ class EintragErstellenFenster : View("Liste erstellen") {
                 label("NAME"){
                     font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 15.0)
                     addClass(Styles.heading)
-                }
+                }//ende label name
                     textfield(eName).required()
 
                 label("BESCHREIBUNG"){
                     font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 15.0)
                     addClass(Styles.heading)
-                }
+                }//ende label beschreibung
                     textfield(eBeschreibung).required()
 
                 label("WICHTIGKEIT"){
                     font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 15.0)
                     addClass(Styles.heading)
-                }
+                }//ende label Wichtigkeit
                     combobox(selectedItem, items) {
                         setMaxSize(420.0, 03.0)
                         cellFormat {
                             text = it
                         }
-                    }
+                    }//ende combobox
 
 
                 vbox(0,Pos.TOP_CENTER) {
@@ -92,16 +89,16 @@ class EintragErstellenFenster : View("Liste erstellen") {
                                     bottom = c("#4c2dc6"),
                                     right = c("#4c2dc6"),
                                     left = c("#4c2dc6")))
-                        }
+                        }//ende style
                         action {
                             val name = eName.value
                             val beschreibung = eBeschreibung.value
                             val erledigt = 0
                             val wichtigkeit = selectedItem.value
-                            val listeid = eintraegeController.listeid.toInt()
-                            eintragErstellenController.eintraghinzufügen(name, beschreibung, erledigt, wichtigkeit, listeid)
+                            val listeid = EintraegeController.listeid.toInt()
+                            EintragErstellenController.eintraghinzufügen(name, beschreibung, erledigt, wichtigkeit, listeid)
 
-                            if(eintragErstellenController.erstellt){
+                            if(EintragErstellenController.erstellt){
                                 eName.value = ""
                             }
                             else{
@@ -109,11 +106,10 @@ class EintragErstellenFenster : View("Liste erstellen") {
                             }
                             eBeschreibung.value = ""
                             selectedItem.value = items.first()
-                        }
-                    }
-                }
-            }
-        }
-    }
-
+                        }//ende action
+                    }//ende button Erstellen
+                }//ende vbox button Erstellen
+            }//ende vbox gesamt
+        }//ende hbox gesamt
+    }//ende root
 }

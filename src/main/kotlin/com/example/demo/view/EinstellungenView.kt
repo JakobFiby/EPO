@@ -1,40 +1,27 @@
 package com.example.demo.view
 
 import com.example.demo.app.Styles
-import com.sun.org.apache.bcel.internal.Repository.addClass
-import javafx.beans.property.SimpleStringProperty
 import javafx.geometry.Orientation
 import javafx.geometry.Pos
-import javafx.scene.layout.*
-import javafx.scene.layout.Border
-import javafx.scene.paint.Color
-import javax.swing.border.*
 import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
-import javafx.stage.Stage
 import tornadofx.*
-import com.example.demo.view.UeberblickFenster
-import com.example.demo.view.LoginFenster
-import com.example.demo.view.einstellungenController
 
-class EinstellungenFenster : View("Einstellungen") {
+class EinstellungenView : View("Einstellungen") {
 
-    var nutzername=einstellungenController.nn
-    var vorname=einstellungenController.vn
-    var nachname=einstellungenController.nachn
-    var email=einstellungenController.email
-    var passwort=einstellungenController.pw
-    var farbmodus=einstellungenController.farbmodus
+    var nutzername=EinstellungenController.nn
+    var vorname=EinstellungenController.vn
+    var nachname=EinstellungenController.nachn
+    var email=EinstellungenController.email
+    var passwort=EinstellungenController.pw
+    var farbmodus=EinstellungenController.farbmodus
 
     override val root = form {
         style {
             fontSize = 15.px
             backgroundColor = multi(c(colorString = "black"))
             textFill = c(colorString = "#FFFFFF")
-        }
-
-        //println(nutzername+vorname+nachname+email)
-
+        }//ende style
         hbox {
             paddingTop = 25
             paddingBottom = 25
@@ -49,18 +36,18 @@ class EinstellungenFenster : View("Einstellungen") {
                 style {
                     backgroundColor = multi(c(colorString = "black"))
                     textFill = c(colorString = "#777678")
-                }
+                }//ende style
                 action {
-                    replaceWith(UeberblickFenster::class)
+                    replaceWith(UebersichtView::class)
                 } //ende action
             } //ende button zurück
                 label("Einstellungen") {
                     font = Font.font("Segoe UI", FontWeight.BOLD, 25.0)
                     textFill = c("#4C2DC6")
-                }
-            }
-        }
-        }
+                }//ende label Einstellungen
+            }//ende hbox Titel
+        }//ende vbox Titel
+        }//ende hbox
             vbox {
                 vbox(10) {
                     //Profilbild
@@ -70,8 +57,8 @@ class EinstellungenFenster : View("Einstellungen") {
                             addClass(Styles.heading)
                             style{
                                 textFill = c("#4C2DC6")
-                            }
-                        }
+                            }//ende style
+                        }//ende label profil
 
                         hbox {
                             style {
@@ -81,85 +68,86 @@ class EinstellungenFenster : View("Einstellungen") {
                                 label("NUTZERNAME:") {
                                     style {
                                         backgroundColor = multi(c("#111111"))
-                                    }
+                                    }//ende style
                                     font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
                                     addClass(Styles.heading)
-                                }
+                                }//ende label nutzername
                                 label("VORNAME:") {
                                     style {
                                         backgroundColor = multi(c("#111111"))
-                                    }
+                                    }//ende style
                                     font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
                                     addClass(Styles.heading)
-                                }
+                                }//ende label vorname
                                 label("NACHNAME:") {
                                     style {
                                         backgroundColor = multi(c("#111111"))
-                                    }
+                                    }//ende style
                                     font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
                                     addClass(Styles.heading)
-                                }
+                                }//ende label nachname
                                 label("EMAIL:") {
                                     style {
                                         backgroundColor = multi(c("#111111"))
-                                    }
+                                    }//ende style
                                     font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
                                     addClass(Styles.heading)
-                                }
+                                }//ende label email
                             } // ende vbox Überschriften
+
+
                             vbox(spacing = 13) {
                                 button(nutzername) {
                                     font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
                                     addClass(Styles.heading)
-                                    //paddingBottom = 25
                                     style {
                                         backgroundColor = multi(c("#111111"))
                                         textFill = c(colorString = "#FFFFFF")
-                                    }
+                                    }//ende style
                                     action {
-                                        einstellungenController.profil("Nutzername", nutzername, false)
-                                        replaceWith(ProfilFenster())
-                                    }
-                                }
+                                        EinstellungenController.profil("Nutzername", nutzername, false)
+                                        replaceWith(ProfilView())
+                                    }//ende action
+                                }//ende button nutzername
                                 button(vorname) {
                                     font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
                                     addClass(Styles.heading)
                                     style {
                                         backgroundColor = multi(c("#111111"))
                                         textFill = c(colorString = "#FFFFFF")
-                                    }
+                                    }//ende style
                                     action {
-                                        einstellungenController.profil("Vorname", vorname, false)
-                                        replaceWith(ProfilFenster())
-                                    }
-                                }
+                                        EinstellungenController.profil("Vorname", vorname, false)
+                                        replaceWith(ProfilView())
+                                    }//ende action
+                                }//ende button vorname
                                 button(nachname) {
                                     font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
                                     addClass(Styles.heading)
                                     style {
                                         backgroundColor = multi(c("#111111"))
                                         textFill = c(colorString = "#FFFFFF")
-                                    }
+                                    }//ende style
                                     action {
-                                        einstellungenController.profil("Nachname", nachname, false)
-                                        replaceWith(ProfilFenster())
-                                    }
-                                }
+                                        EinstellungenController.profil("Nachname", nachname, false)
+                                        replaceWith(ProfilView())
+                                    }//ende action
+                                }//ende button nachname
                                 button(email) {
                                     font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
                                     addClass(Styles.heading)
                                     style {
                                         backgroundColor = multi(c("#111111"))
                                         textFill = c(colorString = "#FFFFFF")
-                                    }
+                                    }//ende style
                                     action {
-                                        einstellungenController.profil("Email", email, false)
-                                        replaceWith(ProfilFenster())
-                                    }
-                                }
+                                        EinstellungenController.profil("Email", email, false)
+                                        replaceWith(ProfilView())
+                                    }//ende action
+                                }//ende button email
                             } // ende vbox eingelesenes Profil
-                        }
-                        }
+                        }//ende hbox Profil labels und buttons
+                        }//ende vbox Profil
 
 
                         vbox(10) {
@@ -169,61 +157,44 @@ class EinstellungenFenster : View("Einstellungen") {
                                     addClass(Styles.heading)
                                     style{
                                         textFill = c("#4C2DC6")
-                                    }
-                                }
+                                    }//ende style
+                                }//ende label Optionen
                         vbox(10){
                             style{
                                 backgroundColor = multi(c("#111111"))
                             }//ende style
-                            hbox(10){
-                            radiobutton("Mitteilungen") {
-                            style {
-                            backgroundColor = multi(c("#111111"))
-                            textFill = c(colorString = "#FFFFFF")
-                            }
-                            action {
-                                println("Mitteilungen")
-                            }
-                        }
-                            }
 
                             hbox(10){
                                 radiobutton(farbmodus){
                                     style {
                                         backgroundColor = multi(c("#111111"))
                                         textFill = c(colorString = "#FFFFFF")
-                                    }
+                                    }//ende style
                                     action {
                                         println(farbmodus)
-                                        //einstellungenController.profil("", "", false)
-                                        einstellungenController.farbschemaaendern(farbmodus)
-                                        replaceWith(EinstellungenFenster())
-                                    }
-                                }
-                            }
+                                        EinstellungenController.farbschemaaendern(farbmodus)
+                                        replaceWith(EinstellungenView())
+                                    }//ende action
+                                }//ende radiobutton farbmodus
+                            }//ende hbox farbmodus
 
                             hbox(10) {
                                 button("Abmelden") {
                                     style {
                                         backgroundColor = multi(c("#111111"))
                                         textFill = c("#4C2DC6")
-                                    }
+                                    }//ende style
                                     action {
-                                        einstellungenController.abmelden()
+                                        EinstellungenController.abmelden()
                                         close()
-                                    }
-
-                                }
-                            }
-
-            }
-
-                            }
-                        }
-                }
-            }
-
-
+                                    }//ende action
+                                }//ende button Abmelden
+                            }//ende hbox Abmelden
+                            }//ende vbox Optionen Unterkategorien
+                            }//ende fieldset Optionen
+                        }//ende vbox Optionen
+                }//ende vbox gesamt
+            }//ende root
     }
 
 

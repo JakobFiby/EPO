@@ -7,14 +7,14 @@ import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
 import tornadofx.*
 
-class ProfilFenster : View("Profil bearbeiten") {
+class ProfilView : View("Profil bearbeiten") {
 
     override val root = form {
         style {
             fontSize = 15.px
             backgroundColor = multi(c(colorString = "black"))
             textFill = c(colorString = "#FFFFFF")
-        }
+        }//ende style
 
         val model = ViewModel()
         var aenderung = model.bind { SimpleStringProperty() }
@@ -26,7 +26,7 @@ class ProfilFenster : View("Profil bearbeiten") {
             paddingLeft = 50
             alignment = Pos.TOP_LEFT
 
-            aenderung.value =einstellungenController.andernaufruf
+            aenderung.value =EinstellungenController.andernaufruf
 
             vbox(spacing = 10) {
                 hbox {
@@ -35,49 +35,46 @@ class ProfilFenster : View("Profil bearbeiten") {
                         style {
                             backgroundColor = multi(c(colorString = "black"))
                             textFill = c(colorString = "#777678")
-                        }
+                        }//ende style
                         action {
-                            replaceWith(EinstellungenFenster())
+                            replaceWith(EinstellungenView())
                         } //ende action
                     } //ende button zurück
                     label("Profil bearbeiten") {
                         font = Font.font("Segoe UI", FontWeight.BOLD, 23.0)
                         textFill = c("#4C2DC6")
-                    }
-                }
-            }
+                    }//ende label Profil bearbeiten
+                }//ende hbox
+            }//ende vbox
         }
         vbox {
             vbox(10) {
-
-                label(einstellungenController.profilopt) {
+                label(EinstellungenController.profilopt) {
                     font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 20.0)
                     addClass(Styles.heading)
                 }
-
                 textfield(aenderung).required()
-            }
-        }
+            }//ende vbox 2
+        }//ende vbox 1
 
         label()
 
         hbox{
-            button("Fertig")
-            {
+            button("Fertig") {
                 font = Font.font("Segoe UI", FontWeight.LIGHT, 15.0)
                 style {
                     backgroundColor = multi(c("#4C2DC6"))
                     textFill = javafx.scene.paint.Color.BLACK
-                }
+                }//ende style
                 action {
-                    if(aenderung.value != einstellungenController.andernaufruf){
+                    if(aenderung.value != EinstellungenController.andernaufruf){
                         println("Es hat sich was geändert")
-                        einstellungenController.profil(einstellungenController.profilopt, aenderung.value, true)
-                    }
-                    einstellungenController.profil("", "", false)
-                    replaceWith(EinstellungenFenster())
-                }
-            }
-        }
-    }
+                        EinstellungenController.profil(EinstellungenController.profilopt, aenderung.value, true)
+                    }//ende if
+                    EinstellungenController.profil("", "", false)
+                    replaceWith(EinstellungenView())
+                }//ende action
+            }//ende button Fertig
+        }//ende hbox
+    }//ende root
 }

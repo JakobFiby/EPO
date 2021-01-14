@@ -7,7 +7,7 @@ import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
 import tornadofx.*
 
-class ListeBearbeiten : View("Bearbeiten") {
+class ListeBearbeitenView : View("Bearbeiten") {
     val model = ViewModel()
     val name= model.bind{ SimpleStringProperty() }
     var ename:String = ""
@@ -20,7 +20,7 @@ class ListeBearbeiten : View("Bearbeiten") {
             textFill= javafx.scene.paint.Color.WHITE
             alignment = Pos.CENTER
             setPrefSize(360.0, 600.0)
-        }
+        }//ende style
 
             vbox(0, Pos.CENTER) {
                 hbox {
@@ -29,10 +29,10 @@ class ListeBearbeiten : View("Bearbeiten") {
                         style {
                             backgroundColor = multi(c(colorString = "black"))
                             textFill = c(colorString = "#777678")
-                        }
+                        }//ende style
                         action {
                             name.value = ""
-                            replaceWith(UeberblickFenster())
+                            replaceWith(UebersichtView())
                         } //ende action
                     } //ende button zurück
 
@@ -40,13 +40,13 @@ class ListeBearbeiten : View("Bearbeiten") {
                         font = Font.font("Segoe UI", FontWeight.BOLD, 30.0)
                         textFill = c("#4c2dc6")
                         alignment = Pos.CENTER
-                    }
-                }
+                    }//ende label bearbeiten
+                }//ende hbox
 
                 label("USERNAME"){
                     font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 15.0)
                     addClass(Styles.heading)
-                }
+                }//ende label username
                     textfield(name).required()
                     setMaxSize(212.0, 03.0)
 
@@ -65,7 +65,7 @@ class ListeBearbeiten : View("Bearbeiten") {
                                 bottom = c("#4c2dc6"),
                                 right = c("#4c2dc6"),
                                 left = c("#4c2dc6")))
-                    }
+                    }//ende style
                     action {
                         ename = name.value
                         ListeBearbeitenController.userhinzufügen(ename)
@@ -79,8 +79,8 @@ class ListeBearbeiten : View("Bearbeiten") {
                         else if(ListeBearbeitenController.text == 2){
                             name.value = "User erfolgreich hinzugefügt!"
                         }
-                    }
-                }
+                    }//ende action
+                }//ende  button hinzufuegen
 
                 label()
 
@@ -96,13 +96,12 @@ class ListeBearbeiten : View("Bearbeiten") {
                                 bottom = c("#c63229"),
                                 right = c("#c63229"),
                                 left = c("#c63229")))
-                    }
+                    }//ende style
                     action {
                         ListeBearbeitenController.listeloeschen()
-                        replaceWith(UeberblickFenster())
-                    }
-                }
-            }
-
-    }
+                        replaceWith(UebersichtView())
+                    }//ende action
+                }//ende button löschen
+            }//ende vbox gesamt
+    }//ende root
 }

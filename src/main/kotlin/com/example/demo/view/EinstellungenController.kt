@@ -3,7 +3,7 @@ package com.example.demo.view
 import org.json.JSONObject
 import java.sql.SQLException
 
-object einstellungenController {
+object EinstellungenController {
 
     var nnTest: String = ""
     var nn: String = ""
@@ -23,11 +23,13 @@ object einstellungenController {
     fun abmelden(){
         abmelden="1"
         val pro = khttp.put("http://digbizmistelbach.at/epo/api/public/index.php/updateUser?userid=${userId}&nutzername=${andernaufruf}&vorname=${vn}&nachname=${nachn}&email=${email}&abmelden=${abmelden}&farbschemaid=${farbschemaid}")
-    }
+    }//ende abmelden()
+
     fun anmelden(){
         abmelden="0"
         val pro = khttp.put("http://digbizmistelbach.at/epo/api/public/index.php/updateUser?userid=${userId}&nutzername=${andernaufruf}&vorname=${vn}&nachname=${nachn}&email=${email}&abmelden=${abmelden}&farbschemaid=${farbschemaid}")
-    }
+    }//ende anmelden()
+
     fun farbschemaaendern(farbmod:String){
         if(farbmod.equals("Nachtmodus")){
             farbmodus="Tagmodus"
@@ -39,11 +41,11 @@ object einstellungenController {
             farbschemaid="2"
             val pro = khttp.put("http://digbizmistelbach.at/epo/api/public/index.php/updateUser?userid=${userId}&nutzername=${nn}&vorname=${vn}&nachname=${nachn}&email=${email}&abmelden=${abmelden}&farbschemaid=${farbschemaid}")
         }
-    }
+    }//ende farbschemaaendern()
 
     fun profil(profil: String, andern: String, JaNein: Boolean){
         try {
-            userId=loginController.userId
+            userId=LoginController.userId
             profilopt =profil
             andernaufruf=andern
             andernJaNein=JaNein
@@ -54,7 +56,7 @@ object einstellungenController {
             for (ja in json) {
                 val jo = ja as JSONObject
                 nnTest = jo.get("nutzername").toString()
-                if(nnTest.equals(loginController.username)){
+                if(nnTest.equals(LoginController.username)){
                     nn = jo.get("nutzername").toString()
                     vn = jo.get("vorname").toString()
                     nachn = jo.get("nachname").toString()
@@ -67,7 +69,6 @@ object einstellungenController {
             }
 
             if(andernJaNein==true){
-                println("Änderung erfolgt")
                 if(profil.equals("Nutzername")){
                     val pro = khttp.put("http://digbizmistelbach.at/epo/api/public/index.php/updateUser?userid=${userId}&nutzername=${andernaufruf}&vorname=${vn}&nachname=${nachn}&email=${email}&abmelden=${abmelden}&farbschemaid=${farbschemaid}")
                     nn= andernaufruf
@@ -84,18 +85,17 @@ object einstellungenController {
                     val pro = khttp.put("http://digbizmistelbach.at/epo/api/public/index.php/updateUser?userid=${userId}&nutzername=${nn}&vorname=${vn}&nachname=${nachn}&email=${andernaufruf}&abmelden=${abmelden}&farbschemaid=${farbschemaid}")
                     email= andernaufruf
                 }
-            }
+            }//ende if gesamt aenderung
             andernJaNein=false
-
             if(farbschemaid.equals("1")){
                 farbmodus="Tagmodus"
             }
             if(farbschemaid.equals("2")){
                 farbmodus="Nachtmodus"
             }
-        }
+        } //ende try
         catch (e: SQLException){
             e.printStackTrace()
-        }
-    }
+        } //ende catch
+    }//ende profil()
 }

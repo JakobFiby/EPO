@@ -1,6 +1,7 @@
 package com.example.demo.view
 
 import org.json.JSONObject
+import java.sql.SQLException
 
 object ListeBearbeitenController {
     @JvmStatic
@@ -18,17 +19,18 @@ object ListeBearbeitenController {
     var anlegen:Boolean = true
     var text:Int = 0
     var gf = false
-    var angemeldterUser = loginController.userId
+    var angemeldterUser = LoginController.userId
 
     fun getName(aListe:String){
         listeName = aListe
-    }
+    }//ende getName()
 
     fun userhinzufügen(name:String){
+        try{
         gefunden.clear()
         
-        val r = khttp.get("http://digbizmistelbach.at/epo/api/public/index.php/benutzer")
-        val json = r.jsonArray
+        val request = khttp.get("http://digbizmistelbach.at/epo/api/public/index.php/benutzer")
+        val json = request.jsonArray
 
         for (ja in json) {
             val jo = ja as JSONObject
@@ -37,7 +39,6 @@ object ListeBearbeitenController {
 
             if(user.equals(name)) {
                 userid = uid
-                //println(userid)
                 gefunden.add("true")
             }
             else{
@@ -47,8 +48,8 @@ object ListeBearbeitenController {
 
         gf = gefunden.contains("true")
 
-        val r2 = khttp.get("http://digbizmistelbach.at/epo/api/public/index.php/liste")
-        val json2 = r2.jsonArray
+        val request2 = khttp.get("http://digbizmistelbach.at/epo/api/public/index.php/liste")
+        val json2 = request2.jsonArray
 
         for (ja2 in json2) {
             val jo2 = ja2 as JSONObject
@@ -57,13 +58,11 @@ object ListeBearbeitenController {
 
             if(ln.equals(listeName)) {
                 listeid = li
-                //println(listeid)
             }
-        }
+        }//ende for
 
-        val r3 = khttp.get("http://digbizmistelbach.at/epo/api/public/index.php/userliste")
-        val json3 = r3.jsonArray
-        //println(json3)
+        val request3 = khttp.get("http://digbizmistelbach.at/epo/api/public/index.php/userliste")
+        val json3 = request3.jsonArray
 
         for (ja3 in json3) {
             val jo3 = ja3 as JSONObject
@@ -75,12 +74,12 @@ object ListeBearbeitenController {
                     anlegen = false
                 }
             }
-        }
+        }//ende for
 
         var berechtigungs = 0
 
         if(anlegen && gf){
-            val request = khttp.post("http://digbizmistelbach.at/epo/api/public/index.php/userzuliste?berechtigungs=$berechtigungs&listeid=$listeid&userid=$userid")
+            val request4 = khttp.post("http://digbizmistelbach.at/epo/api/public/index.php/userzuliste?berechtigungs=$berechtigungs&listeid=$listeid&userid=$userid")
             text = 2
             gf = false
         }
@@ -93,12 +92,16 @@ object ListeBearbeitenController {
             }
             anlegen = true
         }
-    }
+        }//ende try
+        catch(e: SQLException){
+            e.printStackTrace()
+        }//ende catch
+    }//ende userhinzufuegen()
 
     fun listeloeschen(){
-
-        val r2 = khttp.get("http://digbizmistelbach.at/epo/api/public/index.php/liste")
-        val json2 = r2.jsonArray
+        try{
+        val request = khttp.get("http://digbizmistelbach.at/epo/api/public/index.php/liste")
+        val json2 = request.jsonArray
 
         for (ja2 in json2) {
             val jo2 = ja2 as JSONObject
@@ -108,8 +111,12 @@ object ListeBearbeitenController {
             if(ln.equals(listeName)) {
                 listeid = li
             }
-        }
+        }//ende for
 
-        var r = khttp.delete("http://digbizmistelbach.at/epo/api/public/index.php/listeloeschen?userid=$angemeldterUser&listeid=$listeid")
-    }
+        var request2 = khttp.delete("http://digbizmistelbach.at/epo/api/public/index.php/listeloeschen?userid=$angemeldterUser&listeid=$listeid")
+        }//ende try
+        catch(e: SQLException){
+            e.printStackTrace()
+        }//ende catch
+    }//ende listeloeschen
 }

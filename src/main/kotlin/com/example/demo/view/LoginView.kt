@@ -1,21 +1,14 @@
 package com.example.demo.view
 
 import com.example.demo.app.Styles
-import com.sun.org.apache.bcel.internal.Repository.addClass
 import javafx.beans.property.SimpleStringProperty
 import javafx.geometry.Orientation
 import javafx.geometry.Pos
-import javafx.scene.layout.*
-import javafx.scene.layout.Border
-import javafx.scene.paint.Color
-import javax.swing.border.*
 import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
-import javafx.stage.Stage
 import tornadofx.*
-import com.example.demo.view.loginController
 
-class LoginFenster : View("Login") {
+class LoginView : View("Login") {
 
     val model = ViewModel()
     val nutzername = model.bind { SimpleStringProperty() }
@@ -27,7 +20,7 @@ class LoginFenster : View("Login") {
             fontSize = 15.px
             backgroundColor = multi(c(colorString = "black"))
             textFill= c(colorString="#FFFFFF")
-        }
+        } //ende style
 
         hbox {
             addClass(Styles.heading)
@@ -41,18 +34,17 @@ class LoginFenster : View("Login") {
             vbox(spacing = 20) {
 
                 vbox(10, Pos.CENTER) {
-                    label("EPO") {
-                        font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 40.0)
-                        addClass(Styles.heading)
-                        style{
-                            textFill = c("#4C2DC6")
-                        }
-                    }
-                    label("Easy Project Organisation") {
-                        font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 15.0)
-                        addClass(Styles.heading)
-                    }
+                    setPrefSize(110.0, 90.0)
+                    imageview("/logoNeu.png", lazyload = false) {
+                        fitHeightProperty().bind(parent.prefHeight(300.0).toProperty())
+                        fitWidthProperty().bind(parent.prefWidth(400.0).toProperty())
+                    } // ende image
                 } //ende vbox Titel
+
+                label("Easy Project Organisation") {
+                    font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 15.0)
+                    addClass(Styles.heading)
+                }//ende label Easy Project Organisation
 
                 vbox(0, Pos.CENTER) {
                     //val fontIcon=FontIcon()
@@ -62,16 +54,16 @@ class LoginFenster : View("Login") {
                         label("NUTZERNAME"){
                             font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 15.0)
                             addClass(Styles.heading)
-                        }
+                        }//ende label nn
                         textfield(nutzername).required()
 
                         label("PASSWORT"){
                             font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 15.0)
                             addClass(Styles.heading)
-                        }
+                        }//ende label pw
                             passwordfield(passwort).required()
 
-                    }
+                    }//ende fieldset
                     button("Anmelden") {
                         enableWhen(model.valid)
                         style {
@@ -81,22 +73,20 @@ class LoginFenster : View("Login") {
                                     top = c(colorString = "#4c2dc6"),
                                     bottom = c(colorString = "#4c2dc6"),
                                     right = c(colorString = "#4c2dc6"),
-                                    left = c(colorString = "#4c2dc6")
-                            ))
-                        }
+                                    left = c(colorString = "#4c2dc6")))
+                        }//ende style
                             isDefaultButton = true
                             useMaxHeight = true
                             useMaxWidth = true
 
                             action {
-                                loginController.login(nutzername.value, passwort.value)
-                                //println("Login = "+ loginController.working+loginController.pwB+loginController.nnB)
-                                if(loginController.working==true) {
-                                    einstellungenController.anmelden()
-                                    replaceWith(UeberblickFenster::class, sizeToScene = false, centerOnScreen = true)
-                                }
-                            }
-                    } //ende button
+                                LoginController.login(nutzername.value, passwort.value)
+                                if(LoginController.working==true) {
+                                    EinstellungenController.anmelden()
+                                    replaceWith(UebersichtView::class, sizeToScene = false, centerOnScreen = true)
+                                }//ende if
+                            }//ende action
+                    } //ende button Anmelden
 
                     vbox(10, Pos.CENTER) {
                         button("Noch nicht registriert?") {
@@ -104,20 +94,20 @@ class LoginFenster : View("Login") {
                             style {
                                 backgroundColor = multi(c(colorString = "black"))
                                 textFill = c(colorString = "#FFFFFF")
-                            }
+                            }//ende style
                             action {
-                                replaceWith(RegisterFenster::class)
+                                replaceWith(RegisterView::class)
                             } //ende action
                         } //ende button noch nicht registriert
                     } //ende vbox noch nicht registriert
-                } //ende vbox gesamt
-            } //ende hbox gesamt
-        }
-    }
+                } //ende vbox labels und buttons
+            } //ende vbox gesamt
+        } //ende hbox gesamt
+    }//ende root
 
     override fun onDock() {
         nutzername.value = "jakob"
         passwort.value = "1234"
         model.clearDecorators()
-    }
+    }//ende onDock()
 }

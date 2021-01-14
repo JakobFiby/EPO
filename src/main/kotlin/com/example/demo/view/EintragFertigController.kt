@@ -3,7 +3,7 @@ package com.example.demo.view
 import org.json.JSONObject
 import java.sql.SQLException
 
-object eintragFertigController {
+object EintragFertigController {
     @JvmStatic
 
     var en = ""
@@ -15,8 +15,8 @@ object eintragFertigController {
     var wichtigkeit = ""
 
     fun connection(aEintrag:String) = try {
-        val r = khttp.get("http://digbizmistelbach.at/epo/api/public/index.php/eintrag")
-        val json = r.jsonArray
+        val request = khttp.get("http://digbizmistelbach.at/epo/api/public/index.php/eintrag")
+        val json = request.jsonArray
 
         for (ja in json) {
             val jo = ja as JSONObject
@@ -29,18 +29,18 @@ object eintragFertigController {
                 wichtigkeit = wk
                 if(ed.equals("0")) {
                     erledigt = "1"
-                    val r2 = khttp.put("http://digbizmistelbach.at/epo/api/public/index.php/updateEintrag?eintragid=$eid&erledigt=$erledigt")
+                    val request2 = khttp.put("http://digbizmistelbach.at/epo/api/public/index.php/updateEintrag?eintragid=$eid&erledigt=$erledigt")
                     fertig = true
-                }
+                }//ende if 1
                 else{
                     erledigt = "0"
-                    val r2 = khttp.put("http://digbizmistelbach.at/epo/api/public/index.php/updateEintrag?eintragid=$eid&erledigt=$erledigt")
+                    val request2 = khttp.put("http://digbizmistelbach.at/epo/api/public/index.php/updateEintrag?eintragid=$eid&erledigt=$erledigt")
                     fertig = false
-                }
-            }
-        }
-    }
+                }//ende if 2
+            }//ende if gesamt
+        }//ende for
+    }//ende try & connection()
     catch(e: SQLException){
         e.printStackTrace()
-    }
+    }//ende catch
 }

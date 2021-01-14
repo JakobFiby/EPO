@@ -1,8 +1,9 @@
 package com.example.demo.view
 
 import org.json.JSONObject
+import java.sql.SQLException
 
-object eintragErstellenController {
+object EintragErstellenController {
     @JvmStatic
     var gefunden = ArrayList<String>()
     var en:String = ""
@@ -10,11 +11,11 @@ object eintragErstellenController {
     var erstellt = false
 
     fun eintraghinzufügen(name:String, beschreibung:String, erledigt:Int, wichtigkeit:String, listeid:Int){
-
+        try{
         gefunden.clear()
 
-        val r = khttp.get("http://digbizmistelbach.at/epo/api/public/index.php/eintrag")
-        val json = r.jsonArray
+        val request = khttp.get("http://digbizmistelbach.at/epo/api/public/index.php/eintrag")
+        val json = request.jsonArray
 
         for (ja in json) {
             val jo = ja as JSONObject
@@ -26,7 +27,7 @@ object eintragErstellenController {
             else{
                 gefunden.add("false")
             }
-        }
+        }//ende for
 
         if(gefunden.contains("true")){
             erstellt = false
@@ -34,10 +35,14 @@ object eintragErstellenController {
         else{
             erstellt = true
 
-            val request = khttp.post("http://digbizmistelbach.at/epo/api/public/index.php/eintragneu?eintragname=$name&beschreibung=$beschreibung&erledigt=$erledigt&wichtigkeit=$wichtigkeit&listeid=$listeid")
+            val request2 = khttp.post("http://digbizmistelbach.at/epo/api/public/index.php/eintragneu?eintragname=$name&beschreibung=$beschreibung&erledigt=$erledigt&wichtigkeit=$wichtigkeit&listeid=$listeid")
         }
 
-        eintraegeController.eintraege.clear()
-        eintraegeController.connection(eintraegeController.liste)
-    }
+        EintraegeController.eintraege.clear()
+        EintraegeController.connection(EintraegeController.liste)
+        }//ende try
+        catch(e: SQLException){
+            e.printStackTrace()
+        }//ende catch
+    }//ende eintraghinzufuegen()
 }

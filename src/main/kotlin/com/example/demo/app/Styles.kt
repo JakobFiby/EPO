@@ -25,6 +25,5 @@ class Styles : Stylesheet() {
             textFill= Color.BLACK
         }
     }
-
 }
 

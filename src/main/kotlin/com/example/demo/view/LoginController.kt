@@ -19,7 +19,7 @@ object LoginController{
     public var working: Boolean = false
 
     fun eingeloggt(){
-        val request = khttp.get("http://localhost/api/public/index.php/benutzer")
+        val request = khttp.get("http://digbizmistelbach.at/epo/api/public/index.php/benutzer")
         val json = request.jsonArray
         for (ja in json) {
             val jo = ja as JSONObject
@@ -31,7 +31,7 @@ object LoginController{
     fun login(nutzername: String, passwort: String) {
 
         try {
-            val request = khttp.get("http://localhost/api/public/index.php/benutzer")
+            val request = khttp.get("http://digbizmistelbach.at/epo/api/public/index.php/benutzer")
             val json = request.jsonArray
 
             for (ja in json) {

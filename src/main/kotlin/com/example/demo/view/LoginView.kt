@@ -83,7 +83,7 @@ class LoginView : View("Login") {
                                 LoginController.login(nutzername.value, passwort.value)
                                 if(LoginController.working==true) {
                                     EinstellungenController.anmelden()
-                                    replaceWith(UebersichtView::class, sizeToScene = false, centerOnScreen = true)
+                                    replaceWith(UebersichtView())
                                 }//ende if
                             }//ende action
                     } //ende button Anmelden
@@ -96,7 +96,7 @@ class LoginView : View("Login") {
                                 textFill = c(colorString = "#FFFFFF")
                             }//ende style
                             action {
-                                replaceWith(RegisterView::class)
+                                replaceWith(RegisterView())
                             } //ende action
                         } //ende button noch nicht registriert
                     } //ende vbox noch nicht registriert

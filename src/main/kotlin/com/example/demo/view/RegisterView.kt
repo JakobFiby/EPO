@@ -123,10 +123,14 @@ class RegisterView : View("Registrieren") {
                                             nutzernameR.value="Passwort ist zu kurz"
                                         }
                                         if(RegisterController.nutzernameVorhanden==false){
-                                            nutzernameR.value="Nutzername ${RegisterController.nutzername} ist bereits vorhanden"
+                                            nutzernameR.value="Nutzername ${RegisterController.nutzername} ist bereits vergeben"
+                                        }
+                                        if(RegisterController.emailRichtig==false){
+                                            emailR.value="Email ist falsch"
                                         }
                                         RegisterController.passwortLaenge=true
                                         RegisterController.nutzernameVorhanden=true
+                                        RegisterController.emailRichtig=true
                                     }
                                 } //ende action
                         } //ende button Registrieren

@@ -25,6 +25,7 @@ object RegisterController {
     var funktioniert: Boolean = true
     var passwortLaenge: Boolean = true
     var nutzernameVorhanden: Boolean = true
+    var emailRichtig: Boolean = true
 
     fun anmelden(nutzernameR:String, vornameR:String, nachnameR:String, emailR:String, passwortR:String) {
         try {
@@ -54,6 +55,14 @@ object RegisterController {
                     funktioniert=false
                     nutzernameVorhanden=false
                 }
+            }
+
+            if(email.contains("@"))
+            {
+            }
+            else{
+                funktioniert=false
+                emailRichtig=false
             }
 
             if(funktioniert==true)

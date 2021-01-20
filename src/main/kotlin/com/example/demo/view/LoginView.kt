@@ -35,7 +35,7 @@ class LoginView : View("Login") {
 
                 vbox(10, Pos.CENTER) {
                     setPrefSize(110.0, 90.0)
-                    imageview("/logoNeu.png", lazyload = false) {
+                    imageview("/logoNEU.png", lazyload = false) {
                         fitHeightProperty().bind(parent.prefHeight(300.0).toProperty())
                         fitWidthProperty().bind(parent.prefWidth(400.0).toProperty())
                     } // ende image

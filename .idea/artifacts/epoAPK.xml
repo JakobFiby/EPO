@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="apk" build-on-make="true" name="epoAPK">
+    <output-path>$PROJECT_DIR$/out/artifacts/epoAPK</output-path>
+    <properties id="android-properties">
+      <options>
+        <option name="keyStoreUrl" value="file://" />
+      </options>
+    </properties>
+    <root id="archive" name="epoAPK.apk">
+      <element id="module-output" name="EPO" />
+    </root>
+  </artifact>
+</component>

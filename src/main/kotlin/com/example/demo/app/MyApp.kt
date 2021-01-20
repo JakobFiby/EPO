@@ -13,7 +13,7 @@ class MyApp: App(StartView::class, Styles::class){
             minHeight =600.0
         }
 
-        stage.icons += Image("/logoNeu.png")
+        stage.icons += Image("/logoNEU.png")
 
         super.start(stage)
     }

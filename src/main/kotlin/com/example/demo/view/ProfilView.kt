@@ -67,12 +67,18 @@ class ProfilView : View("Profil bearbeiten") {
                     textFill = javafx.scene.paint.Color.BLACK
                 }//ende style
                 action {
-                    if(aenderung.value != EinstellungenController.andernaufruf){
-                        println("Es hat sich was geändert")
+                    if(aenderung.value != EinstellungenController.andernaufruf && aenderung.value != "Nutzername bereits vorhanden!"){
                         EinstellungenController.profil(EinstellungenController.profilopt, aenderung.value, true)
                     }//ende if
-                    EinstellungenController.profil("", "", false)
-                    replaceWith(EinstellungenView())
+
+                    if(EinstellungenController.nnvorhanden){
+                        EinstellungenController.profil("", "", false)
+                        aenderung.value = "Nutzername bereits vorhanden!"
+                    }
+                    else {
+                        EinstellungenController.profil("", "", false)
+                        replaceWith(EinstellungenView())
+                    }
                 }//ende action
             }//ende button Fertig
         }//ende hbox

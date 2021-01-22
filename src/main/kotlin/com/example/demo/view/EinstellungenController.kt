@@ -19,6 +19,8 @@ object EinstellungenController {
     var andernaufruf:String=""
     var andernJaNein: Boolean = false
     var farbmodus:String =""
+    var nutzernamen = ArrayList<String>()
+    var nnvorhanden = false
 
     fun abmelden(){
         abmelden="1"
@@ -56,6 +58,8 @@ object EinstellungenController {
             for (ja in json) {
                 val jo = ja as JSONObject
                 nnTest = jo.get("nutzername").toString()
+                nutzernamen.add(nnTest)
+
                 if(nnTest.equals(LoginController.username)){
                     nn = jo.get("nutzername").toString()
                     vn = jo.get("vorname").toString()
@@ -70,8 +74,16 @@ object EinstellungenController {
 
             if(andernJaNein==true){
                 if(profil.equals("Nutzername")){
-                    val pro = khttp.put("http://digbizmistelbach.at/epo/api/public/index.php/updateUser?userid=${userId}&nutzername=${andernaufruf}&vorname=${vn}&nachname=${nachn}&email=${email}&abmelden=${abmelden}&farbschemaid=${farbschemaid}")
-                    nn= andernaufruf
+                    if(nutzernamen.contains(andernaufruf)){
+                        nnvorhanden = true
+                        nutzernamen.clear()
+                    }
+                    else {
+                        val pro = khttp.put("http://digbizmistelbach.at/epo/api/public/index.php/updateUser?userid=${userId}&nutzername=${andernaufruf}&vorname=${vn}&nachname=${nachn}&email=${email}&abmelden=${abmelden}&farbschemaid=${farbschemaid}")
+                        LoginController.username = andernaufruf
+                        nn = andernaufruf
+                        nutzernamen.clear()
+                    }
                 }
                 if(profil.equals("Vorname")){
                     val pro = khttp.put("http://digbizmistelbach.at/epo/api/public/index.php/updateUser?userid=${userId}&nutzername=${nn}&vorname=${andernaufruf}&nachname=${nachn}&email=${email}&abmelden=${abmelden}&farbschemaid=${farbschemaid}")

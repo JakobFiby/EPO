@@ -38,7 +38,7 @@ class EinstellungenView : View("Einstellungen") {
                     textFill = c(colorString = "#777678")
                 }//ende style
                 action {
-                    replaceWith(UebersichtView::class)
+                    replaceWith(UebersichtView())
                 } //ende action
             } //ende button zurück
                 label("Einstellungen") {

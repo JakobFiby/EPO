@@ -104,10 +104,4 @@ class LoginView : View("Login") {
             } //ende vbox gesamt
         } //ende hbox gesamt
     }//ende root
-
-    override fun onDock() {
-        nutzername.value = "jakob"
-        passwort.value = "1234"
-        model.clearDecorators()
-    }//ende onDock()
 }

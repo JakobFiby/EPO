@@ -8,23 +8,23 @@ import kotlin.collections.ArrayList
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
-class UebersichtView : View ("E.P.O")
-{
+class UebersichtView : View ("E.P.O") {
     var lid = ArrayList<Int>()
     var lna = ArrayList<String>()
     var lfd = ArrayList<String>()
+    var username = ""
 
     override val root = form {
 
-        style{
+        style {
             padding = box(10.px)
             fontSize = 15.px
-            backgroundColor=multi(c(colorString="black"))
-            textFill= javafx.scene.paint.Color.WHITE
+            backgroundColor = multi(c(colorString = "black"))
+            textFill = javafx.scene.paint.Color.WHITE
         }//ende style
 
-        val username = LoginController.username
-        val userid:Int = LoginController.userId
+        username = LoginController.username
+        val userid: Int = LoginController.userId
 
         hbox {
             paddingTop = 10
@@ -36,7 +36,7 @@ class UebersichtView : View ("E.P.O")
                 hbox {
                     label("Willkommen $username:") {
                         font = Font.font("Segoe UI", FontWeight.BOLD, 25.0)
-                        textFill= c("#4C2DC6")
+                        textFill = c("#4C2DC6")
                     }//ende label willkommen
 
                     label("    ")
@@ -45,13 +45,13 @@ class UebersichtView : View ("E.P.O")
                     {
                         font = Font.font("Segoe UI", FontWeight.NORMAL, 15.0)
                         shape = Circle(15.0)
-                        setMaxSize(15.0*2, 15.0*2)
-                        setMinSize(15.0*2, 15.0*2)
-                        style{
+                        setMaxSize(15.0 * 2, 15.0 * 2)
+                        setMinSize(15.0 * 2, 15.0 * 2)
+                        style {
                             backgroundColor = multi(c("#777678"))
                             textFill = javafx.scene.paint.Color.BLACK
                         }//ende style
-                        action{
+                        action {
                             EinstellungenController.profil("", "", false)
                             replaceWith(EinstellungenView())
                         }//ende action
@@ -64,11 +64,11 @@ class UebersichtView : View ("E.P.O")
         lna = ListenController.listenname
         lfd = ListenController.listenFaelligkeitsDatum
 
-        var lf:String
+        var lf: String
         var zz = 0
 
         vbox {
-            style{
+            style {
                 backgroundColor = multi(c("#111111"))
             }//ende style
             for (la in lna) {
@@ -89,8 +89,8 @@ class UebersichtView : View ("E.P.O")
                         }//ende action
                     }//ende button listename
 
-                    button("..."){
-                        style{
+                    button("...") {
+                        style {
                             font = Font.font("Segoe UI", FontWeight.NORMAL, 15.0)
                             backgroundColor = multi(c("#111111"))
                             textFill = c(colorString = "#4c2dc6")
@@ -112,8 +112,8 @@ class UebersichtView : View ("E.P.O")
                         textFill = javafx.scene.paint.Color.LIGHTGREY
                     }//ende style
 
-                    if(todaysDate>date){
-                        style{
+                    if (todaysDate > date) {
+                        style {
                             textFill = javafx.scene.paint.Color.RED
                         }//ende style
                     }//ende if ob überfällig
@@ -124,7 +124,7 @@ class UebersichtView : View ("E.P.O")
             }//ende for
         }//ende vbox
 
-        hbox{
+        hbox {
             button("+")
             {
                 font = Font.font("Segoe UI", FontWeight.BOLD, 14.0)

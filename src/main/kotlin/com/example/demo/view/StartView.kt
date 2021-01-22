@@ -3,7 +3,7 @@ package com.example.demo.view
 import javafx.geometry.Pos
 import tornadofx.*
 
-class StartView : View("Willkommen!") {
+class StartView : View("") {
 
     override val root = hbox {
         style{

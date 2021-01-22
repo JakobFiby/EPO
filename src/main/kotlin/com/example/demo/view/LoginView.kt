@@ -8,7 +8,7 @@ import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
 import tornadofx.*
 
-class LoginView : View("Login") {
+class LoginView : View("") {
 
     val model = ViewModel()
     val nutzername = model.bind { SimpleStringProperty() }
@@ -81,7 +81,7 @@ class LoginView : View("Login") {
 
                             action {
                                 LoginController.login(nutzername.value, passwort.value)
-                                if(LoginController.working==true) {
+                                if(LoginController.working) {
                                     EinstellungenController.anmelden()
                                     replaceWith(UebersichtView())
                                 }//ende if

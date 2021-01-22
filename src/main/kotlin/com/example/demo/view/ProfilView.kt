@@ -7,7 +7,7 @@ import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
 import tornadofx.*
 
-class ProfilView : View("Profil bearbeiten") {
+class ProfilView : View("") {
 
     override val root = form {
         style {

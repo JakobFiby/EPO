@@ -5,7 +5,7 @@ import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
 import tornadofx.*
 
-class EintraegeBeschreibungView : View("Beschreibung") {
+class EintraegeBeschreibungView : View("") {
 
     var beschreibung = EintraegeBeschreibungController.beschreibung
 

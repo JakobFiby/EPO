@@ -7,7 +7,7 @@ import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
 import tornadofx.*
 
-class EinstellungenView : View("Einstellungen") {
+class EinstellungenView : View("") {
 
     var nutzername=EinstellungenController.nn
     var vorname=EinstellungenController.vn

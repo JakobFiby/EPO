@@ -9,7 +9,7 @@ import javafx.scene.text.FontWeight
 import tornadofx.*
 
 
-class EintragErstellenView : View("Liste erstellen") {
+class EintragErstellenView : View("") {
     val model = ViewModel()
     val eName= model.bind{SimpleStringProperty()}
     val eBeschreibung= model.bind{SimpleStringProperty()}

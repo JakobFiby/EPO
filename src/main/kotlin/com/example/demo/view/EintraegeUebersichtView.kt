@@ -5,7 +5,7 @@ import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
 import tornadofx.*
 
-class EintraegeUebersichtView : View("Einträge Übersicht") {
+class EintraegeUebersichtView : View("") {
 
     var einträge = ArrayList<String>()
     var liste = ""

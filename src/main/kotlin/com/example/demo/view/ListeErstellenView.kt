@@ -10,7 +10,7 @@ import javafx.scene.text.FontWeight
 import tornadofx.*
 import java.time.LocalDate
 
-class ListeErstellenView : View("Liste erstellen") {
+class ListeErstellenView : View("") {
     val model = ViewModel()
     val name= model.bind{SimpleStringProperty()}
     private val dateProperty = SimpleObjectProperty<LocalDate>()

@@ -8,7 +8,7 @@ import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
 import tornadofx.*
 
-class RegisterView : View("Registrieren") {
+class RegisterView : View("") {
     val model = ViewModel()
     val nutzernameR= model.bind{SimpleStringProperty()}
     val vornameR= model.bind{SimpleStringProperty()}

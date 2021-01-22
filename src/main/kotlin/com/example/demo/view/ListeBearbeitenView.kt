@@ -7,7 +7,7 @@ import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
 import tornadofx.*
 
-class ListeBearbeitenView : View("Bearbeiten") {
+class ListeBearbeitenView : View("") {
     val model = ViewModel()
     val name= model.bind{ SimpleStringProperty() }
     var ename:String = ""

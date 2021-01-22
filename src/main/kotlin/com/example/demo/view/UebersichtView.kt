@@ -8,7 +8,7 @@ import kotlin.collections.ArrayList
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
-class UebersichtView : View ("E.P.O") {
+class UebersichtView : View ("") {
     var lid = ArrayList<Int>()
     var lna = ArrayList<String>()
     var lfd = ArrayList<String>()

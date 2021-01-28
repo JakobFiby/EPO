@@ -34,7 +34,7 @@ class UebersichtView : View ("") {
 
             vbox(spacing = 20) {
                 hbox {
-                    label("Willkommen $username:") {
+                    label("Hallo $username:") {
                         font = Font.font("Segoe UI", FontWeight.BOLD, 25.0)
                         textFill = c("#4C2DC6")
                     }//ende label willkommen

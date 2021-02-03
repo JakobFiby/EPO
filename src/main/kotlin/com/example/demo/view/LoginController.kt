@@ -63,7 +63,7 @@ object LoginController{
             if (pwB == true && nnB == true) {
                 working = true
             } else {
-                println("Nutzername und/oder Passwort sind nicht richtig")
+                //println("Nutzername und/oder Passwort sind nicht richtig")
                 LoginView().onDock()
             }
         }//ende try

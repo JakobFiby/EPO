@@ -1,6 +1,5 @@
 package com.example.demo.view
 
-import com.google.gson.Gson
 import org.json.JSONObject
 import java.math.BigInteger
 import java.security.MessageDigest

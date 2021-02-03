@@ -2,6 +2,10 @@ package com.example.demo.view
 
 import org.json.JSONObject
 import java.sql.SQLException
+import com.example.demo.app.Styles
+import javafx.scene.paint.Color
+import javafx.scene.text.FontWeight
+import tornadofx.*
 
 object EinstellungenController {
 
@@ -24,12 +28,12 @@ object EinstellungenController {
 
     fun abmelden(){
         abmelden="1"
-        val pro = khttp.put("http://digbizmistelbach.at/epo/api/public/index.php/updateUser?userid=${userId}&nutzername=${andernaufruf}&vorname=${vn}&nachname=${nachn}&email=${email}&abmelden=${abmelden}&farbschemaid=${farbschemaid}")
+        val pro = khttp.put("http://digbizmistelbach.at/epo/api/public/index.php/updateUser?userid=${userId}&nutzername=${nn}&vorname=${vn}&nachname=${nachn}&email=${email}&abmelden=${abmelden}&farbschemaid=${farbschemaid}")
     }//ende abmelden()
 
     fun anmelden(){
         abmelden="0"
-        val pro = khttp.put("http://digbizmistelbach.at/epo/api/public/index.php/updateUser?userid=${userId}&nutzername=${andernaufruf}&vorname=${vn}&nachname=${nachn}&email=${email}&abmelden=${abmelden}&farbschemaid=${farbschemaid}")
+        val pro = khttp.put("http://digbizmistelbach.at/epo/api/public/index.php/updateUser?userid=${userId}&nutzername=${nn}&vorname=${vn}&nachname=${nachn}&email=${email}&abmelden=${abmelden}&farbschemaid=${farbschemaid}")
     }//ende anmelden()
 
     fun farbschemaaendern(farbmod:String){
@@ -42,6 +46,7 @@ object EinstellungenController {
             farbmodus="Nachtmodus"
             farbschemaid="2"
             val pro = khttp.put("http://digbizmistelbach.at/epo/api/public/index.php/updateUser?userid=${userId}&nutzername=${nn}&vorname=${vn}&nachname=${nachn}&email=${email}&abmelden=${abmelden}&farbschemaid=${farbschemaid}")
+
         }
     }//ende farbschemaaendern()
 

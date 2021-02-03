@@ -16,6 +16,7 @@ class EinstellungenView : View("") {
     var passwort=EinstellungenController.pw
     var farbmodus=EinstellungenController.farbmodus
 
+
     override val root = form {
         style {
             fontSize = 15.px
@@ -171,7 +172,7 @@ class EinstellungenView : View("") {
                                         textFill = c(colorString = "#FFFFFF")
                                     }//ende style
                                     action {
-                                        println(farbmodus)
+                                        //println(farbmodus)
                                         EinstellungenController.farbschemaaendern(farbmodus)
                                         replaceWith(EinstellungenView())
                                     }//ende action

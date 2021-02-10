@@ -37,6 +37,8 @@ object EintragErstellenController {
 
             val request2 = khttp.post("http://digbizmistelbach.at/epo/api/public/index.php/eintragneu?eintragname=$name&beschreibung=$beschreibung&erledigt=$erledigt&wichtigkeit=$wichtigkeit&listeid=$listeid")
         }
+            EintraegeController.wichtigkeit.clear()
+            EintraegeController.erledigt.clear()
 
         EintraegeController.eintraege.clear()
         EintraegeController.connection(EintraegeController.liste)

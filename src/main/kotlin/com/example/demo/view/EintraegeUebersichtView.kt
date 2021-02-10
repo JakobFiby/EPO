@@ -158,8 +158,6 @@ class EintraegeUebersichtView : View("") {
                 textFill = javafx.scene.paint.Color.BLACK
             }//ende style
             action {
-                EintraegeController.wichtigkeit.clear()
-                EintraegeController.erledigt.clear()
                 replaceWith(EintragErstellenView())
             }//ende action
         }//ende button +

@@ -121,9 +121,6 @@ class EintraegeUebersichtView : View("") {
                             }//ende style
                         }//ende if high
 
-                        println(wichtigkeit[zz])
-                        println(erledigt[zz])
-
                         if(erledigt[zz].equals("1")){
                             style{
                                 font = Font.font("Segoe UI", FontWeight.NORMAL, 13.0)

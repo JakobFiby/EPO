@@ -47,7 +47,6 @@ object ListeErstellenController {
 
                     if (ln.equals(listename)) {
                         listeid = li.toInt()
-                        println(listeid)
                     }
                 }//ende for
 

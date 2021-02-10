@@ -99,7 +99,6 @@ class EintraegeUebersichtView : View("") {
                                 }//ende if high
                             }//ende else
                         }//ende action
-
                         if(wichtigkeit[zz].equals("low")){
                             style{
                                 font = Font.font("Segoe UI", FontWeight.NORMAL, 13.0)
@@ -121,6 +120,9 @@ class EintraegeUebersichtView : View("") {
                                 textFill = c("cd3700")
                             }//ende style
                         }//ende if high
+
+                        println(wichtigkeit[zz])
+                        println(erledigt[zz])
 
                         if(erledigt[zz].equals("1")){
                             style{
@@ -159,6 +161,8 @@ class EintraegeUebersichtView : View("") {
                 textFill = javafx.scene.paint.Color.BLACK
             }//ende style
             action {
+                EintraegeController.wichtigkeit.clear()
+                EintraegeController.erledigt.clear()
                 replaceWith(EintragErstellenView())
             }//ende action
         }//ende button +

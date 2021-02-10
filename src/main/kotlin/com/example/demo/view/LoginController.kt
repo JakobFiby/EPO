@@ -14,6 +14,7 @@ object LoginController{
     var pwB: Boolean = false
     var userId: Int = 0
     var abmelden:String =""
+    var login = true
     public var username: String = ""
     public var working: Boolean = false
 
@@ -62,7 +63,7 @@ object LoginController{
             if (pwB == true && nnB == true) {
                 working = true
             } else {
-                //println("Nutzername und/oder Passwort sind nicht richtig")
+                login = false
                 LoginView().onDock()
             }
         }//ende try

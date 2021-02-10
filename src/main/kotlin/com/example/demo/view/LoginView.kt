@@ -81,6 +81,10 @@ class LoginView : View("") {
 
                             action {
                                 LoginController.login(nutzername.value, passwort.value)
+                                if(!LoginController.login){
+                                    nutzername.value = "Daten nicht korrekt!"
+                                    passwort.value = ""
+                                }
                                 if(LoginController.working) {
                                     EinstellungenController.anmelden()
                                     replaceWith(UebersichtView())

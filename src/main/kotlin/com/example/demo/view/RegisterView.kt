@@ -46,7 +46,7 @@ class RegisterView : View("") {
                         } //ende button zurück
 
                         label("Registrierung") {
-                            font = Font.font("Segoe UI", FontWeight.BOLD, 30.0)
+                            font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 30.0)
                             addClass(Styles.heading)
                             style {
                                 textFill = c("#4C2DC6")

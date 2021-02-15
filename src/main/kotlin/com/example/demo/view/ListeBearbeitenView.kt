@@ -37,7 +37,7 @@ class ListeBearbeitenView : View("") {
                     } //ende button zurück
 
                     label("Bearbeiten:") {
-                        font = Font.font("Segoe UI", FontWeight.BOLD, 30.0)
+                        font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 30.0)
                         textFill = c("#4c2dc6")
                         alignment = Pos.CENTER
                     }//ende label bearbeiten

@@ -3,6 +3,7 @@ package com.example.demo.view
 import com.example.demo.app.Styles
 import javafx.geometry.Orientation
 import javafx.geometry.Pos
+import javafx.scene.shape.Circle
 import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
 import tornadofx.*
@@ -43,9 +44,23 @@ class EinstellungenView : View("") {
                 } //ende action
             } //ende button zurück
                 label("Einstellungen") {
-                    font = Font.font("Segoe UI", FontWeight.BOLD, 25.0)
+                    font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 25.0)
                     textFill = c("#4C2DC6")
                 }//ende label Einstellungen
+                label(" ")
+                button("?"){
+                    font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 12.0)
+                    shape = Circle(12.0)
+                    setMaxSize(12.0 * 2, 12.0 * 2)
+                    setMinSize(12.0 * 2, 12.0 * 2)
+                    style {
+                        backgroundColor = multi(c(colorString = "grey"))
+                        textFill = c(colorString = "black")
+                    }//ende style
+                    action{
+                        HelpButton.main()
+                    }
+                }
             }//ende hbox Titel
         }//ende vbox Titel
         }//ende hbox

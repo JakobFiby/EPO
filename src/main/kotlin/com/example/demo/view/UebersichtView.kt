@@ -35,15 +35,15 @@ class UebersichtView : View ("") {
             vbox(spacing = 20) {
                 hbox {
                     label("Hallo $username:") {
-                        font = Font.font("Segoe UI", FontWeight.BOLD, 25.0)
+                        font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 25.0)
                         textFill = c("#4C2DC6")
                     }//ende label willkommen
 
                     label("    ")
 
-                    button("Einstellungen")
+                    button("...")
                     {
-                        font = Font.font("Segoe UI", FontWeight.NORMAL, 15.0)
+                        font = Font.font("Adobe Gothic Std B", FontWeight.NORMAL, 15.0)
                         shape = Circle(15.0)
                         setMaxSize(15.0 * 2, 15.0 * 2)
                         setMinSize(15.0 * 2, 15.0 * 2)
@@ -75,7 +75,7 @@ class UebersichtView : View ("") {
                 hbox {
                     button("o $la") {
                         style {
-                            font = Font.font("Segoe UI", FontWeight.NORMAL, 13.0)
+                            font = Font.font("Adobe Gothic Std B", FontWeight.NORMAL, 13.0)
                             backgroundColor = multi(c("#111111"))
                             textFill = javafx.scene.paint.Color.WHITE
                         }//ende style
@@ -91,7 +91,7 @@ class UebersichtView : View ("") {
 
                     button("...") {
                         style {
-                            font = Font.font("Segoe UI", FontWeight.NORMAL, 15.0)
+                            font = Font.font("Adobe Gothic Std B", FontWeight.NORMAL, 15.0)
                             backgroundColor = multi(c("#111111"))
                             textFill = c(colorString = "#4c2dc6")
                         }//ende style
@@ -127,7 +127,7 @@ class UebersichtView : View ("") {
         hbox {
             button("+")
             {
-                font = Font.font("Segoe UI", FontWeight.BOLD, 14.0)
+                font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 14.0)
                 shape = Circle(15.0)
                 setMaxSize(15.0 * 2, 15.0 * 2)
                 setMinSize(15.0 * 2, 15.0 * 2)

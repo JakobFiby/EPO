@@ -41,7 +41,7 @@ class ProfilView : View("") {
                         } //ende action
                     } //ende button zurück
                     label("Profil bearbeiten") {
-                        font = Font.font("Segoe UI", FontWeight.BOLD, 23.0)
+                        font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 23.0)
                         textFill = c("#4C2DC6")
                     }//ende label Profil bearbeiten
                 }//ende hbox
@@ -61,7 +61,7 @@ class ProfilView : View("") {
 
         hbox{
             button("Fertig") {
-                font = Font.font("Segoe UI", FontWeight.LIGHT, 15.0)
+                font = Font.font("Adobe Gothic Std B", FontWeight.LIGHT, 15.0)
                 style {
                     backgroundColor = multi(c("#4C2DC6"))
                     textFill = javafx.scene.paint.Color.BLACK

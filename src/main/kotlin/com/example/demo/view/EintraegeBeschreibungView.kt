@@ -32,7 +32,7 @@ class EintraegeBeschreibungView : View("") {
                 } //ende button zurück
                 label("Beschreibung:")
                 {
-                    font = Font.font("Segoe UI", FontWeight.BOLD, 30.0)
+                    font = Font.font("Adobe Gothic Std B", FontWeight.BOLD, 30.0)
                     textFill = c("#4C2DC6")
                     alignment = Pos.CENTER
                 }//ende label beschreibung
@@ -43,6 +43,8 @@ class EintraegeBeschreibungView : View("") {
             label("$beschreibung") {
                 style {
                     textFill = javafx.scene.paint.Color.WHITE
+                    wrapText = true
+                    alignment = Pos.BOTTOM_RIGHT
                 }//ende style
             }//ende label beschreibung
 
